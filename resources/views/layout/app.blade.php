@@ -24,7 +24,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active text-white"  href="/">Acceuil</a>
-        <a class="nav-link  text-white" href="{{route('blog')}}">Blog</a>
+        <a class="nav-link  text-white" href="{{route('blog')}}">Actualite</a>
         <a class="nav-link  text-white" href="{{ route('contact') }}">Contact</a>
       </div>
     </div>
