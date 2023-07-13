@@ -1,25 +1,36 @@
 @extends('layout.app')
 
 @section('content')
-<div class="container">
+<div class="container border p-3">
+  @if (session('success'))
+<div class="alert alert-success alert-dismissable m-3">
+    {{session('success')}}
+</div>
+
+@endif
     <div class="row">
        
         <div class="col md-5">
-            <form action="/action_page.php">
+          <h1>Contactez-nous</h1>
+            <form action="{{route('mail')}}" method="POST">
+              @csrf
                 <div class="row">
                     <div class="col">
-                      <input type="text" class="form-control" placeholder="Enter prénom" name="prenom">
+                      <input type="text" class="form-control" placeholder="Enter prénom" name="prenom" required>
                     </div>
                     <div class="col">
-                      <input type="text" class="form-control" placeholder="Enter nom" name="nom">
+                      <input type="text" class="form-control" placeholder="Enter nom" name="nom" required>
                     </div>
                   </div>
+                  <div class="mb-3 mt-3">
+                    <input type="text" class="form-control" id="sujet" placeholder="Enter sujet" name="sujet" required>
+                  </div>
                 <div class="mb-3 mt-3">
-                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
                   </div>
                 <div class="mb-3">
                  
-                  <textarea class="form-control" rows="5" id="comment"  placeholder="Enter message" name="message"></textarea>
+                  <textarea class="form-control" rows="5" id="comment"  placeholder="Enter message" name="message" required></textarea>
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Envoyer</button>
