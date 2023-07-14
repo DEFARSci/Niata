@@ -52,9 +52,5 @@
     <div class="col-md-2"> </div>
 </div>
 </div>
-<style>
-  .carousel-image {
-    max-height: 500px;
-  }
-</style>
+
 @endsection
