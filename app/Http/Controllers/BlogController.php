@@ -36,7 +36,6 @@ class BlogController extends Controller {
 
     public function show( $id ) {
         $blog = Blog::find( $id );
-        // Supposons que votre modèle s'appelle "Article"
     return view('blog.show', compact('blog' ) );
     }
 }
