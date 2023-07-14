@@ -33,7 +33,7 @@
                   </div>
                   <div class="form-group">
                       <label for="content">Contenu</label>
-                      <textarea class="form-control" id="content" name="content" cols="30" rows="5" value={{old('content')}}>{{old('content')}}</textarea>
+                      <textarea class="form-control tinymce-editor " id="content" name="content" cols="30" rows="5" value={{old('content')}}>{{old('content')}}</textarea>
                       @error('content')
                       <div class="text-danger">{{ $message }}
                       @enderror
@@ -58,5 +58,18 @@
   </div>
 
 </div>
+
+<script>
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  tinymce.init({
+    selector: '.tinymce-editor',
+    plugins: 'advlist link image',
+    toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | link image',
+  });
+});
+
+</script>
 
 @endsection
