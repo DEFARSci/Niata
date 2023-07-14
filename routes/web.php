@@ -30,4 +30,5 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/create', [BlogController::class, 'create'])->name('create');
 Route::post('/store', [BlogController::class, 'store'])->name('store');
+Route::get('voirBlog/{id}' , [BlogController::class, 'show'])->name('blog.show');
 require __DIR__.'/auth.php';
