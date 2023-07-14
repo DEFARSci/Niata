@@ -16,7 +16,7 @@ use App\Http\Controllers\ContactController;
 */
 
 Route::get('/', function () {
-    return view('mail.contact');
+    return view('welcome');
 });
 
 Route::get('/dashboard', function () {
