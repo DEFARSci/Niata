@@ -10,7 +10,7 @@
                 <h1 class="card-title font-weight-bold p-3 text-uppercase  "><strong>{{ $blog->title }}</strong> </h1>
                 <div class="card-body">
                 <img src="{{ asset('images/'.$blog->image) }}" class="card-img-top mb-5" style="object-fit: cover; height: 300px;">
-                    <p class="card-text ">{{ $blog->text }}</p>
+                    <p class="card-text ">{!! $blog->text !!}</p>
                 </div>
                 <div class="circle m-3">
                 <a href="javascript:history.back()" class="btn">
