@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CarressolController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,9 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/create', [BlogController::class, 'create'])->name('create');
 Route::post('/store', [BlogController::class, 'store'])->name('store');
 Route::get('voirBlog/{id}' , [BlogController::class, 'show'])->name('blog.show');
+
+
+Route::get('/', [CarressolController::class, 'index']);
+Route::get('/images/create', [CarressolController::class, 'create'])->name('carressol.create');
+Route::post('/image', [CarressolController::class, 'store'])->name('store');
 require __DIR__.'/auth.php';
