@@ -1,22 +1,18 @@
 @extends('layout.app')
 
 @section('content')
-<div id="carouselExampleIndicators" class="carousel slide container-fluide" data-bs-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    @foreach($images as $key => $image)
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$key}}" @if($key == 0) class="active" aria-current="true" @endif aria-label="Slide {{$key+1}}"></button>
+    @endforeach
   </div>
-  <div class="carousel-inner ">
-    <div class="carousel-item active bg-danger" style="height: 20% ">
-      <img src="{{asset('images/1689270694.jpeg')}}" class="d-block w-100 carousel-image " alt="...">
+  <div class="carousel-inner">
+    @foreach($images as $key => $image)
+    <div class="carousel-item @if($key == 0) active @endif bg-danger" style="height: 20%">
+      <img src="{{asset('carressol/'.$image->image)}}" class="d-block w-100 carousel-image" alt="...">
     </div>
-    <div class="carousel-item">
-      <img src="{{asset('images/1689271664.png')}}" class="d-block w-100 carousel-image" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="{{asset('images/1689270694.jpeg')}}"class="d-block w-100 carousel-image" alt="...">
-    </div>
+    @endforeach
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -28,7 +24,9 @@
   </button>
 </div>
 
-<a href="{{route('create')}}"> Ajouter un article </a>
+<a href="{{route('create')}}"> Ajouter un article </a><br>
+&nbsp&nbsp
+<a href="{{route('carressol.create')}}"> Ajouter une image </a>
 
 <div class="container-fluide">
 <div class="row">
@@ -60,3 +58,4 @@
     max-height: 500px;
   }
 </style>
+@endsection
