@@ -28,21 +28,23 @@
 &nbsp&nbsp
 <a href="{{route('carressol.create')}}"> Ajouter une image </a>
 
-
 <div class="container-fluide">
 <div class="row">
 <div class="col-md-2"> </div>
 <div class="col-md-8">
     <div class="row">
     @foreach ($blog as $blog)
-    <div class="col-md-3 mb-4"> <!-- Chaque carte occupe 3 colonnes sur une grille de 12 colonnes -->
+    <div class="col-md-4 pt-5 "> <!-- Chaque carte occupe 3 colonnes sur une grille de 12 colonnes -->
         <div class="card" style="width: 100%;">
-            <img src="{{asset('images/'.$blog->image)}}" class="card-img-top" style="height: 100px; object-fit: cover;" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{$blog->title}}</h5>
-                <h6 class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{$blog->text}}</h6>
-                <a href="{{route('blog.show', $blog->id)}}" class="btn btn-primary">show</a>
-            </div>
+            <img src="{{asset('images/'.$blog->image)}}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="...">
+            <div class="card-body" style="height: 200px; object-fit: cover; display: flex; flex-direction: column; justify-content: space-between;">
+              <h5 class="card-title"> {{Str::limit(htmlspecialchars_decode(strip_tags($blog->title)), 50)}}</h5>
+              <h6 class="card-text">
+                  {{Str::limit(htmlspecialchars_decode(strip_tags($blog->text)), 100)}}
+              </h6>
+              <a href="{{route('blog.show', $blog->id)}}" class="btncol-md-3" style="margin-top: auto;"><i class="fas fa-eye" style="color: black ;width: 30px;height: 30px"></i></a>
+          </div>
+          
         </div>
     </div>
     @endforeach
@@ -51,11 +53,9 @@
     <div class="col-md-2"> </div>
 </div>
 </div>
-
 <style>
   .carousel-image {
     max-height: 500px;
   }
 </style>
-
-
+@endsection
