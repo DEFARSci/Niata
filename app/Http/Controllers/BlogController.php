@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Carressol;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,7 +12,8 @@ class BlogController extends Controller {
 
         $blog = Blog::all();
 
-        return view( 'blog.index', compact( 'blog' ) );
+  $images = Carressol::all();
+        return view( 'blog.index', compact( 'blog','images' ) );
     }
 
     public function create() {
