@@ -41,10 +41,12 @@
                   <div class="form-group">
                       <label for="file">Categorie</label>
                     <input type="file" class="form-control" id="image" name="image" value="{{old('image')}}">
-                     
+                    @error('content')
+                    <div class="text-danger">{{ $message }}
+                    @enderror
                   </div>
 
-                <button type="submit" class="btn btn-primary">Ajouter</button>
+                <button type="submit " class="btn btn-primary mt-4">Ajouter</button>
               </form>
               
         </div>

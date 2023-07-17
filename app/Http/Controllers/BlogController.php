@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller {
     public function index() {
@@ -18,6 +19,12 @@ class BlogController extends Controller {
     }
 
     public function store( Request $request ) {
+$request->validate( [
+    'title' => 'required',
+    'content' => 'required',
+    'image' => 'required',
+]);
+
         $blog = new Blog();
         $blog->title = $request->title;
         $blog->text = $request->content;
@@ -35,7 +42,14 @@ class BlogController extends Controller {
     }
 
     public function show( $id ) {
+        $blogs =DB::table( 'blogs' )
+        ->where( 'id','!=', $id )
+        ->orderBy('created_at', 'desc')
+        ->limit(3)
+        ->get();
+
+       
         $blog = Blog::find( $id );
-    return view('blog.show', compact('blog' ) );
+    return view('blog.show', compact('blog',"blogs" ) );
     }
 }
