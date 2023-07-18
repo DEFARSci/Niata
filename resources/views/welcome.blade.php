@@ -2,6 +2,6 @@
 
 @section('content')
 
-<h1> Niata</h1>
+<h1> Niata </h1>
 
 @endsection

@@ -12,7 +12,12 @@ class BlogController extends Controller {
 
         $blog = Blog::all();
 
-  $images = Carressol::all();
+        $images=DB::table( 'carressols' )
+        ->orderBy('created_at', 'desc')
+        ->limit(3)
+        ->get();
+  
+
         return view( 'blog.index', compact( 'blog','images' ) );
     }
 
