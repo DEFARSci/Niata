@@ -22,7 +22,7 @@
        
         <div class="col md-5">
           <h1>Ajouter une Image</h1>
-    <form action="{{route('store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('carressol.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group">

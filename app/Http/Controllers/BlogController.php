@@ -16,7 +16,8 @@ class BlogController extends Controller {
         ->orderBy('created_at', 'desc')
         ->limit(3)
         ->get();
-  
+//         dd(count($images));
+//   dd(get_object_vars($images));
 
         return view( 'blog.index', compact( 'blog','images' ) );
     }
@@ -27,14 +28,14 @@ class BlogController extends Controller {
 
     public function store( Request $request ) {
 $request->validate( [
-    'title' => 'required',
+    'titre' => 'required',
     'content' => 'required',
     'image' => 'required',
 ]);
 
         $blog = new Blog();
-        $blog->title = $request->title;
-        $blog->text = $request->content;
+        $blog->titre = $request->titre;
+        $blog->content = $request->content;
 
         $image = $request->image;
         //dd( $image );

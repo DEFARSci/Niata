@@ -25,9 +25,9 @@
             <form action="{{route('store')}}" method="POST"enctype="multipart/form-data" >
                 @csrf
                 <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}">
-                    @error('title')
+                    <label for="titre">Titre</label>
+                    <input type="text" class="form-control" id="titre" name="titre" value="{{old('titre')}}">
+                    @error('titre')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                   </div>
@@ -39,7 +39,7 @@
                       @enderror
                   </div>
                   <div class="form-group">
-                      <label for="file">Categorie</label>
+                      <label for="file">Image</label>
                     <input type="file" class="form-control" id="image" name="image" value="{{old('image')}}">
                     @error('content')
                     <div class="text-danger">{{ $message }}

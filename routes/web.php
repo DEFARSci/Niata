@@ -16,9 +16,9 @@ use App\Http\Controllers\CarressolController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 //Route::view('/', 'accueil');
 
 Route::get('/dashboard', function () {
@@ -29,12 +29,12 @@ Route::post('/mail', [ContactController::class, 'mail'])->name('mail');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 //blog
-Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/', [BlogController::class, 'index'])->name('blog');
 Route::get('/create', [BlogController::class, 'create'])->name('create');
 Route::post('/store', [BlogController::class, 'store'])->name('store');
 Route::get('voirBlog/{id}' , [BlogController::class, 'show'])->name('blog.show');
 
 
 Route::get('/images/create', [CarressolController::class, 'create'])->name('carressol.create');
-Route::post('/image', [CarressolController::class, 'store'])->name('store');
+Route::post('/image', [CarressolController::class, 'store'])->name('carressol.store');
 require __DIR__.'/auth.php';

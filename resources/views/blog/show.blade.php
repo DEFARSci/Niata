@@ -6,7 +6,7 @@
     <div style="position: relative;">
         <img src="{{ asset('images/'.$blog->image) }}" class="card-img-top mb-5" style="object-fit: cover; ">
         <h1 class="font-weight-bold p-3 text-uppercase" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center; background-color: rgba(0, 0, 0, 0.5); padding: 10px;">
-            <strong>{{ $blog->title }}</strong>
+            <strong>{{ $blog->titre }}</strong>
         </h1>
     </div>
 </div>
@@ -16,6 +16,7 @@
         <div class="col-md-1"></div>
         <div class="col-md-7 ">
             <div class="container">
+                
                 <div class="row">
 
                         <div class="col-md-2 d-flex justify-content-end">
@@ -29,11 +30,11 @@
              </div>
             </div>
                     <p class="card-text" style="font-size: 18px; line-height: 1.6; padding-top: 20px;">
-                        {!! $blog->text !!}
+                        {!! $blog->content !!}
                     </p>
                 
                 <div class="circle m-3">
-                <a href="/blog" class="btn">
+                <a href="{{route('blog')}}" class="btn">
                    
                       <i class="fas fa-arrow-left"></i> 
                   </a>
@@ -41,14 +42,15 @@
            
         </div>
         <div class="col-md-3 mt-5">
+            <h3>Les 3 derniers articles</h3>
             @foreach ($blogs as $blog)
             <div class="row">
                 <div class="card mt-4" style="width: 100%;">
                     <img src="{{asset('images/'.$blog->image)}}" class="card-img-top mt-2" style="height: 200px; object-fit: cover;" alt="...">
                     <div class="card-body" style="height: 200px; object-fit: cover; display: flex; flex-direction: column; justify-content: space-between;">
-                      <h5 class="card-title"> {{Str::limit(htmlspecialchars_decode(strip_tags($blog->title)), 50)}}</h5>
+                      <h5 class="card-title"> {{Str::limit(htmlspecialchars_decode(strip_tags($blog->titre)), 50)}}</h5>
                       <h6 class="card-text">
-                          {{Str::limit(htmlspecialchars_decode(strip_tags($blog->text)), 100)}}
+                          {{Str::limit(htmlspecialchars_decode(strip_tags($blog->content)), 100)}}
                       </h6>
                       <a href="{{route('blog.show', $blog->id)}}" class="btncol-md-3" style="margin-top: auto;"><i class="fas fa-eye" style="color: black ;width: 30px;height: 30px"></i></a>
                   </div>
