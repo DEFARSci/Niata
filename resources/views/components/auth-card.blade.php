@@ -1,11 +1,9 @@
-<main class="flex flex-col items-center flex-1 px-4 pt-6 sm:justify-center">
+<div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
     <div>
-        <a href="/">
-            <x-application-logo class="w-20 h-20" />
-        </a>
+        {{ $logo }}
     </div>
 
-    <div class="w-full px-6 py-4 my-6 overflow-hidden bg-white rounded-md shadow-md sm:max-w-md dark:bg-dark-eval-1">
+    <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
         {{ $slot }}
     </div>
-</main>
+</div>

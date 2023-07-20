@@ -60,12 +60,4 @@ $request->validate( [
         $blog = Blog::find( $id );
     return view('blog.show', compact('blog',"blogs" ) );
     }
-
-
-    public function list() {
-
-        $blogs = Blog::all();
-
-        return view( 'list', compact( 'blogs' ) );
-    }
 }
