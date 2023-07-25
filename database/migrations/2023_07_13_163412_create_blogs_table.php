@@ -15,6 +15,8 @@ class CreateBlogsTable extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('categorie_articles_id');
+            $table->foreign('categorie_articles_id')->references('id')->on('categorie_articles')->cascadeOnDelete();
             $table->string('titre');
             $table->text('content');
             $table->string('image');

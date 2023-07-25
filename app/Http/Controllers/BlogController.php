@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Carressol;
+use App\Models\CategorieArticle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,7 +24,14 @@ class BlogController extends Controller {
     }
 
     public function create() {
-        return view( 'blog.create' );
+        $categorie=CategorieArticle::all();
+       
+        $data=[
+            'categorie'=>$categorie,
+           
+        ];
+
+        return view( 'blog.create',$data );
     }
 
     public function store( Request $request ) {
@@ -31,11 +39,16 @@ $request->validate( [
     'titre' => 'required',
     'content' => 'required',
     'image' => 'required',
+    'categorie'=>'required',
+
 ]);
 
         $blog = new Blog();
         $blog->titre = $request->titre;
         $blog->content = $request->content;
+        $blog->categorie_articles_id = $request->categorie;
+
+        //  dd($blog);
 
         $image = $request->image;
         //dd( $image );
@@ -59,5 +72,44 @@ $request->validate( [
        
         $blog = Blog::find( $id );
     return view('blog.show', compact('blog',"blogs" ) );
+    }
+
+    public function edit( $id ) {
+        
+        $blog = DB::table('blogs')
+    ->join('categorie_articles', 'blogs.categorie_articles_id', '=', 'categorie_articles.id')
+    ->where('blogs.id','=',$id)
+    ->select('blogs.*','categorie_articles.*')
+    ->get();
+        $categorie=CategorieArticle::all();
+       
+        $data=[
+            'categorie'=>$categorie,
+            'blog'=>$blog[0],
+        ];
+        return view( 'blog.edit', $data );
+    }
+
+    public function update( Request $request ) {
+    //  dd((int)$request->id);
+        $blog = Blog::find((int)$request->id);
+        $blog->titre = $request->titre;
+        $blog->content = $request->content;
+        $blog->categorie_articles_id = $request->categorie;
+if(isset($request->image)){
+    $image = $request->image;
+    $imageName = time() . '.' . $image->getClientOriginalExtension();
+    $image->move( public_path( 'images' ), $imageName );
+    $blog->image = $imageName;
+}
+       
+        $blog->save();
+        return back()->with( 'success', 'Article Modifier' );
+    }
+
+    public function destroy( $id ) {
+        $blog = Blog::find( $id );
+        $blog->delete();
+        return back()->with( 'success', 'Article Supprimer' );
     }
 }

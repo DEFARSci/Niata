@@ -55,6 +55,8 @@
 <a href="{{route('create')}}"> Ajouter un article </a><br>
 &nbsp&nbsp
 <a href="{{route('carressol.create')}}"> Ajouter une image </a>
+&nbsp&nbsp
+<a href="{{route('categorie.create')}}"> Ajouter un categorie </a>
 
 <div class="container-fluide">
 <div class="row">
@@ -66,7 +68,7 @@
         <div class="card" style="width: 100%;">
             <img src="{{asset('images/'.$blog->image)}}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="...">
             <div class="card-body" style="height: 200px; object-fit: cover; display: flex; flex-direction: column; justify-content: space-between;">
-              <h5 class="card-title"> {{Str::limit(htmlspecialchars_decode(strip_tags($blog->titre)), 50)}}</h5>
+              <h5 class="card-title"><a class="btn-sm app-btn-secondary" href="#">View</a></h5>
               <h6 class="card-text">
                   {{Str::limit(htmlspecialchars_decode(strip_tags($blog->content)), 100)}}
               </h6>

@@ -26,7 +26,11 @@ class CarressolController extends Controller {
     */
 
     public function create() {
-        return view( 'carressols.create' );
+
+        $carressols = Carressol::all();
+
+        
+        return view( 'carressols.create' ,compact( 'carressols' ) );
     }
 
     /**
@@ -100,7 +104,10 @@ class CarressolController extends Controller {
     * @return \Illuminate\Http\Response
     */
 
-    public function destroy( Carressol $carressol ) {
-        //
+    public function destroy($id) {
+        $carressol = Carressol::find($id);
+        $carressol->delete();
+        return back()->with( 'success', 'Image supprimée avec succès' );
+        
     }
 }
