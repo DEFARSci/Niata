@@ -40,7 +40,7 @@ Route::delete('deleteblog/{id}' , [BlogController::class, 'destroy'])->name('blo
 
 //categorie
 Route::get('/categorie', [CategieArticleController::class, 'index'])->name('categorie.create');
-Route::post('/create', [CategieArticleController::class, 'store'])->name('categorie.store');
+Route::post('/createcategorie', [CategieArticleController::class, 'store'])->name('categorie.store');
 Route::get('/editcategorie/{id}', [CategieArticleController::class, 'edit'])->name('categorie.edit');
 Route::post('/updatecategorie', [CategieArticleController::class, 'update'])->name('categorie.update');
 Route::delete('/deletecategorie/{id}', [CategieArticleController::class, 'destroy'])->name('categorie.destroy');

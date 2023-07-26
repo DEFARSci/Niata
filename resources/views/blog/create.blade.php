@@ -100,7 +100,7 @@
       </div>
       @else
       <div class="mt-4">
-         <button class="btn btn-primary mt-4" href="{{route('create')}}">>Veuillez ajouter une categorie</button>
+         <a class="btn btn-primary mt-4" href="{{route('categorie.create')}}">Veuillez ajouter une categorie</a>
       </div>
       <!-- /.card -->
 @endif

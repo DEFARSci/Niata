@@ -62,11 +62,13 @@
              </div>
             <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
         </form>
+        @else
+        <h1>Supprimer une image  avant d'ajouter</h1>
         @endif
     </div>
     </div>
     <div class="row mt-4">
-      <h1>Supprimer une Image d abort avant d'ajouter</h1>
+      
       @foreach ($carressols as $carro)
 
       <div class="col-md-4 pt-5 "> <!-- Chaque carte occupe 3 colonnes sur une grille de 12 colonnes -->

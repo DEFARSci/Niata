@@ -1,10 +1,10 @@
 @extends('layout.app')
 
 @section('content')
-<div class=" d-flex justify-content-center p-3"><h1> Niata ...</h1></div>
+{{-- <div class=" d-flex justify-content-center p-3"><h1> Niata ...</h1></div> --}}
 <div class="container">
     <div style="position: relative;">
-        <img src="{{ asset('images/'.$blog->image) }}" class="card-img-top mb-5" style="object-fit: cover; ">
+        <img src="{{ asset('images/'.$blog->image) }}" class="card-img-top mb-5" style="object-fit: cover;  height: 600px; ">
         <h1 class="font-weight-bold p-3 text-uppercase" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center; background-color: rgba(0, 0, 0, 0.5); padding: 10px;">
             <strong>{{ $blog->titre }}</strong>
         </h1>

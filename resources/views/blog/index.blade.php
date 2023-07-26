@@ -1,8 +1,10 @@
 @extends('layout.app')
 
 @section('content')
+
 @if((count($images) == 0))
-<div id="carouselExampleIndicators" class="carousel slide">
+
+<div id="carouselExampleIndicators" class="carousel slide mt-4 " >
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -37,7 +39,7 @@
     </div>
     <div class="carousel-inner">
       @foreach($images as $key => $image)
-      <div class="carousel-item @if($key == 0) active @endif bg-danger" style="height: 20%">
+      <div class="carousel-item @if($key == 0) active @endif bg-danger" style="height: 30%">
         <img src="{{asset('carressol/'.$image->image)}}" class="d-block w-100 carousel-image" alt="...">
       </div>
       @endforeach
@@ -52,27 +54,27 @@
     </button>
   </div>
 @endif
-<a href="{{route('create')}}"> Ajouter un article </a><br>
+{{-- <a href="{{route('create')}}"> Ajouter un article </a><br>
 &nbsp&nbsp
 <a href="{{route('carressol.create')}}"> Ajouter une image </a>
 &nbsp&nbsp
-<a href="{{route('categorie.create')}}"> Ajouter un categorie </a>
+<a href="{{route('categorie.create')}}"> Ajouter un categorie </a> --}}
 
 <div class="container-fluide">
 <div class="row">
-<div class="col-md-2"> </div>
-<div class="col-md-8">
+<div class="col-md-1"> </div>
+<div class="col-md-10">
     <div class="row">
     @foreach ($blog as $blog)
     <div class="col-md-4 pt-5 "> <!-- Chaque carte occupe 3 colonnes sur une grille de 12 colonnes -->
         <div class="card" style="width: 100%;">
             <img src="{{asset('images/'.$blog->image)}}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="...">
             <div class="card-body" style="height: 200px; object-fit: cover; display: flex; flex-direction: column; justify-content: space-between;">
-              <h5 class="card-title"><a class="btn-sm app-btn-secondary" href="#">View</a></h5>
+              <h5 class="card-title">{{$blog->titre}}</h5>
               <h6 class="card-text">
                   {{Str::limit(htmlspecialchars_decode(strip_tags($blog->content)), 100)}}
               </h6>
-              <a href="{{route('blog.show', $blog->id)}}" class="btncol-md-3" style="margin-top: auto;"><i class="fas fa-eye" style="color: black ;width: 30px;height: 30px"></i></a>
+              <a href="{{route('blog.show', $blog->id)}}" class="btn btn-sm col-md-3 bg-primary rounded-5" style="margin-top: auto;"><i class="fas fa-eye" style="color: rgb(255, 255, 255) ;width: 30px;height: 30px, display: flex; flex-direction: column; justify-content: space-between"></i></a>
           </div>
           
         </div>
@@ -80,7 +82,7 @@
     @endforeach
 </div>
     </div>
-    <div class="col-md-2"> </div>
+    <div class="col-md-1"> </div>
 </div>
 </div>
 <style>
