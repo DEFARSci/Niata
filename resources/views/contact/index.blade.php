@@ -1,14 +1,14 @@
 @extends('layout.app')
 
 @section('content')
-<div class="container border p-3">
+<div class="container  p-3 mt-5">
   @if (session('success'))
 <div class="alert alert-success alert-dismissable m-3">
     {{session('success')}}
 </div>
 
 @endif
-    <div class="row">
+    <div class="row m-5">
        
         <div class="col md-5">
           <h1>Contactez-nous</h1>
