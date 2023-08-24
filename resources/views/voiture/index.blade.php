@@ -55,11 +55,43 @@
 
 <div class="container-fluide">
 
-  
+    <div class="flex display-flex justify-center p-4">
+        <h1 class="p-2 display-6 font-bold">recherche</h1> 
+     </div>
+     <div class="">
+        <form action="{{route('voiture.search')}}" method="get">
+            @csrf
+            <div class="d-flex justify-content-center ">
+                <div class="form-group">
+                <input type="text" name="recherche">
+              <select name="marque" class=" justify-content-cente mr-1">
+                <option value="">Tout les marques</option>
+                  @foreach ( $rechercher as $voitured)
+                <option value="{{ $voitured->marque}}">{{$voitured->marque}}</option>
+                @endforeach  
+                
+              </select>
+                </div>
+                <div class="form-group">
+              <select name="marque" class=" justify-content-cente mr-1">
+                <option value="">Tout les model</option>
+                @foreach ( $rechercher as $voitured)
+              <option value="{{ $voitured->marque}}">{{$voitured->marque}}</option>
+              @endforeach   
+            </select>
+        </div>
+         <button type="submit" class="btn  bg-sky-500"
+         > <i class="fas fa-search">recherche</i></button>
+              
+                  </div>
+            
+          </form>
+     </div>
     
 <div class="row">
 <div class="col-md-1"> </div>
 <div class="col-md-10 mt-9">
+   
     <div class="row">
       @foreach ($voiture as $v)
       <div class="w-96 m-4  bg-white rounded-3xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
