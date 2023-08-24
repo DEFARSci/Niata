@@ -11,4 +11,8 @@ class CategorieArticle extends Model
     protected $fillable=[
         'categorie',
     ];
+
+    public function blogs(){
+        return $this->hasMany(Blog::class);
+    }
 }

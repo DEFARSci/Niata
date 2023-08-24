@@ -43,7 +43,7 @@ class CarressolController extends Controller {
     public function store( Request $request ) {
 
 
-        $validatedData = $request->validate( [
+        $request->validate( [
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ] );
 
@@ -51,10 +51,10 @@ class CarressolController extends Controller {
        
          $image = $request->image;
 
-         /* dd($image); */
+        //  dd($image);
          $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $imagePath = public_path( 'carressol/' . $imageName );
-        $image->move( public_path( 'carressol' ), $imageName );
+        //$imagePath = public_path( 'carressol/' . $imageName );
+        $image->move( public_path( '/carressol' ), $imageName );
          $images->image = $imageName;
          $images->save();      
 

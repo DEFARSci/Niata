@@ -12,6 +12,10 @@ class BlogController extends Controller {
     public function index() {
 
         $blog = Blog::all();
+        
+        // foreach ($blog as $blog) {
+        //    dd($blog->categie_articles());
+        // }
 
         $images=DB::table( 'carressols' )
         ->orderBy('created_at', 'desc')
@@ -34,7 +38,7 @@ class BlogController extends Controller {
         return view( 'blog.create',$data );
     }
 
-    public function store( Request $request ) {
+    public function store( Request  $request ) {
 $request->validate( [
     'titre' => 'required',
     'content' => 'required',
@@ -53,8 +57,8 @@ $request->validate( [
         $image = $request->image;
         //dd( $image );
         $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $imagePath = public_path( 'images/' . $imageName );
-        $image->move( public_path( 'images' ), $imageName );
+        //$imagePath = public_path( 'images/' . $imageName );
+        $image->move( public_path( 'blog' ), $imageName );
         $blog->image = $imageName;
         $blog->save();
 
@@ -71,6 +75,10 @@ $request->validate( [
 
        
         $blog = Blog::find( $id );
+// dd($blog);
+        // $blogforcathe=CategorieArticle::find(1);
+        // dd($blogforcathe);
+       
     return view('blog.show', compact('blog',"blogs" ) );
     }
 

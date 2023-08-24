@@ -2,7 +2,7 @@
 <html lang="en"> 
   <script src="{{asset('assets/js/app.js')}}"></script> 
 <head>
-    <title>Portal - Bootstrap 5 Admin Dashboard Template For Developers</title>
+    <title>Niata</title>
     
     <!-- Meta -->
     <meta charset="utf-8">
@@ -12,9 +12,12 @@
     <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
     <link rel="shortcut icon" href="favicon.ico"> 
+    <link rel="stylesheet" href="{{asset('assets/amsify/amsify.suggestags.css')}}">
+    <script src="{{asset('assets/amsify/jquery.amsify.suggestags.js')}}"></script>
     
     <!-- FontAwesome JS-->
     <script defer src="{{asset('assets/plugins/fontawesome/js/all.min.js')}}"></script>
+    
     
     <!-- App CSS -->  
     <link id="theme-style" rel="stylesheet" href="{{asset('assets/css/portal.css')}}">
@@ -91,7 +94,18 @@
                     <div class="text-danger">{{ $message }}
                     @enderror
                   </div>
+                  </div>
 
+                  <div class="form-group">
+                    <label for="file">Image</label>
+                    <input type="text" class="form-control" name="country"/>
+                  @error('content')
+                  <div class="text-danger">{{ $message }}
+                  @enderror
+                </div>
+                </div>
+
+                
                 <button type="submit " class="btn btn-primary mt-4">Ajouter</button>
               </form>
               
@@ -136,6 +150,8 @@ document.addEventListener('DOMContentLoaded', function() {
     toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright ',
   });
 });
+
+$('input[name="country"]').amsifySuggestags();
 
 </script>
 </body>
