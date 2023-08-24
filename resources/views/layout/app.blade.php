@@ -50,7 +50,7 @@
 
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-  <a href="https://flowbite.com/" class="flex items-center">
+  <a href="/" class="flex items-center">
       {{-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" /> --}}
       <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Niata</span>
   </a>
@@ -105,7 +105,7 @@
   </div>
   <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-language">
         <a class="nav-link p-1 text-black rounded-5 m-3 {{request()->is('/') ? 'active bg-primary text-white' : ''}}"   href="/">Acceuil</a>
-        <a class="nav-link p-1 text-black  rounded-5 m-3 {{request()->is('') ? 'active bg-primary text-white' : ''}}"  href="{{ route('voiture.index') }}">Produit</a>
+        <a class="nav-link p-1 text-black  rounded-5 m-3 {{request()->is('voiture/index') ? 'active bg-primary text-white' : ''}}"  href="{{ route('voiture.index') }}">Produit</a>
         <a class="nav-link p-1 text-black rounded-5 m-3 {{request()->is('index') ? 'active bg-primary text-white' : ''}}"  href="{{route('blog')}}">Actualite</a>
         <a class="nav-link p-1 text-black rounded-5 m-3 {{request()->is('contact') ? 'active bg-primary text-white' : ''}}"  href="{{ route('contact') }}">Contact</a>
         <a class="nav-link p-1 text-black rounded-5 m-3 {{request()->is('') ? 'active bg-primary text-white' : ''}}"  href="#">A propos</a>
