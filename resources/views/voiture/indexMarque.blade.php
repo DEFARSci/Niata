@@ -2,8 +2,6 @@
 
 @section('content')
 
-  
-
 
 
 <div id="default-carousel" class="relative w-full" data-carousel="slide">
@@ -55,7 +53,9 @@
 
 <div class="container-fluide">
 
-  
+  <div class="flex display-flex justify-center p-4">
+   <h1 class="p-2 display-6 font-bold">{{$marque}}</h1> 
+</div>
     
 <div class="row">
 <div class="col-md-1"> </div>
@@ -106,26 +106,26 @@
     </div>
     
 </div>
-
-</div>
-<form action="{{route('voiture.search')}}" method="get">
-    @csrf
-    <div class="d-flex justify-content-end ">
-        <label for="marque" class="p-2">recherche par marque</label>
-      <select name="marque" class=" justify-content-cente mr-1">
-          @foreach ( $rechercher as $voiture  )
-        <option value="{{ $voiture->marque}}">{{$voiture->marque}}</option>
-        @endforeach   
-       
+<div>
+    <form action="{{route('voiture.search')}}" method="get">
         
-      </select>
- <button type="submit" class="btn  bg-sky-500"
- > <i class="fas fa-search"></i></button>
-      
-          </div>
-    
-  </form>
-
+        <div class="d-flex justify-content-end ">
+            <label for="marque" class="p-2">recherche par marque</label>
+          <select name="marque" class=" justify-content-cente mr-1">
+              @foreach ( $voiturecherche as $voiture  )
+            <option value="{{ $voiture->marque}}">{{$voiture->marque}}</option>
+            @endforeach   
+           
+            
+          </select>
+     <button type="submit" class="btn  bg-sky-500"
+     > <i class="fas fa-search"></i></button>
+          
+              </div>
+        
+      </form>
+ </div>
+</div>
 <style>
   .carousel-image {
     max-height: 500px;

@@ -13,6 +13,7 @@ class VoitureController extends Controller
 
         $data=[
             'voiture'=>$voiture,
+            'rechercher'=>$voiture
         ];
 
         return view('voiture.index',$data);
@@ -71,7 +72,22 @@ class VoitureController extends Controller
 
         $data=[
             'voiture'=>$voiture
+            
         ];
         return view('voiture.show',$data);
+    }
+
+    public function chercheByMarque(Request $request){
+        $marque=$request->marque;
+        $voiture=Voiture::where('marque',$request->marque)->get();
+        $voiturecherche=Voiture::all();
+
+        $data=[
+            'voiture'=>$voiture,
+            'marque'=>$marque,
+            'voiturecherche'=>$voiturecherche
+        ];
+
+        return view('voiture.indexMarque',$data);
     }
 }
