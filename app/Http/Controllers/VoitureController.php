@@ -83,7 +83,20 @@ class VoitureController extends Controller
         $annee=$request->annee;
         $boite=$request->boite;
         $moteur=$request->moteur;
+        $search=$request->search;
+        if($request->prixinf==null){
+           $prixinf=1;
+        }else{
+            $prixinf=$request->prixinf;
+        }
+        
+        $prixmax=$request->prixmax;
+
+    
+       
         $voiture1=Voiture::all();
+       // $test=Voiture::whereBetween('prix',[$prixinf,$prixmax]);
+      
         // $voiture=Voiture::where('marque',$request->marque)->get();
         $voiturecherche=Voiture::all();
 
@@ -102,10 +115,16 @@ class VoitureController extends Controller
                  ->when($moteur != null,function($query) use($moteur){
                     return $query->where('moteur',$moteur);
                  })
-                
+                 ->when($search != null,function($query) use($search){
+                    return $query->where('marque','like','%'.$search.'%')
+                                 ->orWhere('modele','like','%'.$search.'%');
+                 })
+                 ->when($prixinf != null && $prixmax != null,function($query) use($prixinf,$prixmax){
+                    return $query->whereBetween('prix',[$prixinf,$prixmax]);            
+                 }) 
                  ->get();
 
-               
+             //  dd($voiture);
 
 
 

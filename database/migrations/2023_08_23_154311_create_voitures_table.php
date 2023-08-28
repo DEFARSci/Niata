@@ -22,8 +22,8 @@ class CreateVoituresTable extends Migration
             $table->string("etat");
             $table->string("moteur");
             $table->string("boite");
-            $table->string("caracteristique");
-            $table->string("prix");
+            $table->text("caracteristique");
+            $table->bigInteger("prix");
             $table->string("image");
         
             $table->timestamps();

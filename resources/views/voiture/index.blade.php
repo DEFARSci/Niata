@@ -56,15 +56,23 @@
 <div class="container-fluide">
 
     <div class="flex display-flex justify-center p-4">
-        <h1 class="p-2 display-6 font-bold">recherche</h1> 
+        {{-- <h1 class="p-2 display-6 font-bold">recherche</h1>  --}}
      </div>
-     <div class="d-flex container justify-content-center">
+     {{-- <div class="d-flex container justify-content-center">
       <div class=" row p-2 ">
        
      
         <form class=" " action="{{route('voiture.search')}}" method="get">
-        
-            <div class="row  ">
+          <div class="row">
+            <div class="col-md-3"></div>
+          <div class="form-group col-md-6 mb-3 flex-1 justify-content-center">
+                   
+            <input class="form-control" placeholder="recherche" type="text"value="{{Request::get('search')}}" name="search">
+           
+          </div>
+          <div class="col-md-3"></div>
+          </div>
+            <div class="row">
 
              
 
@@ -118,21 +126,100 @@
                    
                   </div>
 
+                   <div class="row">
+            <div class="col-md-3"></div>
+          <div class="form-group col-md-6 mb-3 flex-1 justify-content-center">
+                   
+            <input class="form-control" placeholder="recherche" type="text"value="{{Request::get('search')}}" name="search">
+           
+          </div>
+          <div class="col-md-3"></div>
+          </div>
+
             </div>
                
           </form>
         </div>
           
        
-     </div>
+     </div> --}}
     
 <div class="row">
-<div class="col-md-1"> </div>
-<div class="col-md-10 mt-9">
+<div class="col-md-3 mt-5 ">
+  <div class="bg-primary  rounded-lg shadow-lg p-3">
+
+
+  <h1 class="p-2 display-6 font-bold text-white">recherche</h1> 
+  <div>
+    <form class=" " action="{{route('voiture.search')}}" method="get">
+      <div class="form-group mt-3 mb-3"> 
+        {{-- recherche          --}}
+          <input class="form-control mb-2" placeholder="recherche" type="text"value="{{Request::get('search')}}" name="search">
+         {{-- Marque --}}
+          <select name="marque" class="form-control mb-2">
+            <option value="">Tout les marques</option>
+              @foreach ( $rechercher as $voitured)
+            <option value="{{ $voitured->marque}}"  {{Request::get('marque')==$voitured->marque ? 'selected' : ''}}>{{$voitured->marque}}</option>
+            @endforeach  
+            
+          </select>
+          {{-- Model --}}
+        <select name="modele" class="form-control mb-2">
+          <option value="">Tout les model</option>
+          @foreach ( $rechercher as $voitured)
+        <option value="{{ $voitured->modele}}" {{Request::get('modele')==$voitured->modele ? 'selected' : ''}}>{{$voitured->modele}}</option>
+        @endforeach   
+      </select>
+        {{-- Moteur --}}
+      <select name="moteur" class="form-control mb-2">
+        <option value="">Type de moteur</option>
+          @foreach ( $rechercher as $voitured)
+        <option value="{{ $voitured->moteur}}"  {{Request::get('moteur')==$voitured->moteur ? 'selected' : ''}}>{{$voitured->moteur}}</option>
+        @endforeach  
+        
+      </select>
+        {{-- Boite --}}
+      <select name="boite" class="form-control mb-2">
+        <option value="">Type de boite</option>
+          @foreach ( $rechercher as $boi)
+        <option value="{{ $boi->boite}}"  {{Request::get('boite')==$boi->boite ? 'selected' : ''}}>{{$boi->boite}}</option>
+        @endforeach  
+        
+      </select>
+      {{-- annee --}}
+      <input class="form-control" placeholder="année" type="number"value="{{Request::get('annee')}}"name="annee">
+      <label for="" class="form-label text-white">prix entre</label>
+      <div class="row">
+
+        <div class="col-md-5">
+          <input class="form-control" placeholder="prix" type="number"value="{{Request::get('prixinf')}}"name="prixinf">
+        </div>
+        <div class="col-md-1 text-white">et</div>
+        <div class="col-md-5">
+          <input class="form-control" placeholder="prix" type="number"value="{{Request::get('prixmax')}}"name="prixmax">
+        </div>
+      </div>
+      </div>
+
+      <button type="submit" class="btn bg-sky-500 text-white" 
+      > <i class="fas fa-search">recherche</i></button>
+      </form>
+  </div>
+</div>
+</div>
+<div class="col-md-9 mt-9">
    
-    <div class="row">
+    <div class="row ">
+      @if (count($voiture) == 0)
+      <div class="flex display-flex justify-center p-4">
+        <h1 class="p-2 display-6 font-bold">Malheureusement, nous n'avons pas trouvé de véhicules correspondant à vos critères de recherche.</h1> 
+     </div>
+      
+      @else
+        
+     
       @foreach ($voiture as $v)
-      <div class="w-96 m-4  bg-white rounded-3xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
+      <div class="mb-3 w-96 m-1  bg-white rounded-3xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
         <!-- Image -->
         <img class="h-72 w-full object-cover rounded-3xl"  src="{{ asset('voiture/'.$v->image) }}" alt="">
         <div class="">
@@ -169,11 +256,10 @@
       
           
           @endforeach
+          @endif
 </div>
     </div>
-    <div class="col-md-1 mt-10"> 
-       
-    </div>
+   
     
 </div>
 
