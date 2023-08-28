@@ -79,15 +79,44 @@ class VoitureController extends Controller
 
     public function chercheByMarque(Request $request){
         $marque=$request->marque;
-        $voiture=Voiture::where('marque',$request->marque)->get();
+        $modele=$request->modele;
+        $annee=$request->annee;
+        $boite=$request->boite;
+        $moteur=$request->moteur;
+        $voiture1=Voiture::all();
+        // $voiture=Voiture::where('marque',$request->marque)->get();
         $voiturecherche=Voiture::all();
+
+        $voiture=Voiture::when($marque != null,function($query) use($marque){
+            return $query->where('marque',$marque);
+                 })
+                 ->when($modele != null,function($query) use($modele){
+                    return $query->where('modele',$modele);
+                 })
+                 ->when($annee != null,function($query) use($annee){
+                    return $query->where('annee',$annee);
+                 })
+                 ->when($boite != null,function($query) use($boite){
+                    return $query->where('boite',$boite);
+                 })
+                 ->when($moteur != null,function($query) use($moteur){
+                    return $query->where('moteur',$moteur);
+                 })
+                
+                 ->get();
+
+               
+
+
 
         $data=[
             'voiture'=>$voiture,
             'marque'=>$marque,
-            'voiturecherche'=>$voiturecherche
+            'voiturecherche'=>$voiturecherche,
+            'rechercher'=>$voiture1,
+            
         ];
 
-        return view('voiture.indexMarque',$data);
+        return view('voiture.index',$data);
     }
 }

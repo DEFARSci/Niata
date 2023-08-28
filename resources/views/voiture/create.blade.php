@@ -94,10 +94,10 @@
                       <option value="">...</option>
                 
                     
-                        <option value="automatique">Essence</option>
-                        <option value="manuelle">Diesel</option>
-                        <option value="manuelle">Hybride</option>
-                        <option value="manuelle">Electrique</option>
+                        <option value="Essence">Essence</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Hybride">Hybride</option>
+                        <option value="Electrique">Electrique</option>
 
                     </select>
                    

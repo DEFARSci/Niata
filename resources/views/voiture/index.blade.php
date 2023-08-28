@@ -58,34 +58,72 @@
     <div class="flex display-flex justify-center p-4">
         <h1 class="p-2 display-6 font-bold">recherche</h1> 
      </div>
-     <div class="">
-        <form action="{{route('voiture.search')}}" method="get">
-            @csrf
-            <div class="d-flex justify-content-center ">
-                <div class="form-group">
-                <input type="text" name="recherche">
-              <select name="marque" class=" justify-content-cente mr-1">
-                <option value="">Tout les marques</option>
-                  @foreach ( $rechercher as $voitured)
-                <option value="{{ $voitured->marque}}">{{$voitured->marque}}</option>
-                @endforeach  
-                
-              </select>
-                </div>
-                <div class="form-group">
-              <select name="marque" class=" justify-content-cente mr-1">
-                <option value="">Tout les model</option>
-                @foreach ( $rechercher as $voitured)
-              <option value="{{ $voitured->marque}}">{{$voitured->marque}}</option>
-              @endforeach   
-            </select>
-        </div>
-         <button type="submit" class="btn  bg-sky-500"
-         > <i class="fas fa-search">recherche</i></button>
-              
+     <div class="d-flex container justify-content-center">
+      <div class=" row p-2 ">
+       
+     
+        <form class=" " action="{{route('voiture.search')}}" method="get">
+        
+            <div class="row  ">
+
+             
+
+                <div class="form-group col-md-2 mb-3">
+                   
+                    <input class="form-control" placeholder="année" type="number"value="{{Request::get('annee')}}"name="annee">
+                   
                   </div>
-            
+                  <div class="form-group col-md-2 mb-3">
+                    <select name="boite" class="form-control">
+                      <option value="">Type de boite</option>
+                        @foreach ( $rechercher as $boi)
+                      <option value="{{ $boi->boite}}"  {{Request::get('boite')==$boi->boite ? 'selected' : ''}}>{{$boi->boite}}</option>
+                      @endforeach  
+                      
+                    </select>
+                   
+                  </div>
+                  <div class="form-group col-md-2 mb-3">
+                    <select name="moteur" class="form-control">
+                      <option value="">Type de moteur</option>
+                        @foreach ( $rechercher as $voitured)
+                      <option value="{{ $voitured->moteur}}"  {{Request::get('moteur')==$voitured->moteur ? 'selected' : ''}}>{{$voitured->moteur}}</option>
+                      @endforeach  
+                      
+                    </select>
+                   
+                  </div>
+                  <div class="form-group col-md-2 mb-3">
+                    <select name="marque" class="form-control">
+                      <option value="">Tout les marques</option>
+                        @foreach ( $rechercher as $voitured)
+                      <option value="{{ $voitured->marque}}"  {{Request::get('marque')==$voitured->marque ? 'selected' : ''}}>{{$voitured->marque}}</option>
+                      @endforeach  
+                      
+                    </select>
+                   
+                  </div>
+                  <div class="form-group col-md-2 mb-3">
+                    <select name="modele" class="form-control">
+                      <option value="">Tout les model</option>
+                      @foreach ( $rechercher as $voitured)
+                    <option value="{{ $voitured->modele}}" {{Request::get('modele')==$voitured->modele ? 'selected' : ''}}>{{$voitured->modele}}</option>
+                    @endforeach   
+                  </select>
+                   
+                  </div>
+                  <div class="form-group col-md-2 mb-3">
+                    <button type="submit" class="btn bg-sky-500" 
+                    > <i class="fas fa-search">recherche</i></button>
+                   
+                  </div>
+
+            </div>
+               
           </form>
+        </div>
+          
+       
      </div>
     
 <div class="row">
@@ -140,7 +178,7 @@
 </div>
 
 </div>
-<form action="{{route('voiture.search')}}" method="get">
+{{-- <form action="{{route('voiture.search')}}" method="get">
     @csrf
     <div class="d-flex justify-content-end ">
         <label for="marque" class="p-2">recherche par marque</label>
@@ -156,7 +194,7 @@
       
           </div>
     
-  </form>
+  </form> --}}
 
 <style>
   .carousel-image {
