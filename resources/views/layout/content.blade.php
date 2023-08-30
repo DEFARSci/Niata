@@ -7,6 +7,9 @@
         <div class="row g-4 mb-4">
             <div class="col-6 col-lg-3">
                 <div class="app-card app-card-stat shadow-sm h-100">
+                    @if ($nbr!=null)
+                        
+                   
                     <div class="app-card-body p-3 p-lg-4">
                         <h4 class="stats-type mb-1">Total article</h4>
                         <div class="stats-figure">{{$nbr}}</div>
@@ -15,6 +18,7 @@
                             <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
                             </svg> 20%</div> --}}
                     </div><!--//app-card-body-->
+                    @endif
                     <a class="app-card-link-mask" href="#"></a>
                 </div><!--//app-card-->
             </div><!--//col-->

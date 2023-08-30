@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-    <title>Dashbord</title>
+    <title>Liste voiture</title>
     
     <!-- Meta -->
     <meta charset="utf-8">
@@ -33,7 +33,7 @@
 
 <div class="tab-content" id="orders-table-tab-content">
     @if (session('success'))
-    <div class="alert alert-success alert-dismissable m-3">
+    <div class="alert alert-success alert-dismissable m-3 " id="success-alert">
         {{session('success')}}
     </div>
 
@@ -45,40 +45,44 @@
                     <table class="table app-table-hover mb-0 text-left">
                         <thead>
                             <tr>
-                                <th class="cell">id</th>
-                                <th class="cell">Contenu</th>
-                                <th class="cell">Titre</th>
-                                <th class="cell">Date</th>
-                                <th class="cell">Image</th>
-                                <th class="cell">Categorie</th>
-                                <th class="cell">Options</th>
+                                <th class="cell">marque</th>
+                                <th class="cell">modele</th>
+                                <th class="cell">annee</th>
+                                <th class="cell">kilometrage</th>
+                                <th class="cell">etat</th>
+                                <th class="cell">moteur</th>
+                                <th class="cell">boite</th>
+                                <th class="cell">prix</th>
+                                <th class="cell">option</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ( $articles as $art)
+                             @foreach ( $voiture as $v) 
                                 
                             <tr>
-                                <td class="cell">{{$art->id}}</td>
-                                <td class="cell"><span class="truncate">{{Str::limit(htmlspecialchars_decode(strip_tags($art->content)), 100)}}</span></td>
-                                <td class="cell">{{$art->titre}}</td>
-                                <td class="cell"><span>{{ date("d/m/Y", strtotime($art->created_at)) }}</span><br><span>{{ date("H:i:s", strtotime($art->created_at)) }}</span></td>
-                                <td class="cell"> <img src="{{asset('blog/'.$art->image)}}"  style="height: 90px; width: 90px;" ></td>
-                                <td class="cell"><span class="badge bg-success">{{$art->categorie}}</span></td>
-                                <td class="cell"><a class="btn app-btn-secondary" href="{{route('blog.edit', $art->id)}}">modifier</a>
-                                    <form  class="d-inline" action="{{route('blog.destroy', $art->id)}}" method="POST">
+                                 <td class="cell">{{$v->marque}}</td>
+                                <td class="cell">{{$v->modele}}</td>
+                                <td class="cell">{{$v->annee}}</td>
+                                <td class="cell">{{$v->kilometrage}}</td>
+                                <td class="cell"> {{$v->etat}}</td>
+                                <td class="cell">{{$v->moteur}}</td>
+                                <td class="cell">{{$v->boite}}</td>
+                               
+                                <td class="cell">{{$v->prix}}</td>
+                               
+
+
+                                <td class="cell"><a class="btn app-btn-secondary" href="{{route('voiture.edit', $v->id)}}">modifier</a>
+                                     <form  class="d-inline" action="{{route('voiture.destroy', $v->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn app-btn-secondary" href="{{route('blog.destroy', $art->id)}}">supprimer</button>
+                                        <button type="submit" class="btn app-btn-secondary" href="">supprimer</button>
                                     
-                                    </form>
+                                    </form> 
                                 </td>
                             </tr>
-                            @endforeach
-                            
-                           
-                        
-                  
-                            
+                            @endforeach 
+    
                           
                         </tbody>
                     </table>
@@ -86,6 +90,7 @@
                
             </div><!--//app-card-body-->		
         </div><!--//app-card-->
+    </div>
     {{-- <div class="app-wrapper">
 	    <!--//app-content-->
 	    
@@ -110,7 +115,12 @@
     
     <!-- Page Specific JS -->
     <script src="{{asset('assets/js/app.js')}}"></script> 
-    
+    <script>
+        // Attendre 5 secondes (5000 ms) puis masquer l'alerte
+        setTimeout(function() {
+            document.getElementById('success-alert').style.display = 'none';
+        }, 5000);
+    </script>
     
 
 </body>

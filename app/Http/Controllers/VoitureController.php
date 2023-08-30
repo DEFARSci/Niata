@@ -138,4 +138,46 @@ class VoitureController extends Controller
 
         return view('voiture.index',$data);
     }
+
+    public function list_voiture(){
+        $voiture=Voiture::all();
+
+        $data=[
+            'voiture'=>$voiture,
+            'nbr'=>null
+        ];
+        return view('voiture.liste',$data);
+    }
+
+    public function edit($id){
+        $voiture=Voiture::find($id);
+        return view('voiture.edit',compact('voiture'));
+    }
+
+    public function update(Request $request, ){
+        $voiture=Voiture::find($request->id);
+        $voiture->marque=$request->marque;
+        $voiture->modele=$request->modele;
+        $voiture->annee=$request->annee;
+        $voiture->kilometrage=$request->kilometrage;
+        $voiture->etat=$request->etat;
+        $voiture->moteur=$request->moteur;
+        $voiture->boite=$request->boite;
+        $voiture->caracteristique=$request->caracteristique;
+        $voiture->prix=$request->prix;
+        if($request->image){
+        $image = $request->image;
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move( public_path( '/voiture' ), $imageName );
+        $voiture->image=$imageName;
+        }else{
+        $voiture->image=$voiture->image;}
+        $voiture->save();
+        return back()->with( 'success', 'voiture Modifier' );
+    }
+    public function destroy($id){
+        $voiture=Voiture::find($id);
+        $voiture->delete();
+        return back()->with( 'success', 'voiture Supprimer' );
+    }
 }

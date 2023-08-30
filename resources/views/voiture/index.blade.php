@@ -209,7 +209,7 @@
 </div>
 <div class="col-md-9 mt-9">
    
-    <div class="row ">
+    <div class="row flex display-flex justify-center ">
       @if (count($voiture) == 0)
       <div class="flex display-flex justify-center p-4">
         <h1 class="p-2 display-6 font-bold">Malheureusement, nous n'avons pas trouvé de véhicules correspondant à vos critères de recherche.</h1> 

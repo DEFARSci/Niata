@@ -60,5 +60,9 @@ Route::get('/voiture/show/{id}', [VoitureController::class, 'show'])->name('voit
 Route::post('/voiture/store', [VoitureController::class, 'store'])->name('voiture.store');
 Route::get('/voiture/search', [VoitureController::class, 'chercheByMarque'])->name('voiture.search');
 Route::delete('/deletevoiture/{id}', [VoitureController::class, 'destroy'])->name('voiture.destroy');
+Route::get('/voiture/liste', [VoitureController::class, 'list_voiture'])->name('voiture.liste');
+Route::get('/voiture/edit/{id}', [VoitureController::class, 'edit'])->name('voiture.edit');
+Route::post('/voiture/update', [VoitureController::class, 'update'])->name('voiture.update');
+
 
 require __DIR__.'/auth.php';

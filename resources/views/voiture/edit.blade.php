@@ -58,27 +58,28 @@
       <div class=" my-4">
         
         <div class="col-md-8">
-            <form action="{{route('voiture.store')}}" method="POST"enctype="multipart/form-data" >
+            <form action="{{route('voiture.update')}}" method="POST"enctype="multipart/form-data" >
                 @csrf
                <div class="row p-3 m-3">
+                <input type="text" class="form-control" id="titre" name="id" value="{{$voiture->id}}" hidden>
 
                 <div class="form-group col-md-4">
                     <label for="titre">Marque</label>
-                    <input type="text" class="form-control" id="titre" name="marque" value="{{old('marque')}}">
+                    <input type="text" class="form-control" id="titre" name="marque" value="{{$voiture->marque}}">
                     @error('marque')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                   </div>
                   <div class="form-group col-md-4">
                     <label for="titre">modele</label>
-                    <input type="text" class="form-control" id="titre" name="modele" value="{{old('modele')}}">
+                    <input type="text" class="form-control" id="titre" name="modele" value="{{$voiture->modele}}">
                     @error('modele')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                   </div>
                   <div class="form-group col-md-4">
                     <label for="titre">annee</label>
-                    <input type="number" class="form-control" id="titre" name="annee" value="{{old('annee')}}">
+                    <input type="number" class="form-control" id="titre" name="annee" value="{{$voiture->annee}}">
                     @error('annee')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
@@ -91,7 +92,7 @@
 
 
                     <select class="form-control" id="tcategorie" name="moteur" placeholder='type boite' >
-                      <option value="">...</option>
+                      <option value="{{$voiture->moteur}}">{{$voiture->moteur}}</option>
                 
                     
                         <option value="Essence">Essence</option>
@@ -108,14 +109,14 @@
                   
                   <div class="form-group col-md-4">
                     <label for="titre">kilometrage</label>
-                    <input type="number" class="form-control" id="titre" name="kilometrage" value="{{old('kilometrage')}}">
+                    <input type="number" class="form-control" id="titre" name="kilometrage" value="{{$voiture->kilometrage}}">
                     @error('kilometrage')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                   </div>
                   <div class="form-group col-md-4">
                     <label for="titre">etat</label>
-                    <input type="text" class="form-control" id="titre" name="etat" value="{{old('etat')}}">
+                    <input type="text" class="form-control" id="titre" name="etat" value="{{$voiture->etat}}">
                     @error('etat')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
@@ -127,7 +128,7 @@
 
 
                     <select class="form-control" id="tcategorie" name="boite" placeholder='type boite' >
-                      <option value="">...</option>
+                      <option value="{{$voiture->boite}}">{{$voiture->boite}}</option>
                 
                     
                         <option value="automatique">Automatique</option>
@@ -139,20 +140,23 @@
                   </div>
                   <div class="form-group col-md-4">
                     <label for="titre">caracteristique</label>
-                    <input type="text" class="form-control" id="titre" name="caracteristique" value="{{old('caracteristique')}}">
+                    <input type="text" class="form-control" id="titre" name="caracteristique" value="{{$voiture->caracteristique}}">
                     @error('caracteristique')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                   </div>
                   <div class="form-group col-md-4">
                     <label for="titre">prix</label>
-                    <input type="number" class="form-control" id="titre" name="prix" value="{{old('prix')}}">
+                    <input type="number" class="form-control" id="titre" name="prix" value="{{$voiture->prix}}">
                     @error('prix')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                   </div>
                 </div>
                   <div class="form-group col-md-4 p-3 m-3">
+                    <div>
+                      <img src="{{asset('voiture/'.$voiture->image)}}" width="200px" height="200px" alt="">
+                    </div><br />
                       <label for="file">Image</label>
                     <input type="file" class="form-control" id="image" name="image" value="{{old('image')}}">
                     @error('image')
