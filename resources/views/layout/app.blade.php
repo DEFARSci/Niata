@@ -105,7 +105,7 @@
   </div>
   <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-language">
         <a class="nav-link p-1 text-black rounded-5 m-3 {{request()->is('/') ? 'active bg-primary text-white' : ''}}"   href="/">Acceuil</a>
-        <a class="nav-link p-1 text-black  rounded-5 m-3 {{request()->is('voiture/index') ? 'active bg-primary text-white' : ''}}"  href="{{ route('voiture.index') }}">Produit</a>
+        <a class="nav-link p-1 text-black  rounded-5 m-3 {{request()->is('voiture/index') ? 'active bg-primary text-white' : ''}}"  href="{{ route('voiture.index') }}" hidden>Produit</a>
         <a class="nav-link p-1 text-black rounded-5 m-3 {{request()->is('index') ? 'active bg-primary text-white' : ''}}"  href="{{route('blog')}}">Actualite</a>
         <a class="nav-link p-1 text-black rounded-5 m-3 {{request()->is('contact') ? 'active bg-primary text-white' : ''}}"  href="{{ route('contact') }}">Contact</a>
         <a class="nav-link p-1 text-black rounded-5 m-3 {{request()->is('') ? 'active bg-primary text-white' : ''}}"  href="#">A propos</a>

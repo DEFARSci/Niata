@@ -8,6 +8,7 @@ use App\Http\Controllers\VoitureController;
 use App\Http\Controllers\CarressolController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategieArticleController;
+use App\Http\Controllers\EvaluationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,11 @@ Route::delete('/deletevoiture/{id}', [VoitureController::class, 'destroy'])->nam
 Route::get('/voiture/liste', [VoitureController::class, 'list_voiture'])->name('voiture.liste');
 Route::get('/voiture/edit/{id}', [VoitureController::class, 'edit'])->name('voiture.edit');
 Route::post('/voiture/update', [VoitureController::class, 'update'])->name('voiture.update');
+
+
+//Evaluation
+Route::get('/evaluation/index', [EvaluationController::class, 'index'])->name('evaluation.index');
+Route::post('/evaluation/voiture', [EvaluationController::class, 'voiture'])->name('evaluation.voiture');
 
 
 require __DIR__.'/auth.php';

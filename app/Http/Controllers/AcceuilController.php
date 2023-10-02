@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Voiture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,9 +21,12 @@ class AcceuilController extends Controller
         ->limit(3)
         ->get();
 
+        $voiture=Voiture::all();
         $data=[
             "blog" =>$blog,
-            "voiture" =>$voiture
+            "voiture" =>$voiture,
+            'voiture'=>$voiture,
+            'rechercher'=>$voiture
         ];
         return view('welcome', $data);
     }
