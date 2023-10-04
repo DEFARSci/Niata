@@ -64,7 +64,7 @@ class VoitureController extends Controller
         $voiture->save();
 
         return back()->with( 'success', 'Article Ajouter' );
-       
+
     }
 
     public function show($id){
@@ -72,7 +72,7 @@ class VoitureController extends Controller
 
         $data=[
             'voiture'=>$voiture
-            
+
         ];
         return view('voiture.show',$data);
     }
@@ -89,14 +89,14 @@ class VoitureController extends Controller
         }else{
             $prixinf=$request->prixinf;
         }
-        
+
         $prixmax=$request->prixmax;
 
-    
-       
+
+
         $voiture1=Voiture::all();
        // $test=Voiture::whereBetween('prix',[$prixinf,$prixmax]);
-      
+
         // $voiture=Voiture::where('marque',$request->marque)->get();
         $voiturecherche=Voiture::all();
 
@@ -120,8 +120,8 @@ class VoitureController extends Controller
                                  ->orWhere('modele','like','%'.$search.'%');
                  })
                  ->when($prixinf != null && $prixmax != null,function($query) use($prixinf,$prixmax){
-                    return $query->whereBetween('prix',[$prixinf,$prixmax]);            
-                 }) 
+                    return $query->whereBetween('prix',[$prixinf,$prixmax]);
+                 })
                  ->get();
 
              //  dd($voiture);
@@ -133,7 +133,7 @@ class VoitureController extends Controller
             'marque'=>$marque,
             'voiturecherche'=>$voiturecherche,
             'rechercher'=>$voiture1,
-            
+
         ];
 
         return view('voiture.index',$data);
@@ -141,10 +141,11 @@ class VoitureController extends Controller
 
     public function list_voiture(){
         $voiture=Voiture::all();
+        $nbr=count($voiture);
 
         $data=[
             'voiture'=>$voiture,
-            'nbr'=>null
+            'nbr'=>$nbr
         ];
         return view('voiture.liste',$data);
     }

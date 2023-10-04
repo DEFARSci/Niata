@@ -69,6 +69,12 @@ Route::post('/voiture/update', [VoitureController::class, 'update'])->name('voit
 //Evaluation
 Route::get('/evaluation/index', [EvaluationController::class, 'index'])->name('evaluation.index');
 Route::post('/evaluation/voiture', [EvaluationController::class, 'voiture'])->name('evaluation.voiture');
+Route::get('/evaluation/create', [EvaluationController::class, 'create'])->name('evaluation.create');
+Route::post('/evaluation/store', [EvaluationController::class, 'store'])->name('evaluation.store');
+Route::get('/evaluation/liste', [EvaluationController::class, 'liste'])->name('evaluation.liste');
+Route::delete('/evaluation/delete/{id}', [EvaluationController::class, 'destroy'])->name('evaluation.destroy');
+Route::get('/evaluation/edit/{id}', [EvaluationController::class, 'edit'])->name('evaluation.edit');
+Route::post('/evaluation/update', [EvaluationController::class, 'update'])->name('evaluation.update');
 
 
 require __DIR__.'/auth.php';

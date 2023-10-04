@@ -12,6 +12,7 @@
     <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
     <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- FontAwesome JS-->
     <script defer src="{{asset('assets/plugins/fontawesome/js/all.min.js')}}"></script>
@@ -47,11 +48,10 @@
                             <tr>
                                 <th class="cell">marque</th>
                                 <th class="cell">modele</th>
+                                <th class="cell">boite</th>
+                                <th class="cell">moteur</th>
                                 <th class="cell">annee</th>
                                 <th class="cell">kilometrage</th>
-                                <th class="cell">etat</th>
-                                <th class="cell">moteur</th>
-                                <th class="cell">boite</th>
                                 <th class="cell">prix</th>
                                 <th class="cell">option</th>
                             </tr>
@@ -62,23 +62,26 @@
                             <tr>
                                  <td class="cell">{{$v->marque}}</td>
                                 <td class="cell">{{$v->modele}}</td>
+                                <td class="cell">{{$v->boite}}</td>
+                                <td class="cell">{{$v->type_carburant}}</td>
                                 <td class="cell">{{$v->annee}}</td>
                                 <td class="cell">{{$v->kilometrage}}</td>
-                                <td class="cell"> {{$v->etat}}</td>
-                                <td class="cell">{{$v->moteur}}</td>
-                                <td class="cell">{{$v->boite}}</td>
+
+
 
                                 <td class="cell">{{$v->prix}}</td>
 
 
 
-                                <td class="cell"><a class="btn app-btn-secondary" href="{{route('voiture.edit', $v->id)}}">modifier</a>
-                                     <form  class="d-inline" action="{{route('voiture.destroy', $v->id)}}" method="POST">
+                                <td class="cell">
+                                    <a class="btn app-btn-secondary" href="{{route('evaluation.edit', $v->id)}}"> <i class="fas fa-edit ml-1"></i></a>
+                                     <form  class="d-inline" action="{{route('evaluation.destroy', $v->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn app-btn-secondary" href="">supprimer</button>
+                                        <button type="submit" class="btn app-btn-secondary" href=""> <i class="fas fa-trash ml-1"></i> </button>
 
                                     </form>
+
                                 </td>
                             </tr>
                             @endforeach

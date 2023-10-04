@@ -48,7 +48,7 @@ class EvaluationController extends Controller
       // dd($voiturerecup);
 
         $prixestimatif=(new VoitureEvaluationService)->VoitureEvaluation($voiturerecup,$data['kilometre'],$data['annee'],$data['carburant'],$data['boite']);
-       
+
 
         $mail_data=[
             'prix'=>$prixestimatif,
@@ -73,6 +73,63 @@ class EvaluationController extends Controller
 
     }
 
-       
-    
+    public function create(){
+        return view('evaluation.create');
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'marque'=>'required',
+            'modele'=>'required',
+            'annee'=>'required',
+            'kilometrage'=>'required',
+            'prix'=>'required',
+            'type_carburant'=>'required',
+            'boite'=>'required',
+        ]);
+        $voitureEvaluation=new Evaluation();
+        $voitureEvaluation->marque=$request->marque;
+        $voitureEvaluation->modele=$request->modele;
+        $voitureEvaluation->annee=$request->annee;
+        $voitureEvaluation->kilometrage=$request->kilometrage;
+        $voitureEvaluation->type_carburant=$request->type_carburant;
+        $voitureEvaluation->boite=$request->boite;
+        $voitureEvaluation->prix=$request->prix;
+        $voitureEvaluation->save();
+        return back()->with('success','Evaluation enregistrée avec succès');
+    }
+    public function liste(){
+        $voiture=Evaluation::all();
+        $nbr=Evaluation::count();
+        $data=[
+            'voiture'=>$voiture,
+            'nbr'=>$nbr
+        ];
+        return view('evaluation.liste',$data);
+    }
+    public function destroy($id){
+        $voiture=Evaluation::find($id);
+        $voiture->delete();
+        return back()->with( 'success', 'voiture Supprimer' );
+    }
+    public function edit($id){
+        $voiture=Evaluation::find($id);
+        return view('evaluation.edit',compact('voiture'));
+    }
+    public function update(Request $request){
+        $voiture=Evaluation::find($request->id);
+
+        $voiture->marque=$request->marque;
+        $voiture->modele=$request->modele;
+        $voiture->annee=$request->annee;
+        $voiture->kilometrage=$request->kilometrage;
+        $voiture->type_carburant=$request->type_carburant;
+        $voiture->boite=$request->boite;
+        $voiture->prix=$request->prix;
+        $voiture->save();
+
+        return redirect('/evaluation/liste')->with( 'success', 'voiture Modifier' );
+    }
+
+
 }

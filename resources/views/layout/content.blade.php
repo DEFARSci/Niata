@@ -1,17 +1,17 @@
 
 <div class="app-content pt-3 p-md-3 p-lg-4">
     <div class="container-xl">
-        
+
         <h1 class="app-page-title">Niata</h1>
-        
+
         <div class="row g-4 mb-4">
             <div class="col-6 col-lg-3">
                 <div class="app-card app-card-stat shadow-sm h-100">
                     @if ($nbr!=null)
-                        
-                   
+
+
                     <div class="app-card-body p-3 p-lg-4">
-                        <h4 class="stats-type mb-1">Total article</h4>
+                        <h4 class="stats-type mb-1">Total</h4>
                         <div class="stats-figure">{{$nbr}}</div>
                         <div class="stats-meta text-success">
                             {{-- <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -22,7 +22,7 @@
                     <a class="app-card-link-mask" href="#"></a>
                 </div><!--//app-card-->
             </div><!--//col-->
-            
+
             <div class="col-6 col-lg-3">
                 {{-- <div class="app-card app-card-stat shadow-sm h-100">
                     <div class="app-card-body p-3 p-lg-4">
@@ -58,8 +58,8 @@
                 </div><!--//app-card-->
             </div><!--//col--> --}}
 
-      
 
-        
+
+
     </div><!--//container-fluid-->
 </div>
