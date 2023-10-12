@@ -33,19 +33,23 @@ class EvaluationController extends Controller
         $voitureEvaluation=DB::table('evaluations')
                            ->where('marque','like','%'.$data['marque'].'%')
                            ->Where('modele','like','%'.$data['model'].'%')
-                           ->get();
+                           ->first();
 
+            if ($voitureEvaluation==null) {
+                return back()->with('error','le type de voiture n\'existe pas');
+
+            }
         $voiturerecup=new Evaluation();
-        foreach($voitureEvaluation as $voiture){
-            $voiturerecup->marque=$voiture->marque;
-            $voiturerecup->modele=$voiture->modele;
-            $voiturerecup->annee=$voiture->annee;
-            $voiturerecup->kilometrage=$voiture->kilometrage;
-            $voiturerecup->type_carburant=$voiture->type_carburant;
-            $voiturerecup->boite=$voiture->boite;
-            $voiturerecup->prix=$voiture->prix;
-        }
-      // dd($voiturerecup);
+        // foreach($voitureEvaluation as $voiture){
+            $voiturerecup->marque=$voitureEvaluation->marque;
+            $voiturerecup->modele=$voitureEvaluation->modele;
+            $voiturerecup->annee=$voitureEvaluation->annee;
+            $voiturerecup->kilometrage=$voitureEvaluation->kilometrage;
+            $voiturerecup->type_carburant=$voitureEvaluation->type_carburant;
+            $voiturerecup->boite=$voitureEvaluation->boite;
+            $voiturerecup->prix=$voitureEvaluation->prix;
+        // }
+    //    dd($voiturerecup);
 
         $prixestimatif=(new VoitureEvaluationService)->VoitureEvaluation($voiturerecup,$data['kilometre'],$data['annee'],$data['carburant'],$data['boite']);
 
@@ -69,7 +73,7 @@ class EvaluationController extends Controller
                     ->from($mail_data['recipient'])
                     ->subject($mail_data['subject']);
         });
-      return back()->with('success','Evaluation enregistrée avec succès un email vous sera envoyer');
+      return view('evaluation.evaluation',$mail_data)->with('success','Evaluation enregistrée avec succès un email vous sera envoyer');
 
     }
 

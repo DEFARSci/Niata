@@ -6,11 +6,15 @@
             <div class="alert alert-success alert-dismissable m-3">
                 {{session('success')}}
             </div>
+    @elseif (session('error'))
+            <div class="alert alert-danger alert-dismissable m-3">
+                {{session('error')}}
+            </div>
     @endif
     Evaluation
 </div>
 <div class="flex justify-center items-center p-4 " style="background-color: rgba(47, 48, 47, 0.082)">
-   
+
 
 
     <form class="w-full max-w-lg" action="{{ route('evaluation.voiture') }}" method="POST">
@@ -38,7 +42,30 @@
             </div>
             @enderror
           </div>
-          <div class="w-full md:w-1/2 px-3">
+
+          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                Model
+               </label>
+               <input name="model" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Model">
+               @error('model')
+               <div class="alert alert-danger" role="alert">
+                 {{ $message }}
+               </div>
+               @enderror
+          </div>
+          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                Année
+              </label>
+              <input name="annee" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="number" placeholder="année">
+              @error('annee')
+              <div class="alert alert-danger" role="alert">
+                {{ $message }}
+              </div>
+              @enderror
+          </div>
+          {{-- <div class="w-full md:w-1/2 px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
              Model
             </label>
@@ -48,9 +75,10 @@
               {{ $message }}
             </div>
             @enderror
-          </div>
+          </div> --}}
+
         </div>
-        <div class="flex flex-wrap -mx-3 mb-6">
+        {{-- <div class="flex flex-wrap -mx-3 mb-6">
           <div class="w-full px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
               Année
@@ -62,7 +90,7 @@
             </div>
             @enderror
           </div>
-        </div>
+        </div> --}}
         <div class="flex flex-wrap -mx-3 mb-2">
           <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
@@ -71,24 +99,24 @@
             <select name="carburant" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
               <option>Manuelle</option>
               <option>Automatique</option>
-              
-            </select> 
+
+            </select>
             @error('carburant')
             <div class="alert alert-danger" role="alert">
               {{ $message }}
             </div>
             @enderror
           </div>
-         
+
           <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-              Type de Carburant   
+              Type de Carburant
             </label>
             <div class="relative">
               <select name="boite" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                 <option value="essance">essance</option>
                 <option value="diesel">diesel</option>
-                
+
               </select>
               @error('boite')
               <div class="alert alert-danger" role="alert">
@@ -111,9 +139,10 @@
             </div>
             @enderror
           </div>
-          
+
         </div>
         <button type="submit" class="btn btn-primary text-black">envoyer</button>
       </form>
 </div>
+
 @endsection
