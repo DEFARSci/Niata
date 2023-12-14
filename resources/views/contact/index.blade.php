@@ -9,9 +9,9 @@
 
 @endif
     <div class="row m-5">
-       
+
         <div class="col md-5">
-          <h1>Contactez-nous</h1>
+          <h1 style="color: white">Contactez-nous</h1>
             <form action="{{route('mail')}}" method="POST">
               @csrf
                 <div class="row">
@@ -29,14 +29,14 @@
                     <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
                   </div>
                 <div class="mb-3">
-                 
+
                   <textarea class="form-control" rows="5" id="comment"  placeholder="Enter message" name="message" required></textarea>
                 </div>
-                
-                <button type="submit" class="btn btn-primary">Envoyer</button>
+
+                <button type="submit" class="btn " style="background-color: #060606; color: white ;border: solid 1px">Envoyer</button>
               </form>
         </div>
-      
+
     </div>
 </div>
 @endsection

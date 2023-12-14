@@ -16,6 +16,9 @@ class EvaluationController extends Controller
     }
 
     public function voiture(Request $request){
+
+       // dd($request->all());
+
         setlocale(LC_TIME, 'fr_FR');
 
         $request->validate([
@@ -36,7 +39,11 @@ class EvaluationController extends Controller
                            ->first();
 
             if ($voitureEvaluation==null) {
-                return back()->with('error','le type de voiture n\'existe pas');
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Voiture non disponible',
+                ]);
+                ;
 
             }
         $voiturerecup=new Evaluation();
@@ -73,7 +80,14 @@ class EvaluationController extends Controller
                     ->from($mail_data['recipient'])
                     ->subject($mail_data['subject']);
         });
-      return view('evaluation.evaluation',$mail_data)->with('success','Evaluation enregistrée avec succès un email vous sera envoyer');
+    //   return view('evaluation.evaluation',$mail_data)->with('success','Evaluation enregistrée avec succès un email vous sera envoyer');
+            $data=[
+                'data'=>$mail_data
+            ];
+          return response()->json([
+              'success' => true,
+              'data' => $mail_data
+          ]);
 
     }
 

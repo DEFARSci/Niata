@@ -2,7 +2,7 @@
 
 @section('content')
 
-  
+
 
 
 
@@ -21,8 +21,8 @@
       <div class="hidden duration-700 ease-in-out" data-carousel-item>
           <img src="{{asset('defaultimg/blog3.jpeg')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
       </div>
-    
-    
+
+
   </div>
   <!-- Slider indicators -->
   <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
@@ -51,7 +51,7 @@
 
 
 
- 
+
 
 <div class="container-fluide">
 
@@ -60,99 +60,99 @@
      </div>
      {{-- <div class="d-flex container justify-content-center">
       <div class=" row p-2 ">
-       
-     
+
+
         <form class=" " action="{{route('voiture.search')}}" method="get">
           <div class="row">
             <div class="col-md-3"></div>
           <div class="form-group col-md-6 mb-3 flex-1 justify-content-center">
-                   
+
             <input class="form-control" placeholder="recherche" type="text"value="{{Request::get('search')}}" name="search">
-           
+
           </div>
           <div class="col-md-3"></div>
           </div>
             <div class="row">
 
-             
+
 
                 <div class="form-group col-md-2 mb-3">
-                   
+
                     <input class="form-control" placeholder="année" type="number"value="{{Request::get('annee')}}"name="annee">
-                   
+
                   </div>
                   <div class="form-group col-md-2 mb-3">
                     <select name="boite" class="form-control">
                       <option value="">Type de boite</option>
                         @foreach ( $rechercher as $boi)
                       <option value="{{ $boi->boite}}"  {{Request::get('boite')==$boi->boite ? 'selected' : ''}}>{{$boi->boite}}</option>
-                      @endforeach  
-                      
+                      @endforeach
+
                     </select>
-                   
+
                   </div>
                   <div class="form-group col-md-2 mb-3">
                     <select name="moteur" class="form-control">
                       <option value="">Type de moteur</option>
                         @foreach ( $rechercher as $voitured)
                       <option value="{{ $voitured->moteur}}"  {{Request::get('moteur')==$voitured->moteur ? 'selected' : ''}}>{{$voitured->moteur}}</option>
-                      @endforeach  
-                      
+                      @endforeach
+
                     </select>
-                   
+
                   </div>
                   <div class="form-group col-md-2 mb-3">
                     <select name="marque" class="form-control">
                       <option value="">Tout les marques</option>
                         @foreach ( $rechercher as $voitured)
                       <option value="{{ $voitured->marque}}"  {{Request::get('marque')==$voitured->marque ? 'selected' : ''}}>{{$voitured->marque}}</option>
-                      @endforeach  
-                      
+                      @endforeach
+
                     </select>
-                   
+
                   </div>
                   <div class="form-group col-md-2 mb-3">
                     <select name="modele" class="form-control">
                       <option value="">Tout les model</option>
                       @foreach ( $rechercher as $voitured)
                     <option value="{{ $voitured->modele}}" {{Request::get('modele')==$voitured->modele ? 'selected' : ''}}>{{$voitured->modele}}</option>
-                    @endforeach   
+                    @endforeach
                   </select>
-                   
+
                   </div>
                   <div class="form-group col-md-2 mb-3">
-                    <button type="submit" class="btn bg-sky-500" 
+                    <button type="submit" class="btn bg-sky-500"
                     > <i class="fas fa-search">recherche</i></button>
-                   
+
                   </div>
 
                    <div class="row">
             <div class="col-md-3"></div>
           <div class="form-group col-md-6 mb-3 flex-1 justify-content-center">
-                   
+
             <input class="form-control" placeholder="recherche" type="text"value="{{Request::get('search')}}" name="search">
-           
+
           </div>
           <div class="col-md-3"></div>
           </div>
 
             </div>
-               
+
           </form>
         </div>
-          
-       
+
+
      </div> --}}
-    
+
 <div class="row">
 <div class="col-md-3 mt-5 ">
   <div class="bg-primary  rounded-lg shadow-lg p-3">
 
 
-  <h1 class="p-2 display-6 font-bold text-white">recherche</h1> 
+  <h1 class="p-2 display-6 font-bold text-white">recherche</h1>
   <div>
     <form class=" " action="{{route('voiture.search')}}" method="get">
-      <div class="form-group mt-3 mb-3"> 
+      <div class="form-group mt-3 mb-3">
         {{-- recherche          --}}
           <input class="form-control mb-2" placeholder="recherche" type="text"value="{{Request::get('search')}}" name="search">
          {{-- Marque --}}
@@ -160,31 +160,31 @@
             <option value="">Tout les marques</option>
               @foreach ( $rechercher as $voitured)
             <option value="{{ $voitured->marque}}"  {{Request::get('marque')==$voitured->marque ? 'selected' : ''}}>{{$voitured->marque}}</option>
-            @endforeach  
-            
+            @endforeach
+
           </select>
           {{-- Model --}}
         <select name="modele" class="form-control mb-2">
           <option value="">Tout les model</option>
           @foreach ( $rechercher as $voitured)
         <option value="{{ $voitured->modele}}" {{Request::get('modele')==$voitured->modele ? 'selected' : ''}}>{{$voitured->modele}}</option>
-        @endforeach   
+        @endforeach
       </select>
         {{-- Moteur --}}
       <select name="moteur" class="form-control mb-2">
         <option value="">Type de moteur</option>
           @foreach ( $rechercher as $voitured)
         <option value="{{ $voitured->moteur}}"  {{Request::get('moteur')==$voitured->moteur ? 'selected' : ''}}>{{$voitured->moteur}}</option>
-        @endforeach  
-        
+        @endforeach
+
       </select>
         {{-- Boite --}}
       <select name="boite" class="form-control mb-2">
         <option value="">Type de boite</option>
           @foreach ( $rechercher as $boi)
         <option value="{{ $boi->boite}}"  {{Request::get('boite')==$boi->boite ? 'selected' : ''}}>{{$boi->boite}}</option>
-        @endforeach  
-        
+        @endforeach
+
       </select>
       {{-- annee --}}
       <input class="form-control" placeholder="année" type="number"value="{{Request::get('annee')}}"name="annee">
@@ -201,23 +201,23 @@
       </div>
       </div>
 
-      <button type="submit" class="btn bg-sky-500 text-white" 
+      <button type="submit" class="btn bg-sky-500 text-white"
       > <i class="fas fa-search">recherche</i></button>
       </form>
   </div>
 </div>
 </div>
 <div class="col-md-9 mt-9">
-   
+
     <div class="row flex display-flex justify-center ">
       @if (count($voiture) == 0)
       <div class="flex display-flex justify-center p-4">
-        <h1 class="p-2 display-6 font-bold">Malheureusement, nous n'avons pas trouvé de véhicules correspondant à vos critères de recherche.</h1> 
+        <h1 class="p-2 display-6 font-bold">Malheureusement, nous n'avons pas trouvé de véhicules correspondant à vos critères de recherche.</h1>
      </div>
-      
+
       @else
-        
-     
+
+
       @foreach ($voiture as $v)
       <div class="mb-3 w-96 m-1  bg-white rounded-3xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
         <!-- Image -->
@@ -242,25 +242,25 @@
            </div>
            </div>
            <div class="d-flex justify-content-center">
-               <span class="font-bold text-white bg-sky-500 rounded-full p-1">{{ $v->prix }} FCFA</span> 
+               <span class="font-bold text-white bg-sky-500 rounded-full p-1">{{ $v->prix }} FCFA</span>
            </div>
-           
+
         </div>
         <!-- CTA -->
         <div class="m-8">
             <a role="button" href="{{route('voiture.show', $v->id)}}" class="text-white bg-sky-500 px-5 py-3 rounded-full hover:bg-purple-700"><i class="fas fa-eye" style="color: rgb(255, 255, 255) ;width: 30px;height: 30px, display: flex; flex-direction: column;"></i></a>
         </div>
     </div>
-      
-      
-      
-          
+
+
+
+
           @endforeach
           @endif
 </div>
     </div>
-   
-    
+
+
 </div>
 
 </div>
@@ -271,15 +271,15 @@
       <select name="marque" class=" justify-content-cente mr-1">
           @foreach ( $rechercher as $voiture  )
         <option value="{{ $voiture->marque}}">{{$voiture->marque}}</option>
-        @endforeach   
-       
-        
+        @endforeach
+
+
       </select>
  <button type="submit" class="btn  bg-sky-500"
  > <i class="fas fa-search"></i></button>
-      
+
           </div>
-    
+
   </form> --}}
 
 <style>

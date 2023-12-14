@@ -1,0 +1,308 @@
+@font-face {
+    font-family: inter;
+    src: url("../Inter/static/Inter-Regular.ttf");
+}
+.logo-car{
+    width: 250px!important;
+   height:250px !important;
+   background-color: #D9D9D91A;
+   padding: 15px;
+
+}
+.carousel-indicators [data-bs-target]{
+    display: none !important;
+}
+.nav-principal{
+    width: 100% !important;
+     /* position: fixed !important;
+     margin: auto !important; */
+    /* right: 162px !important;
+    top: 0 !important;  */
+}
+.navbar{
+    background-color: #FFFFFF !important;
+    padding-inline: 40px;
+    border-radius: 10px;
+   margin: 10px 40px;
+}
+.navbar-brand{
+    padding-inline-end: 80px !important;
+}
+.navbar-light .navbar-nav .nav-link{
+    color: #000000 !important
+}
+.card-search-container{
+    padding: 55px !important;
+background-color:  #FFFFFF !important;
+padding: 35px;
+border-radius: 16px;
+}
+.card-search{
+    background-color: #D9D9D9 !important;
+    border-radius: 16px !important;
+    box-shadow: -15px 15px 10px -4px    #D9D9D9 !important;
+}
+.valider-search-card{
+    background-color: #000000 !important;
+    display: block !important;
+    width: 250px !important;
+    /* margin-inline: -30px !important;
+    margin-block: 60px !important;
+    padding-inline: -80px !important; */
+    margin-top: 20px !important;
+    margin-left: 85px !important;
+}
+.car-hero{
+    /* max-width: 100%!important; */
+
+}
+.car-hero-img{
+    height: 284px !important;
+    max-width: 600PX!important;
+    object-fit:fill !important;
+}
+.car-hero-title{
+    font-size: 30px !important;
+    line-height: 44px !important;
+    margin-bottom: 60px !important;
+    color:  #000000 !important;
+    ;
+}
+.notre-cote-auto ul >li{
+    margin: 9px !important;
+    list-style-type:disc !important;
+    color: white !important;
+}
+.nos-marque-auto .container{
+    background: #D9D9D91A !important;
+    max-width: 100% !important;
+    padding: 45px !important;
+    font-size: 10px !important;
+
+}
+.comment{
+   font-size: 8px !important;
+}
+
+.nos-marque-auto a{
+    margin-top: -43px !important;
+   width: 240px !important;
+
+}
+.card-avis{
+    background: linear-gradient(89.76deg, #000000 0.18%, rgba(0, 0, 0, 0) 99.76%) !important;
+    color: white !important;
+
+}
+.img-avis{
+    margin-inline: -33px !important;
+    margin-block: -15px !important;
+    /* padding: 1px !important; */
+    /* width: 130px; */
+    height: 100px !important;
+
+
+}
+
+.card-faq select {
+    background: #de25251a!important;
+    color: white !important;
+}
+.from-select-lg{
+    background-image: url("../images/Vector.png") !important;
+    background-color: red !important;
+
+}
+.container-newsletter{
+    /* max-width: 100% !important; */
+}
+.email-newsletter input{
+background-color:  #1F1F1F8F !important;
+/* margin-block-start: 36px !important */
+;
+}
+.inscrir-newsletter button{
+    /* margin-inline-start: -30px !important; */
+    /* margin-block-start: 32px !important; */
+    background-color:  #D9D9D9 !important;
+    border: none !important;
+    color:  #1F1F1F !important;
+    margin-left: -30px !important;
+    padding: 7px !important;
+    box-sizing: border-box;
+
+
+}
+.faq p, .reponse-faq{
+    background: linear-gradient(89.76deg, #000000 0.18%, rgba(0, 0, 0, 0) 99.76%)  !important;
+    color: white !important;
+
+}
+.footer ul li{
+    list-style-type: none !important;
+    font-size: 13px !important;
+}
+.footer ul li a{
+   text-decoration: none ;
+}
+.footer .row{
+    /* padding-inline: 20px !important;*/
+    padding-block-start: 40px !important;
+}
+.footer-line{
+    padding: 1px !important;
+}
+body{
+    background-color: #000000 !important;
+    font-family: inter !important;
+}
+@media screen and (min-width:400px) {
+
+
+    .card-search .card-body{
+    max-width: 500px !important;
+    }
+
+
+}
+
+
+@media screen and (max-width:400px){
+
+    .valider-search-card{
+     margin-top:  20px !important;
+        margin: auto !important;
+        display: block !important;
+        width: 180px !important;}
+        .card-search{
+           width: 255px !important;
+        }
+
+}
+@media screen and (min-width:2000px) {
+    .nav-principal{
+        width: 88% !important;
+    }
+    .niata{
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 15px !important;
+    }
+}
+@media screen and (max-width:900px) {
+    .car-hero-img{
+        height: 284px !important;
+        max-width: 477PX!important;
+        object-fit:fill !important;
+    }
+    .niata{
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 15px !important;
+    }
+    /* .nav-principal{
+        width: 75% !important;
+        position: fixed !important;
+        right: 131px !important;
+        top: 0 !important;
+    } */
+}
+@media screen and (min-width:1000px) {
+    .car-hero-img{
+        height: 284px !important;
+        max-width: 477PX!important;
+        object-fit:fill !important;
+    }
+}
+@media screen and (max-width:2000px) {
+    .car-hero-img{
+        height: 284px !important;
+        max-width: 600PX!important;
+        object-fit:fill !important;
+    }
+}
+@media screen and (min-width:901px) {
+
+/*
+    .nav-principal{
+        width: 74% !important;
+        position: fixed !important;
+        right: 125px !important;
+        top: 0 !important;
+    } */
+}
+/* modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(189, 18, 18, 0);
+  }
+
+  /* Style du contenu du modal */
+  .modal-content {
+
+    background-color: #b72323;
+    margin: 15% auto;
+     padding: 20px;
+    border: 1px solid #d10c0c;
+    max-width: 400px; /* Adjust the value to your desired width */
+
+
+  }
+  .modal-content h6 h5{
+    text-align: center;
+  }
+
+  /* Style du bouton de fermeture du modal */
+  .close {
+    color: #aaa;
+    /* float: right; */
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+
+    /* Style for the loading modal */
+    #loadingModal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+    }
+
+    #loadingSpinner {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3498db;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+

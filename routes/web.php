@@ -20,12 +20,15 @@ use App\Http\Controllers\EvaluationController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/avis', function () {
+    return view('carrousel.caroussel-avis');
+});
 
 // Route::get('/', function () {
-//     return view('welcome');
+//     return view('carrousel.caroussel-avis');
 // });
 
-Route::get('/', [AcceuilController::class, 'index'])->name('accueil');
+  Route::get('/', [AcceuilController::class, 'index'])->name('accueil');
 
 Route::get('/dashboard',[DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 

@@ -10,11 +10,11 @@ class Blog extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'categie_articles_id',   
-        'title',
-        'text',
+        'categie_articles_id',
+        'titre',
+        'content',
         'image',
-        
+
     ];
     protected $casts=[
         'created_at'=>'datetime',

@@ -12,7 +12,7 @@ class BlogController extends Controller {
     public function index() {
 
         $blog = Blog::all();
-        
+
         // foreach ($blog as $blog) {
         //    dd($blog->categie_articles());
         // }
@@ -29,10 +29,10 @@ class BlogController extends Controller {
 
     public function create() {
         $categorie=CategorieArticle::all();
-       
+
         $data=[
             'categorie'=>$categorie,
-           
+
         ];
 
         return view( 'blog.create',$data );
@@ -73,24 +73,24 @@ $request->validate( [
         ->limit(3)
         ->get();
 
-       
+
         $blog = Blog::find( $id );
 // dd($blog);
         // $blogforcathe=CategorieArticle::find(1);
         // dd($blogforcathe);
-       
+
     return view('blog.show', compact('blog',"blogs" ) );
     }
 
     public function edit( $id ) {
-        
+
         $blog = DB::table('blogs')
     ->join('categorie_articles', 'blogs.categorie_articles_id', '=', 'categorie_articles.id')
     ->where('blogs.id','=',$id)
     ->select('blogs.*','categorie_articles.*')
     ->get();
         $categorie=CategorieArticle::all();
-       
+
         $data=[
             'categorie'=>$categorie,
             'blog'=>$blog[0],
@@ -107,10 +107,10 @@ $request->validate( [
 if(isset($request->image)){
     $image = $request->image;
     $imageName = time() . '.' . $image->getClientOriginalExtension();
-    $image->move( public_path( 'images' ), $imageName );
+    $image->move( public_path( 'blog' ), $imageName );
     $blog->image = $imageName;
 }
-       
+
         $blog->save();
         return back()->with( 'success', 'Article Modifier' );
     }

@@ -1,271 +1,553 @@
 @extends('layout.app')
 
 @section('content')
-<div id="default-carousel" class="relative w-full" data-carousel="slide">
-    <!-- Carousel wrapper -->
-    <div class="relative h-70 overflow-hidden rounded-lg md:h-96">
-         <!-- Item 1 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{{asset('defaultimg/auto1.jpeg')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+
+  <section class="decouvrir-nos-voiture mt-5 pt-4 ">
+    <div class="container card-search-container mt-5">
+      <div class="row justify-content-center">
+
+          <div class="col-md-6 card-search">
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissable m-3">
+                    {{session('success')}}
+                </div>
+                @elseif (session('error'))
+                <div class="alert alert-danger alert-dismissable m-3">
+                    {{session('error')}}
+                </div>
+            @endif
+              <legend class="mb-4">SIMPLE,RAPIDE ET GRATUIT</legend>
+              {{-- <form action="{{ route('evaluation.voiture') }}" method="POST" id="myForm"> --}}
+                <form action="" method="" id="myForm">
+                @csrf
+                  <div class="form-group">
+                      <label for="exampleSelect1">Email :</label>
+                      <input type="email" class="form-control" id="inputMail" name="email" placeholder="Email">
+                      @error('email')
+                      <div class="text-danger" role="alert">
+                        {{ $message }}
+                      </div>
+                      @enderror
+                  </div>
+                  <div class="form-group">
+                      <label for="exampleSelect2">Marque :</label>
+                      <input type="text" class="form-control" id="inputMarque" name="marque" placeholder="Marque">
+                      @error('marque')
+                      <div class="text-danger" role="alert">
+                        {{ $message }}
+                      </div>
+                      @enderror
+                  </div>
+                  <div class="form-group">
+                      <label for="exampleSelect3">Model :</label>
+                      <input type="text" class="form-control" id="inputModele" name="model" placeholder="Model">
+                      @error('model')
+                      <div class="text-danger" role="alert">
+                        {{ $message }}
+                      </div>
+                      @enderror
+                  </div>
+                  <div class="form-group">
+                      <label for="exampleSelect4">Année :</label>
+                      <input type="number" class="form-control" name="annee" id="inputAnnee" placeholder="Année">
+                      @error('annee')
+                      <div class="text-danger" role="alert">
+                {{ $message }}
+              </div>
+              @enderror
+                  </div>
+                  <div class="form-group">
+                      <label for="exampleSelect5">Boite Vitesse :</label>
+                      <select name="boite" class="form-control" id="inputBoite">
+                        <option value="manuelle">Manuelle</option>
+                        <option value="automatique">Automatique</option>
+                          <!-- Ajoutez autant d'options que nécessaire -->
+                      </select>
+                  </div>
+                   <div class="form-group">
+                      <label for="exampleSelect5">Type de Carburant :</label>
+                      <select name="carburant" class="form-control" id="inputCarburant" >
+                          <option value="essence">Essance</option>
+                          <option value="diesel">Diesel</option>
+                          <option value="hybride">Hybride</option>
+                          <option value="electrique">Electrique</option>
+
+                          <!-- Ajoutez autant d'options que nécessaire -->
+                      </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleSelect5">Kilométrage :</label>
+                    <input name="kilometre" type="text" class="form-control" id="inputKilometre"  placeholder="Kilométrage">
+                    @error('kilometre')
+                    <div class="text-danger" role="alert">
+                      {{ $message }}
+                    </div>
+                    @enderror  </div>
+
+                {{-- <button type="submit" class="btn text-white valider-search-card mx-auto w-50">Valider</button> --}}
+                <button type="button" class="btn text-white valider-search-card mx-auto w-50" id="btn" >Valider</button>
+<div>
+  <h1 id="test"></h1>
+</div>
+              </form>
+          </div>
+          {{-- Modal --}}
+
+          {{-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> --}}
+            {{-- <div class="modal" id="responseModal" tabindex="-1" aria-labelledby="responseModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center id="staticBackdropLabel">Prix estimatif de votre voiture</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h1 class="text-center" id="modalPrix"></h1>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item" id="modalMarque"></li>
+                    <li class="list-group-item" id="modalModele"></li>
+                    <li class="list-group-item" id="modalAnnee"></li>
+                    <li class="list-group-item" id="modalBoite"></li>
+                    <li class="list-group-item" id="modalCarburant"></li>
+                    <li class="list-group-item" id="modalKilometre"></li>
+                  </ul>
+                </div>
+                <div class="modal-footer">
+
+
+                </div>
+              </div>
+            </div>
+
+        </div> --}}
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modalContent"></div>
+            </div>
+          </div>
+        <!-- Loading Modal -->
+<div id="loadingModal">
+    <div id="loadingSpinner"></div>
+</div>
+          {{-- Modal --}}
+          <div class="col-md-6 my-4 d-none d-lg-block ">
+              <div class="card border-0 ">
+                <div class="card-body">
+                    <div class="d-flex ">
+                        <legend class="mt-5 ">
+                          <strong>
+                          Découvrez gratuitement la valeur de votre véhicule
+                          </strong>
+                        </legend>
+                      </div>
+                    <img src="../images/Voitures 1.png" class=" car-hero-img" alt="...">
+                  </div>
+              </div>
+            </div>
+      </div>
+  </div>
+</section>
+
+<section class="notre-cote-auto">
+    <div class="container">
+      <div class="row align-items-center">
+          <div class="col-lg-6 col-sm-12">
+              <img src="{{ asset('/images/Plan de travail 2 1.png') }}" class="img-fluid car-hero" alt="...">
+          </div>
+          <div class="col-lg-6  bg-transparent col-sm-12">
+              <h5 class="card-title car-hero-title text-white fs-5">Notre cote auto, la référence</h5>
+              <ul class="list-group list-group-flush text-white ">
+                  <li class=" border-0   text-white  bg-transparent">Un argus gratuit et instantané   </li>
+                  <li class=" border-0   text-white  bg-transparent">20 millions d’estimations par an</li>
+                  <li class=" border-0  text-white  bg-transparent">Mise à jour en temps réel selon les évolutions du marché</li>
+                  <li class=" border-0  text-white  bg-transparent">Calculée grâce au modèle statistique de nos ingénieurs</li>
+                  <li class=" border-0  text-white  bg-transparent">And a fifth one</li>  </ul>
+          </div>
+
         </div>
-        <!-- Item 2 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{{asset('defaultimg/auto2.jpeg')}}"class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 3 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{{asset('defaultimg/auto3.jpeg')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-      
-      
     </div>
-    <!-- Slider indicators -->
-    <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-         </div>
-    <!-- Slider controls -->
-    <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-            </svg>
-            <span class="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-            </svg>
-            <span class="sr-only">Next</span>
-        </span>
-    </button>
+  </section>
+
+  <div id="carouselExampleIndicatorsmodel1" class="carousel slide" data-bs-ride="carousel">
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="d-flex " style="background-color: rgb(33, 32, 32)">
+            <div style="padding-right: 20px;
+                         padding-left: 20px;
+                        padding-top: 50px;
+                        padding-bottom: 50px;
+                       ;background-color: rgb(33, 32, 32)">
+                <img src="./images//logo/Logo BMW.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right: 20px;
+            padding-top: 50px;
+            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+                <img src="./images//logo/Logo Ford.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right: 20px;
+            padding-top: 50px;
+            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+
+                <img src="./images//logo/Logo Hyundai.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right: 20px;
+                        padding-top: 50px;
+                        padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+                <img src="./images//logo/Logo Jeep.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right:20px;
+            padding-top: 50px;
+            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+                <img src="./images//logo/Logo Mercedes Benz.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right: 20px;
+            padding-top: 50px;
+            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+                <img src="./images//logo/Logo Toyota.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right: 20px;
+                         padding-left: 20px;
+                        padding-top: 50px;
+                        padding-bottom: 50px;
+                       ;background-color: rgb(33, 32, 32)">
+                <img src="./images//logo/Logo BMW.png" class="img-fluid logo-car " alt="...">
+            </div>
+      </div>
+      </div>
+      <div class="carousel-item ">
+        <div class="d-flex " style="background-color: rgb(33, 32, 32)">
+            <div style="padding-right: 20px;
+                        padding-left: 20px;
+                        padding-top: 50px;
+                        padding-bottom: 50px;
+                       ;background-color: rgb(33, 32, 32)">
+                <img src="./images//logo/Logo BMW.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right: 20px;
+            padding-top: 50px;
+            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+                <img src="./images//logo/Logo Ford.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right: 20px;
+            padding-top: 50px;
+            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+
+                <img src="./images//logo/Logo Hyundai.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right: 20px;
+                        padding-top: 50px;
+                        padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+                <img src="./images//logo/Logo Jeep.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right:20px;
+            padding-top: 50px;
+            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+                <img src="./images//logo/Logo Mercedes Benz.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right: 20px;
+            padding-top: 50px;
+            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+                 <img src="./images//logo/Logo Nissan.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right: 20px;
+            padding-top: 50px;
+            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+
+                <img src="./images//logo/Logo Hyundai.png" class="img-fluid logo-car " alt="...">
+            </div>
+      </div>
+      </div>
+      <div class="carousel-item ">
+        <div class="d-flex " style="background-color: rgb(33, 32, 32)">
+            <div style="padding-right: 20px;
+                         padding-left: 20px;
+                        padding-top: 50px;
+                        padding-bottom: 50px;
+                       ;background-color: rgb(33, 32, 32)">
+                <img src="./images//logo/Logo Nissan.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right: 20px;
+            padding-top: 50px;
+            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+               <img src="./images//logo/Logo Peugeot.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right: 20px;
+            padding-top: 50px;
+            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+
+         <img src="./images//logo/Logo Range rover .png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right: 20px;
+                        padding-top: 50px;
+                        padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+                <img src="./images//logo/Logo Toyota.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right: 20px;
+                        padding-top: 50px;
+                        padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+                <img src="./images//logo/Logo Jeep.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right:20px;
+            padding-top: 50px;
+            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+                <img src="./images//logo/Logo Volkswagen.png" class="img-fluid logo-car " alt="...">
+            </div>
+            <div style="padding-right: 20px;
+            padding-top: 50px;
+            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+                <img src="./images//logo/Logo Mercedes Benz.png" class="img-fluid logo-car " alt="...">
+            </div>
+      </div>
+      </div>
+
+
+    </div>
+
+  </div>
+  <div class="d-grid gap-2  mx-auto  w-sm-100 m-4 justify-content-center">
+    <a class="btn btn-primary  rounded-pill bg-light text-black m-t-5 " href="#" role="button">VOIR TOUTES LES MARQUES</a>
+
   </div>
 
-  <div class="flex justify-center items-center mt-5 containe " style="background-color: rgba(47, 48, 47, 0.082)">
-    
+  {{-- vos Avsi --}}
+  <section class="vos-avis">
+    <div class="container ">
+      <h5 class="text-white text-center m-5 text-uppercase fs-2">VOS AVIS NOUS IMPORTENT</h5>
 
-   
-    <div class="row">
-        <div class="col-md-7">
-            <div class="flex justify-center items-center mt-5 ">
-                <span class="text-lg font-semibold text-center whitespace-nowrap dark:text-white m-8">
-            	<p class="">vendre sa voiture simplement Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>
-                    Reprehenderit quia sequi et assumenda? Laborum autem, quisquam minus ipsam <br/>
-                    sunt officia dignissimos aliquam, maxime saepe blanditiis obcaecati, earum a assumenda in!</p>
-                </span>
-            </div>
-            
-            <div class="flex justify-center items-center  ">
-                <span class="text-lg font-semibold text-center whitespace-nowrap dark:text-white m-8">
-            	
-                   <a type="button" class="bg-primary text-white p-3 rounded-3xl hover:bg-black" href="{{route('evaluation.index')}}">Estimez le prix de votre voiture</a>
-                </span>
-            </div>
-        </div>
-        <div class="col-md-5 mt-5 flex justify-end items-center ">
-        <img src="{{asset('defaultimg/carimg.png')}}" alt=""  class="img-fluid" >
-        </div>
-    </div>
-  </div>
 
-<hr>
-<div class="flex justify-center items-center " style="background-color: rgba(47, 48, 47, 0.082)">
-    <span class="text-lg font-semibold text-center whitespace-nowrap dark:text-white m-8">
-        Recherche
-    </span>
-</div>
-     <div class="d-flex container-fluid justify-content-center" style="background-color: rgba(47, 48, 47, 0.082)">
-      <div class=" row p-2 ">
-       
-     
-        <form class=" " action="{{route('voiture.search')}}" method="get">
-          <div class="row">
-            <div class="col-md-3"></div>
-          <div class="form-group col-md-6 mb-3 flex-1 justify-content-center">
-                   
-            <input class="form-control" placeholder="recherche" type="text"value="{{Request::get('search')}}" name="search">
-           
+                {{-- @include('avis') --}}
+      <iframe src="{{ url('/avis') }}"  style="width: 100%; height: 400px;   overflow: unset;"></iframe>
+
+
+
+      </div>
+
+  
+  </section>
+{{-- vos avis --}}
+
+  {{-- vos Avsi --}}
+
+  {{-- FAQ --}}
+  <section>
+
+    <div class="container faq">
+    <div class="card-body card-faq">
+      <h5 class="card-title text-white text-center m-5">FAQ</h5>
+
+      <p >
+        <p class="form-select form-select-lg mb-3 " data-bs-toggle="collapse" href="#niata" role="button" aria-expanded="false" aria-controls="collapseExample">
+          Qu’est-ce que NIATA ?
+        </p>
+      </p>
+        <div class="collapse" id="niata">
+          <div class="card card-body bg-black text-white">
+            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
           </div>
-          <div class="col-md-3"></div>
+        </div>
+        <p >
+          <p class="form-select form-select-lg mb-3" data-bs-toggle="collapse" href="#nouvelle-voiture" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Pourquoi utiliser NIATA pour acheter sa nouvelle voiture ?
+          </p>
+        </p>
+          <div class="collapse" id="nouvelle-voiture">
+            <div class="card card-body bg-black text-white">
+              Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+            </div>
           </div>
-            <div class="row">
+          <p >
+            <p class="form-select form-select-lg mb-3" data-bs-toggle="collapse" href="#type-voiture" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Quels types de voitures puis-je trouver sur NIATA ?
+            </p>
+          </p>
+            <div class="collapse" id="type-voiture">
+              <div class="card card-body bg-black text-white">
+                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+              </div>
+            </div>
+            <p >
+              <p class="form-select form-select-lg mb-3" data-bs-toggle="collapse" href="#concessionnaires" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Avec quels concessionnaires travaillez-vous ?
+              </p>
+            </p>
+              <div class="collapse" id="concessionnaires">
+                <div class="card card-body bg-black text-white">
+                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+              </div>
+              <p >
+                <p class="form-select form-select-lg mb-3" data-bs-toggle="collapse" href="#modèlepersonnalisé" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  Est-il possible de demander un modèle personnalisé par l’intermédiaire de NIATA ?
+                </p>
+              </p>
+                <div class="collapse" id="modèlepersonnalisé">
+                  <div class="card card-body bg-black text-white">
+                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                  </div>
+                </div>
+                <p >
+                  <p class="form-select form-select-lg mb-3" data-bs-toggle="collapse" href="#questions" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Avez-vous d’autres questions ?
+                  </p>
+                </p>
+                  <div class="collapse" id="questions">
+                    <div class="card card-body bg-black text-white">
+                      Consultez notre  pour connaître plus d'informations sur nos services.
+                    </div>
+                  </div>
+      </p>
+    </div>
+    </div>
+  </section>
 
-             
+  {{-- FAQ --}}
 
-                <div class="form-group col-md-2 mb-3">
-                   
-                    <input class="form-control" placeholder="année" type="number"value="{{Request::get('annee')}}"name="annee">
-                   
-                  </div>
-                  <div class="form-group col-md-2 mb-3">
-                    <select name="boite" class="form-control">
-                      <option value="">Type de boite</option>
-                        @foreach ( $rechercher as $boi)
-                      <option value="{{ $boi->boite}}"  {{Request::get('boite')==$boi->boite ? 'selected' : ''}}>{{$boi->boite}}</option>
-                      @endforeach  
-                      
-                    </select>
-                   
-                  </div>
-                  <div class="form-group col-md-2 mb-3">
-                    <select name="moteur" class="form-control">
-                      <option value="">Type de moteur</option>
-                        @foreach ( $rechercher as $voitured)
-                      <option value="{{ $voitured->moteur}}"  {{Request::get('moteur')==$voitured->moteur ? 'selected' : ''}}>{{$voitured->moteur}}</option>
-                      @endforeach  
-                      
-                    </select>
-                   
-                  </div>
-                  <div class="form-group col-md-2 mb-3">
-                    <select name="marque" class="form-control">
-                      <option value="">Tout les marques</option>
-                        @foreach ( $rechercher as $voitured)
-                      <option value="{{ $voitured->marque}}"  {{Request::get('marque')==$voitured->marque ? 'selected' : ''}}>{{$voitured->marque}}</option>
-                      @endforeach  
-                      
-                    </select>
-                   
-                  </div>
-                  <div class="form-group col-md-2 mb-3">
-                    <select name="modele" class="form-control">
-                      <option value="">Tout les model</option>
-                      @foreach ( $rechercher as $voitured)
-                    <option value="{{ $voitured->modele}}" {{Request::get('modele')==$voitured->modele ? 'selected' : ''}}>{{$voitured->modele}}</option>
-                    @endforeach   
-                  </select>
-                   
-                  </div>
-                  <div class="form-group col-md-2 mb-3">
-                    <button type="submit" class="btn bg-sky-500" 
-                    > <i class="fas fa-search">recherche</i></button>
-                   
-                  </div>
+     {{-- newletter--}}
+      <div class="bg-light w-100">
+      <div class="container bg-light container-newsletter ">
+        <div class="row   p-5">
+            <div class="col-lg-6 col-sm-12  bg-transparent ">
+                <h5 class="card-title car-hero-title text-black ">Abonnez-vous maintenant à notre newsletter</h5>
+              <p class=" text-black">Obtenez des conseils exclusifs d'experts sur les voitures</p>
+              <form class="d-flex flex-row">
 
-                   <div class="row">
-            <div class="col-md-3"></div>
-          {{-- <div class="form-group col-md-6 mb-3 flex-1 justify-content-center">
-                   
-            <input class="form-control" placeholder="recherche" type="text"value="{{Request::get('search')}}" name="search">
-           
-          </div> --}}
-          <div class="col-md-3"></div>
+
+                    <div class="col-auto w-50 email-newsletter ">
+                      <label for="inputPassword2" class="visually-hidden">Password</label>
+                      <input type="email" class="form-control rounded-pill  " id="inputPassword2" placeholder="Votre adresse mail">
+                    </div>
+                    <div class="col-auto inscrir-newsletter">
+                      <button type="submit" class="btn btn-primary mb-3 rounded-pill">S’inscrire</button>
+                    </div>
+                  </form>
+                  <p class="">Lors de l'inscription, vous acceptez les <a href="">conditions générales</a> ainsi que la <a href="">déclardéclaration de confidentialité</a>.</p>
+
+            </div>
+            <div class="col-lg-6 col-sm-12 ">
+                <img src="../images/Plan de travail 32 1.png" class="img-fluid car-hero" alt="...">
+            </div>
+
+
           </div>
-
-            </div>
-               
-          </form>
-        </div>
-          
-       
-     </div> 
-  <div class="flex justify-center items-center mt-5 " style="background-color: rgba(47, 48, 47, 0.082)">
-    <span class="text-lg font-semibold text-center whitespace-nowrap dark:text-white m-8">
-        Nos Offres les plus récentes
-    </span>
-</div>
-{{-- @foreach (
-$voiture as $v )
-    
-
-<div class="card" style="width: 18rem;">
-    <img src="{{ asset('voiture/'.$v->image) }}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-  @endforeach --}}
-
-  <div class="container-fluide">
-    <div class="row">
-    <div class="col-md-1"> </div>
-    <div class="col-md-10 mt-9">
-        <div class="row">
-        @foreach ($voiture as $v)
-    <div class="w-96 m-4  bg-white rounded-3xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
-        <!-- Image -->
-        <img class="h-72 w-full object-cover rounded-3xl"  src="{{ asset('voiture/'.$v->image) }}" alt="">
-        <div class="">
-           <div class="row">
-            <div class="col-md-6 mt-2">
-                 <!-- Heading -->
-            <span class=" text-sm rounded-full p-1">Marque </span>
-            <h5 class="font-bold mb-4">{{ $v->marque }}</h5>
-            <span class=" text-sm  rounded-full p-1">Model </span>
-            <h5 class="font-bold mb-4">{{ $v->modele }}</h5>
-            <!-- Description -->
-            </div>
-            <div class="col-md-6  mt-2">
-                <!-- Heading -->
-           <span class=" text-sm rounded-full p-1">Moteur </span>
-           <h5 class="font-bold mb-4">{{ $v->moteur }}</h5>
-           <span class=" text-sm ounded-full p-1">Boite </span>
-           <h5 class="font-bold mb-4">{{ $v->boite }}</h5>
-           <!-- Description -->
-           </div>
-           </div>
-           <div class="d-flex justify-content-center">
-               <span class="font-bold text-white bg-sky-500 rounded-full p-1">{{ $v->prix }} FCFA</span> 
-           </div>
-           
-        </div>
-        <!-- CTA -->
-        <div class="m-8">
-            <a role="button" href="{{route('voiture.show', $v->id)}}" class="text-white bg-sky-500 px-5 py-3 rounded-full hover:bg-purple-700"><i class="fas fa-eye" style="color: rgb(255, 255, 255) ;width: 30px;height: 30px, display: flex; flex-direction: column;"></i></a>
-        </div>
-    </div>
-    
-    
-    
-        
-        @endforeach
-    </div>
-        </div>
-        <div class="col-md-1"> </div>
-    </div>
-    </div>
+      </div>
+   </div>
 
 
-<div class="flex justify-center items-center mt-5 " style="background-color: rgba(47, 48, 47, 0.082)" >
-    <h1 class=" text-2xl font-semibold text-center whitespace-nowrap dark:text-white m-8">
-        Les Dernier article
-    </h1>
-</div>
-    <div class="container-fluide">
-        <div class="row">
-        <div class="col-md-1"> </div>
-        <div class="col-md-10 mt-9">
-            <div class="row">
-            @foreach ($blog as $blog)
-        <div class="w-96 m-4  bg-white rounded-3xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
-            <!-- Image -->
-            <img class="h-72 w-full object-cover rounded-3xl" src="{{ asset('blog/'.$blog->image) }}" alt="">
-            <div class="m-2">
-                <!-- Heading -->
-                <h2 class="font-bold text-2xl mb-4">{{$blog->titre}}</h2>
-                <!-- Description -->
-                <p class="text-lg text-gray-600">{{ Str::limit(htmlspecialchars_decode(strip_tags($blog->content)), 200) }}</p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+  <script>
+
+
+
+   let btn = document.getElementById("btn");
+    var openModalBtn = document.getElementById('openModalBtn');
+  var modal = document.getElementById('myModal');
+  var modalContent = document.getElementById('modalContent');
+  var closeModal = document.getElementsByClassName('close')[0];
+  var loadingModal = document.getElementById('loadingModal');
+
+btn.addEventListener("click", function (e) {
+e.preventDefault();
+    console.log(btn);
+    loadingModal.style.display = 'block';
+    // modal.style.display = 'block';
+
+    let inputmail = document.getElementById("inputMail").value;
+    let inputmarque = document.getElementById("inputMarque").value;
+    let inputmodele = document.getElementById("inputModele").value;
+    let inputboite = document.getElementById("inputBoite").value;
+    let inputcarburant = document.getElementById("inputCarburant").value;
+    let inputannee = document.getElementById("inputAnnee").value;
+    let inputkilometrage = document.getElementById("inputKilometre").value;
+    let marque=document.getElementById("modalmarque");
+    let model=document.getElementById("modalmodele");
+    let boite=document.getElementById("modalboite");
+    let carburant=document.getElementById("modalcarburant");
+    let annee=document.getElementById("modalannee");
+
+    axios.post('/evaluation/voiture', {
+        marque: inputmarque,
+        model: inputmodele,
+        annee: inputannee,
+        kilometre: inputkilometrage,
+        carburant: inputcarburant,
+        boite: inputboite,
+        email: inputmail,
+    })
+    .then(response => {
+        // console.log(response.data);
+        let rs=response.data;
+          console.log(rs.success);
+          if(rs.success==false) {
+            modalContent.innerHTML = `<div class="alert alert-danger" role="alert">le type de voiture n'est pas encore disponible dans la base de donnée</div>`;
+          }else{
+
+
+          let prix=rs.data.prix;
+          let marque=rs.data.marque;
+          let modele=rs.data.modele;
+          let boite=rs.data.boite;
+          let carburant=rs.data.carburant;
+          let annee=rs.data.annee;
+
+          modalContent.innerHTML = `
+
+        <span class="text-center" id="responseModalLabel">Prix estimatif de votre voiture est: <strong>${prix} Fr</strong> </span>
+            <div >
+                <span class="text-bold" id="modalMarque">Marque: <strong>${marque}</strong></span>
             </div>
-            <!-- CTA -->
-            <div class="m-8">
-                <a role="button" href="{{route('blog.show', $blog->id)}}" class="text-white bg-sky-500 px-5 py-3 rounded-full hover:bg-purple-700"><i class="fas fa-eye" style="color: rgb(255, 255, 255) ;width: 30px;height: 30px, display: flex; flex-direction: column;"></i></a>
+            <div>
+                <span  id="modalModele">Modele: <strong>${modele}</strong></span>
             </div>
-        </div>
-        
-        
-        
-            
-            @endforeach
-        </div>
+            <div>
+                <span id="modalAnnee">Année: <strong>${annee}</strong></span>
             </div>
-            <div class="col-md-1"> </div>
-        </div>
-        </div>
+            <div>
+                <span  id="modalBoite">Boite: <strong>${boite}</strong></span>
+            </div>
+            <div>
+                <span  id="modalCarburant">Carburant: <strong>${carburant}</strong></span>
+            </div>
+            <div>
+                <span  id="modalKilometre">Kilometrage: <strong>${inputkilometrage}</strong></span>
+            </div>
+            <div>
+                <span  id="modalKilometre" class="text-center bg-success"><strong>un email vous sera envoyé avec plus de détails</strong></span>
+            </div>
+        `
+    }
+
+        // Afficher le modal
+        modal.style.display = 'block';
+        loadingModal.style.display = 'none';
+        // console.log(prix);
+    })
+    .catch(error => {
+        modalContent.innerHTML = `<div class="alert alert-danger" role="alert">
+            'Une erreur est survenue : <strong>Les données ne sont pas valides </strong>;</div>`
+        // Afficher le modal
+        modal.style.display = 'block';
+        loadingModal.style.display = 'none';
+
+        console.error('Erreur lors de l\'envoi des données :', error);
+    });
+
+});
+ closeModal.addEventListener('click', function () {
+    // Fermer le modal
+    modal.style.display = 'none';
+  });
+//   fonction maFonctionApresChargement(){
+//             modal.style.display = 'block';
+//           }
+//     window.onload = maFonctionApresChargement;
+</script>
 
 
 @endsection
