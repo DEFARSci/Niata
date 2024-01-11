@@ -14,7 +14,7 @@
 
       <div class="carousel-item r active">
         <div class="img-area">
-            <img src="./images/logo/Logo Range rover .png" alt="ranger rover">
+            <img src="{{ asset('defaultimg/images/logo/Logo Range rover .png') }}" alt="ranger rover">
         </div>
         <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus veritatis repellendus delectus, est, alias recusandae."</p>
                 <h4>issa Jones</h4>
@@ -23,7 +23,8 @@
         </div>
       <div class="carousel-item r">
         <div class="img-area">
-            <img src="./images/logo/Logo Range rover .png" alt="ranger rover">
+            <img src="{{ asset('defaultimg/images/logo/Logo Range rover .png') }}" alt="ranger rover">
+
         </div>
         <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus veritatis repellendus delectus, est, alias recusandae."</p>
                 <h4>issa Jones</h4>

@@ -16,7 +16,7 @@
         <div class="carousel-item r" href="#">
             <div class="testi">
                 <div class="img-area">
-                    <img src="./images/logo/Logo Range rover .png" alt="ranger rover">
+                    <img src="{{ asset('defaultimg/images/logo/Logo Toyota.png') }}" alt="ranger rover">
                 </div>
                 <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus veritatis repellendus delectus, est, alias recusandae."</p>
                 <h4>issa Jones</h4>
@@ -26,7 +26,7 @@
         <div class="carousel-item r" href="#">
             <div class="testi">
                 <div class="img-area">
-                    <img src="./images/logo/Logo Nissan.png" alt="bmw">
+                    <img src="{{ asset('defaultimg/images/logo/Logo Toyota.png') }}" alt="ranger rover">
                 </div>
                 <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus veritatis repellendus delectus, est, alias recusandae."</p>
                 <h4>Jessica Jones</h4>
@@ -36,7 +36,8 @@
         <div class="carousel-item r" href="#">
             <div class="testi">
                 <div class="img-area">
-                    <img src="./images/logo/Logo Peugeot.png" alt="peugeot">
+                    <img src="{{ asset('defaultimg/images/logo/Logo Toyota.png') }}" alt="ranger rover">
+
                 </div>
                 <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus veritatis repellendus delectus, est, alias recusandae."</p>
                 <h4>moussa Jones</h4>
@@ -46,7 +47,8 @@
         <div class="carousel-item r" href="#">
             <div class="testi">
                 <div class="img-area">
-                    <img src="./images//logo/Logo Mercedes Benz.png" alt="mercedes">
+                    <img src="{{ asset('defaultimg/images/logo/Logo Range rover .png') }}" alt="ranger rover">
+
                 </div>
                 <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus veritatis repellendus delectus, est, alias recusandae."</p>
                 <h4>ibou Jones</h4>
@@ -56,7 +58,8 @@
         <div class="carousel-item r" href="#">
             <div class="testi">
                 <div class="img-area">
-                    <img src="./images//logo/Logo Mercedes Benz.png" alt="mercedes">
+            <img src="{{ asset('defaultimg/images/logo/Logo Range rover .png') }}" alt="ranger rover">
+
                 </div>
                 <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus veritatis repellendus delectus, est, alias recusandae."</p>
                 <h4>ibou Jones</h4>

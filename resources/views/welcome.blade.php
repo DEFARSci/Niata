@@ -148,7 +148,7 @@
                           </strong>
                         </legend>
                       </div>
-                    <img src="../images/Voitures 1.png" class=" car-hero-img" alt="...">
+                    <img src="{{ asset('defaultimg/images/Voitures 1.png') }}" class=" car-hero-img" alt="...">
                   </div>
               </div>
             </div>
@@ -160,7 +160,7 @@
     <div class="container">
       <div class="row align-items-center">
           <div class="col-lg-6 col-sm-12">
-              <img src="{{ asset('/images/Plan de travail 2 1.png') }}" class="img-fluid car-hero" alt="...">
+              <img src="{{ asset('defaultimg/images/Plan de travail 2 1.png') }}" class="img-fluid car-hero" alt="...">
           </div>
           <div class="col-lg-6  bg-transparent col-sm-12">
               <h5 class="card-title car-hero-title text-white fs-5">Notre cote auto, la référence</h5>
@@ -186,40 +186,40 @@
                         padding-top: 50px;
                         padding-bottom: 50px;
                        ;background-color: rgb(33, 32, 32)">
-                <img src="./images//logo/Logo BMW.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo BMW.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right: 20px;
             padding-top: 50px;
             padding-bottom: 50px; background-color: rgb(33, 32, 32)">
-                <img src="./images//logo/Logo Ford.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo Ford.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right: 20px;
             padding-top: 50px;
             padding-bottom: 50px; background-color: rgb(33, 32, 32)">
 
-                <img src="./images//logo/Logo Hyundai.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo Hyundai.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right: 20px;
                         padding-top: 50px;
                         padding-bottom: 50px; background-color: rgb(33, 32, 32)">
-                <img src="./images//logo/Logo Jeep.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo Jeep.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right:20px;
             padding-top: 50px;
             padding-bottom: 50px; background-color: rgb(33, 32, 32)">
-                <img src="./images//logo/Logo Mercedes Benz.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo Mercedes Benz.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right: 20px;
             padding-top: 50px;
             padding-bottom: 50px; background-color: rgb(33, 32, 32)">
-                <img src="./images//logo/Logo Toyota.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo Toyota.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right: 20px;
                          padding-left: 20px;
                         padding-top: 50px;
                         padding-bottom: 50px;
                        ;background-color: rgb(33, 32, 32)">
-                <img src="./images//logo/Logo BMW.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo BMW.png') }}" class="img-fluid logo-car " alt="...">
             </div>
       </div>
       </div>
@@ -230,39 +230,39 @@
                         padding-top: 50px;
                         padding-bottom: 50px;
                        ;background-color: rgb(33, 32, 32)">
-                <img src="./images//logo/Logo BMW.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo BMW.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right: 20px;
             padding-top: 50px;
             padding-bottom: 50px; background-color: rgb(33, 32, 32)">
-                <img src="./images//logo/Logo Ford.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo Ford.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right: 20px;
             padding-top: 50px;
             padding-bottom: 50px; background-color: rgb(33, 32, 32)">
 
-                <img src="./images//logo/Logo Hyundai.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo Hyundai.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right: 20px;
                         padding-top: 50px;
                         padding-bottom: 50px; background-color: rgb(33, 32, 32)">
-                <img src="./images//logo/Logo Jeep.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo Jeep.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right:20px;
             padding-top: 50px;
             padding-bottom: 50px; background-color: rgb(33, 32, 32)">
-                <img src="./images//logo/Logo Mercedes Benz.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo Toyota.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right: 20px;
             padding-top: 50px;
             padding-bottom: 50px; background-color: rgb(33, 32, 32)">
-                 <img src="./images//logo/Logo Nissan.png" class="img-fluid logo-car " alt="...">
+                 <img src="{{ asset('defaultimg/images/logo/Logo Nissan.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right: 20px;
             padding-top: 50px;
             padding-bottom: 50px; background-color: rgb(33, 32, 32)">
 
-                <img src="./images//logo/Logo Hyundai.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo Range rover .png') }}" class="img-fluid logo-car " alt="...">
             </div>
       </div>
       </div>
@@ -273,38 +273,38 @@
                         padding-top: 50px;
                         padding-bottom: 50px;
                        ;background-color: rgb(33, 32, 32)">
-                <img src="./images//logo/Logo Nissan.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo Nissan.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right: 20px;
             padding-top: 50px;
             padding-bottom: 50px; background-color: rgb(33, 32, 32)">
-               <img src="./images//logo/Logo Peugeot.png" class="img-fluid logo-car " alt="...">
+               <img src="{{ asset('defaultimg/images/logo/Logo Peugeot.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right: 20px;
             padding-top: 50px;
             padding-bottom: 50px; background-color: rgb(33, 32, 32)">
 
-         <img src="./images//logo/Logo Range rover .png" class="img-fluid logo-car " alt="...">
+         <img src="{{ asset('defaultimg/images/logo/Logo Range rover .png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right: 20px;
                         padding-top: 50px;
                         padding-bottom: 50px; background-color: rgb(33, 32, 32)">
-                <img src="./images//logo/Logo Toyota.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo Toyota.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right: 20px;
                         padding-top: 50px;
                         padding-bottom: 50px; background-color: rgb(33, 32, 32)">
-                <img src="./images//logo/Logo Jeep.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo Jeep.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right:20px;
             padding-top: 50px;
             padding-bottom: 50px; background-color: rgb(33, 32, 32)">
-                <img src="./images//logo/Logo Volkswagen.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo Volkswagen.png') }}" class="img-fluid logo-car " alt="...">
             </div>
             <div style="padding-right: 20px;
             padding-top: 50px;
             padding-bottom: 50px; background-color: rgb(33, 32, 32)">
-                <img src="./images//logo/Logo Mercedes Benz.png" class="img-fluid logo-car " alt="...">
+                <img src="{{ asset('defaultimg/images/logo/Logo Mercedes Benz.png') }}" class="img-fluid logo-car " alt="...">
             </div>
       </div>
       </div>
@@ -433,7 +433,7 @@
 
             </div>
             <div class="col-lg-6 col-sm-12 ">
-                <img src="../images/Plan de travail 32 1.png" class="img-fluid car-hero" alt="...">
+                <img src="{{ asset('defaultimg/images/Plan de travail 32 1.png') }}" class="img-fluid car-hero" alt="...">
             </div>
 
 
