@@ -140,8 +140,37 @@
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                   </div>
+                  <div class="form-group col-md-4">
+                    <label for="titre">Estimation tranmission</label>
+                    <input type="number" class="form-control" id="titre" name="estimationTransmission" value="{{old('estimationTransmission')}}">
+                    @error('estimationTransmission')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="titre">Estimation carburant</label>
+                    <input type="number" class="form-control" id="titre" name="estimationCarburant" value="{{old('estimationCarburant')}}">
+                    @error('estimationCarburant')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                  </div>
                 </div>
-
+                <div class="row p-3 m-3">
+                    <div class="form-group col-md-4">
+                      <label for="titre">Estimation kilometrage</label>
+                      <input type="number" step="0.0001" class="form-control" id="titre" name="estimationKm" value="{{old('estimationKm')}}">
+                      @error('estimationKm')
+                      <div class="text-danger">{{ $message }}</div>
+                      @enderror
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="prix_conteur_0km">Prix à Zéro kilometrage</label>
+                        <input type="number"  class="form-control" id="prix_conteur_0km" name="prix_conteur_0km" value="{{old('prix_conteur_0km')}}">
+                        @error('prix_conteur_0km')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                      </div>
+                  </div>
 
                 <button type="submit " class="btn btn-primary mt-4">Ajouter</button>
               </form>

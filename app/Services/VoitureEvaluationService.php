@@ -5,72 +5,69 @@ use App\Models\Evaluation;
 
 class VoitureEvaluationService{
 
-    public function VoitureEvaluation(Evaluation $evaluation , $distanceParcourue, $age, $transmission, $carburant){
+    public function VoitureEvaluation(Evaluation $evaluation , $distanceParcourue, $transmission, $carburant){
 
             // Ajustement en fonction de la distance parcourue
             $prixInitialrecup=$evaluation->prix;
             $carburantrecup = $evaluation->type_carburant;
             $boiterecup = $evaluation->boite;
             $kilometrerecup = $evaluation->kilometrage;
-            $anneerecup=$evaluation->annee;
-            
-            $ajustementDistance = 0;
+            // $anneerecup=$evaluation->annee;
+        $prixcalcul=0;
+
             $differenceKilometrage = $kilometrerecup - $distanceParcourue;
 
 if ($differenceKilometrage == 0) {
     // Si la différence est comprise entre -1000 et 1000, aucune modification
-    $ajustementDistance = 0;
 
-} elseif ($differenceKilometrage >= 1000) {
-
-    $ajustementDistance = intval($differenceKilometrage/1000) * 50000;
-
-} elseif($differenceKilometrage <= -1000 ) {
-
-    $ajustementDistance = intval($differenceKilometrage/1000) * 50000;
+    $prixcalcul=$prixInitialrecup;
+} else{
+    $prixcalcul=$evaluation->estimationKm *$distanceParcourue + $evaluation->prix_conteur_0km;
 }
         // dd($ajustementDistance);
             // Ajustement en fonction de l'âge
-            $ajustementAge = 0;
-            if ($anneerecup-$age>0 ) {
-                $ajustementAge =($anneerecup-$age)* -75000;
+            // $ajustementAge = 0;
+            // if ($anneerecup-$age>0 ) {
+            //     $ajustementAge =($anneerecup-$age)* -75000;
 
-            } elseif ($anneerecup-$age <0) {
-                $ajustementAge = ($anneerecup-$age)* -75000;
-            }elseif ($anneerecup == $age) {
-                $ajustementAge = 0;
-            }
-        
+            // } elseif ($anneerecup-$age <0) {
+            //     $ajustementAge = ($anneerecup-$age)* -75000;
+            // }elseif ($anneerecup == $age) {
+            //     $ajustementAge = 0;
+            // }
+
             // Ajustement en fonction du type de carburant
-            $ajustementCarburant = 0;
+             $ajustementCarburant = 0;
             if (strtolower($carburant) == strtolower($carburantrecup)) {
                 $ajustementCarburant = 0;
-            } elseif (strtolower($carburant) == "diesel" && strtolower($carburantrecup) == "essence"){ 
-                $ajustementCarburant = 50000;
+            } elseif (strtolower($carburant) == "diesel" && strtolower($carburantrecup) == "essence"){
+                $ajustementCarburant = $evaluation->estimationCarburant;
             } elseif (strtolower($carburant) == "essence" && strtolower($carburantrecup) == "diesel"){
-                $ajustementCarburant = -50000;
+                $ajustementCarburant = -$evaluation->estimationCarburant;
             }
-        
+
             // Ajustement en fonction du type de transmission
             $ajustementTransmission = 0;
             if (strtolower($transmission) == strtolower($boiterecup)) {
                 $ajustementTransmission = 0;
+
             } elseif (strtolower($transmission) == "manuelle" && strtolower($boiterecup) == "automatique") {
-                $ajustementTransmission = -100000;
+                $ajustementTransmission = $evaluation->estimationTransmission;
             }elseif(strtolower($transmission) == "automatique" && strtolower($boiterecup) == "manuelle"){
-                $ajustementTransmission = 100000;
+                $ajustementTransmission = -$evaluation->estimationTransmission;
             }
-        
+
             // Calcul du prix final après ajustements
-            $prixFinal = $prixInitialrecup + $ajustementDistance + $ajustementAge + $ajustementCarburant + $ajustementTransmission;
-        return $prixFinal;
-            // return  ['prix'=> $prixFinal, 
+            $prixFinal = $prixcalcul  + $ajustementCarburant + $ajustementTransmission;
+         return  $prixFinal;
+
+            // return  ['prix'=> $prixFinal,
             //          'distance'=> $distanceParcourue,
             //          'age'=> $age,
             //          'transmission'=> $transmission,
             //          'carburant'=> $carburant,
             //          'boite'=> $boiterecup,
-            //          'kilometrage'=> $kilometrerecup, 
+            //          'kilometrage'=> $kilometrerecup,
             //          'annee'=> $anneerecup,
             //          'ajustementDistance'=> $ajustementDistance,
             //          'ajustementAge'=> $ajustementAge,
@@ -79,11 +76,11 @@ if ($differenceKilometrage == 0) {
 
             //         ];
         }
-        
 
-        
-       
-  
+
+
+
+
 
 
 

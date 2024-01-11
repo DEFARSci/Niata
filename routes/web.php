@@ -79,5 +79,8 @@ Route::delete('/evaluation/delete/{id}', [EvaluationController::class, 'destroy'
 Route::get('/evaluation/edit/{id}', [EvaluationController::class, 'edit'])->name('evaluation.edit');
 Route::post('/evaluation/update', [EvaluationController::class, 'update'])->name('evaluation.update');
 
+//input dynamique
+Route::get('/getModels/{marque}', [EvaluationController::class, 'models'])->name('input.model');
+// Route::get('/getannee/{model}', [EvaluationController::class, 'annee'])->name('input.annee');
 
 require __DIR__.'/auth.php';

@@ -17,7 +17,7 @@ class EvaluationController extends Controller
 
     public function voiture(Request $request){
 
-       // dd($request->all());
+        // dd($request->all());
 
         setlocale(LC_TIME, 'fr_FR');
 
@@ -36,14 +36,15 @@ class EvaluationController extends Controller
         $voitureEvaluation=DB::table('evaluations')
                            ->where('marque','like','%'.$data['marque'].'%')
                            ->Where('modele','like','%'.$data['model'].'%')
+                           ->Where('annee','=',$data['annee'])
                            ->first();
-
+                // dd($voitureEvaluation);
             if ($voitureEvaluation==null) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Voiture non disponible',
                 ]);
-                ;
+
 
             }
         $voiturerecup=new Evaluation();
@@ -55,10 +56,14 @@ class EvaluationController extends Controller
             $voiturerecup->type_carburant=$voitureEvaluation->type_carburant;
             $voiturerecup->boite=$voitureEvaluation->boite;
             $voiturerecup->prix=$voitureEvaluation->prix;
+            $voiturerecup->estimationCarburant=$voitureEvaluation->estimationCarburant;
+            $voiturerecup->estimationKm=$voitureEvaluation->estimationKm;
+            $voiturerecup->estimationTransmission=$voitureEvaluation->estimationTransmission;
+            $voiturerecup->prix_conteur_0km=$voitureEvaluation->prix_conteur_0km;
         // }
-    //    dd($voiturerecup);
+        //   dd($voiturerecup);
 
-        $prixestimatif=(new VoitureEvaluationService)->VoitureEvaluation($voiturerecup,$data['kilometre'],$data['annee'],$data['carburant'],$data['boite']);
+        $prixestimatif=(new VoitureEvaluationService)->VoitureEvaluation($voiturerecup,$data['kilometre'],$data['boite'],$data['carburant']);
 
 
         $mail_data=[
@@ -72,8 +77,9 @@ class EvaluationController extends Controller
             'boite'=>$data['boite'],
             'subject'=>'Evaluation prix voiture',
             'recipient'=>'admin@niata.com',
-            'date'=>Carbon::now()->formatLocalized('%A %d %B'),
         ];
+        //  dd($mail_data);
+
 
         Mail::send('mail.evaluation',$mail_data,function($message)use($mail_data){
             $message->to($mail_data['email'])
@@ -81,13 +87,15 @@ class EvaluationController extends Controller
                     ->subject($mail_data['subject']);
         });
     //   return view('evaluation.evaluation',$mail_data)->with('success','Evaluation enregistrée avec succès un email vous sera envoyer');
-            $data=[
-                'data'=>$mail_data
-            ];
+        //     $data=[
+        //         'data'=>$mail_data
+        //     ];
           return response()->json([
               'success' => true,
-              'data' => $mail_data
+              'data'=>$mail_data
+
           ]);
+        // return response()->json($mail_data);
 
     }
 
@@ -104,6 +112,10 @@ class EvaluationController extends Controller
             'prix'=>'required',
             'type_carburant'=>'required',
             'boite'=>'required',
+            'estimationCarburant'=>'required',
+            'estimationKm'=>'required',
+            'estimationTransmission'=>'required',
+            'prix_conteur_0km'=>'required',
         ]);
         $voitureEvaluation=new Evaluation();
         $voitureEvaluation->marque=$request->marque;
@@ -113,6 +125,11 @@ class EvaluationController extends Controller
         $voitureEvaluation->type_carburant=$request->type_carburant;
         $voitureEvaluation->boite=$request->boite;
         $voitureEvaluation->prix=$request->prix;
+        $voitureEvaluation->estimationCarburant=$request->estimationCarburant;
+        $voitureEvaluation->estimationKm=$request->estimationKm;
+        $voitureEvaluation->estimationTransmission=$request->estimationTransmission;
+        $voitureEvaluation->prix_conteur_0km=$request->prix_conteur_0km;
+
         $voitureEvaluation->save();
         return back()->with('success','Evaluation enregistrée avec succès');
     }
@@ -144,10 +161,21 @@ class EvaluationController extends Controller
         $voiture->type_carburant=$request->type_carburant;
         $voiture->boite=$request->boite;
         $voiture->prix=$request->prix;
+        $voiture->estimationCarburant=$request->estimationCarburant;
+        $voiture->estimationKm=$request->estimationKm;
+        $voiture->estimationTransmission=$request->estimationTransmission;
+        $voiture->prix_conteur_0km=$request->prix_conteur_0km;
         $voiture->save();
 
         return redirect('/evaluation/liste')->with( 'success', 'voiture Modifier' );
     }
 
-
+    public function models($marque){
+        $models = Evaluation::where('marque','like','%'. $marque.'%')->pluck('modele')->unique();
+        return response()->json($models);
+    }
+    // public function annee($model){
+    //     $annee = Evaluation::where('annee','like','%'. 'Elentra'.'%')->pluck('annee');
+    //     return response()->json($annee);
+    // }
 }

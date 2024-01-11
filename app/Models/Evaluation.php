@@ -15,6 +15,10 @@ class Evaluation extends Model
         'kilometrage',
         'type_carburant',
         'boite',
-        'prix'
+        'prix',
+        'estimationKm',
+        'estimationTransmission',
+        'estimationCarburant',
+        'prix_conteur_0km',
     ];
 }

@@ -40,7 +40,11 @@
                   </div>
                   <div class="form-group">
                       <label for="exampleSelect3">Model :</label>
-                      <input type="text" class="form-control" id="inputModele" name="model" placeholder="Model">
+                     {{--  <input type="text" class="form-control" id="inputModele" name="model" placeholder="Model"> --}}
+                      <select id="inputModele" class="form-control" name="model" >
+                        {{-- Options seront ajoutées dynamiquement ici --}}
+
+                    </select>
                       @error('model')
                       <div class="text-danger" role="alert">
                         {{ $message }}
@@ -67,7 +71,7 @@
                    <div class="form-group">
                       <label for="exampleSelect5">Type de Carburant :</label>
                       <select name="carburant" class="form-control" id="inputCarburant" >
-                          <option value="essence">Essance</option>
+                          <option value="essence">Essence</option>
                           <option value="diesel">Diesel</option>
                           <option value="hybride">Hybride</option>
                           <option value="electrique">Electrique</option>
@@ -82,7 +86,8 @@
                     <div class="text-danger" role="alert">
                       {{ $message }}
                     </div>
-                    @enderror  </div>
+                    @enderror
+                </div>
 
                 {{-- <button type="submit" class="btn text-white valider-search-card mx-auto w-50">Valider</button> --}}
                 <button type="button" class="btn text-white valider-search-card mx-auto w-50" id="btn" >Valider</button>
@@ -326,7 +331,7 @@
 
       </div>
 
-  
+
   </section>
 {{-- vos avis --}}
 
@@ -440,7 +445,9 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ asset('js/formulaire.js') }}"</script>
+// <script src="{{ asset('js/evaluation.js') }}"</script>
   <script>
 
 
@@ -454,7 +461,7 @@
 
 btn.addEventListener("click", function (e) {
 e.preventDefault();
-    console.log(btn);
+   // console.log(btn);
     loadingModal.style.display = 'block';
     // modal.style.display = 'block';
 
@@ -481,7 +488,7 @@ e.preventDefault();
         email: inputmail,
     })
     .then(response => {
-        // console.log(response.data);
+         console.log(response);
         let rs=response.data;
           console.log(rs.success);
           if(rs.success==false) {
@@ -543,10 +550,29 @@ e.preventDefault();
     // Fermer le modal
     modal.style.display = 'none';
   });
-//   fonction maFonctionApresChargement(){
-//             modal.style.display = 'block';
-//           }
-//     window.onload = maFonctionApresChargement;
+//   $(document).ready(function () {
+//         $('#inputMarque').on('input', function () {
+//             var brand = $(this).val();
+//             console.log(brand);
+//             if (brand !== '') {
+//                 $.ajax({
+//                     url: '/getModels/' + brand,
+//                     type: 'GET',
+//                     success: function (data) {
+//                         $('#inputModele').empty().prop('disabled', false);
+//                         $.each(data, function (index, model) {
+//                             $('#inputModele').append('<option value="' + model + '">' + model + '</option>');
+//                         });
+//                     },
+//                     error: function () {
+//                         console.log('Erreur lors de la récupération des modèles');
+//                     }
+//                 });
+//             } else {
+//                 $('#model').empty().prop('disabled', true);
+//             }
+//         });
+//     });
 </script>
 
 
