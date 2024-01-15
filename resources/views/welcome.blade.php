@@ -20,7 +20,7 @@
               {{-- <form action="{{ route('evaluation.voiture') }}" method="POST" id="myForm"> --}}
                 <form action="" method="" id="myForm">
                 @csrf
-                  <div class="form-group">
+                  {{-- <div class="form-group">
                       <label for="exampleSelect1">Email :</label>
                       <input type="email" class="form-control" id="inputMail" name="email" placeholder="Email">
                       @error('email')
@@ -28,7 +28,7 @@
                         {{ $message }}
                       </div>
                       @enderror
-                  </div>
+                  </div> --}}
                   <div class="form-group">
                       <label for="exampleSelect2">Marque :</label>
                       {{-- <input type="text" class="form-control" id="inputMarque" name="marque" placeholder="Marque"> --}}
@@ -426,7 +426,7 @@ e.preventDefault();
     loadingModal.style.display = 'block';
     // modal.style.display = 'block';
 
-    let inputmail = document.getElementById("inputMail").value;
+    // let inputmail = document.getElementById("inputMail").value;
     let inputmarque = document.getElementById("inputMarque").value;
     let inputmodele = document.getElementById("inputModele").value;
     let inputboite = document.getElementById("inputBoite").value;
@@ -446,7 +446,7 @@ e.preventDefault();
         kilometre: inputkilometrage,
         carburant: inputcarburant,
         boite: inputboite,
-        email: inputmail,
+        // email: inputmail,
     })
     .then(response => {
          console.log(response);

@@ -28,7 +28,7 @@ class EvaluationController extends Controller
             'kilometre' => 'required',
             'carburant' => 'required',
             'boite' => 'required',
-            'email' => 'required|email',
+            // 'email' => 'required|email',
         ]);
 
         $data = $request->all();
@@ -68,7 +68,7 @@ class EvaluationController extends Controller
 
         $mail_data=[
             'prix'=>$prixestimatif,
-            'email' => $data['email'],
+            // 'email' => $data['email'],
             'marque'=>$data['marque'],
             'modele'=>$data['model'],
             'kilometrage'=>$data['kilometre'],
@@ -81,11 +81,11 @@ class EvaluationController extends Controller
         //  dd($mail_data);
 
 
-        Mail::send('mail.evaluation',$mail_data,function($message)use($mail_data){
-            $message->to($mail_data['email'])
-                    ->from($mail_data['recipient'])
-                    ->subject($mail_data['subject']);
-        });
+        // Mail::send('mail.evaluation',$mail_data,function($message)use($mail_data){
+        //     $message->to($mail_data['email'])
+        //             ->from($mail_data['recipient'])
+        //             ->subject($mail_data['subject']);
+        // });
     //   return view('evaluation.evaluation',$mail_data)->with('success','Evaluation enregistrée avec succès un email vous sera envoyer');
         //     $data=[
         //         'data'=>$mail_data
