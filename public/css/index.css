@@ -306,3 +306,10 @@ body{
     }
 
 
+.imgCarousel{
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: rgb(33, 32, 32)
+}

@@ -22,9 +22,9 @@ class CreateEvaluationsTable extends Migration
             $table->string('boite');
             $table->bigInteger('kilometrage');
             $table->bigInteger('prix');
-            $table->float('estimationKm');
-            $table->bigInteger('estimationTransmission');
-            $table->bigInteger('estimationCarburant');
+            $table->float('estimationKm',8,5)->nullable();
+            $table->bigInteger('estimationTransmission')->nullable();
+            $table->bigInteger('estimationCarburant')->nullable();
             $table->bigInteger('prix_conteur_0km');
             $table->timestamps();
         });

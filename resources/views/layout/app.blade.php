@@ -76,19 +76,19 @@
                     Services
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                    <li><a class="dropdown-item" href="{{ route('voiture.index') }}">Catalogue</a></li>
                     <li><a class="dropdown-item" href="#">Fiches Techniques</a></li>
-                    <li><hr class="dropdown-divider m-2"></li>
+                    {{-- <li><hr class="dropdown-divider m-2"></li>
                     <li><a class="dropdown-item " href="#">Cote auto</a></li>
                     <li><hr class="dropdown-divider m-2"></li>
                     <li><a class="dropdown-item" href="#">Crédit</a></li>
-                    <li><hr class="dropdown-divider m-2"></li>
-                    <li><a class="dropdown-item" href="#">Occasion</a></li>
+                    <li><hr class="dropdown-divider m-2"></li> --}}
+                    {{-- <li><a class="dropdown-item" href="#">Occasion</a></li>
                     <li><hr class="dropdown-divider m-2"></li>
                     <li><a class="dropdown-item" href="#">Remise</a></li>
                     <li><hr class="dropdown-divider m-2"></li>
-                    <li><a class="dropdown-item" href="#">Catalogue</a></li>
                     <li><hr class="dropdown-divider m-2"></li>
-                    <li><a class="dropdown-item" href="#">Essai</a></li>
+                    <li><a class="dropdown-item" href="#">Essai</a></li> --}}
 
                 </ul>
               </li>
@@ -183,10 +183,10 @@
           <div class="col-md-2 mx-3"> <div >
             <h5 class="text-white">Suivez-nous</h5>
             <ul class="  text-white d-flex  flex-row justify-content-start p-0">
-             <li class="  text-white  bg-transparent m-0 "><a href=""><img src="../images/Facebook C 1.png" class="w-100" alt=""></a> </li>
-             <li class="  text-white  bg-transparent m-0"><a href=""><img src="../images/Instagram C 1.png" class="w-100" alt=""></a></li>
-             <li class="  text-white  bg-transparent"><a href=""><img src="../images/Twitter C 1.png" class="w-100" alt=""></a></li><br>
-             <li class="  text-white  bg-transparent"><a href=""><img src="../images/Linkedin C 1.png" class="w-100" alt=""></a></li>
+             <li class="  text-white  bg-transparent m-0 "><a href=""><img src="{{ asset('defaultimg/images/Facebook C 1.png') }}" class="w-100" alt=""></a> </li>
+             <li class="  text-white  bg-transparent m-0"><a href=""><img src="{{ asset('defaultimg/images/Instagram C 1.png') }}" class="w-100" alt=""></a></li>
+             <li class="  text-white  bg-transparent"><a href=""><img src="{{ asset('defaultimg/images/Twitter C 1.png') }}" class="w-100" alt=""></a></li><br>
+             <li class="  text-white  bg-transparent"><a href=""><img src="{{ asset('defaultimg/images/Linkedin C 1.png') }}" class="w-100" alt=""></a></li>
             </ul>
         </div></div>
           <div class="col-md-2 mx-3"> <div >
@@ -206,8 +206,8 @@
           <div class="col-md-2 mx-3"> <div >
             <h5 class="text-white">Télécharger l’application</h5>
             <ul class="list-group list-group-flush text-white ">
-                <li class="  text-white  bg-transparent "><a href=""><img src="../images/Disponible sur Google Play 1.png" class="w-50 " alt=""></a> </li>
-                <li class="  text-white  bg-transparent"><a href=""><img src="../images/App store 1.png" class="w-50" alt=""></a></li> </ul>
+                <li class="  text-white  bg-transparent "><a href=""><img src="{{ asset('defaultimg/images/Disponible sur Google Play 1.png') }}" class="w-50 " alt=""></a> </li>
+                <li class="  text-white  bg-transparent"><a href=""><img src="{{ asset('defaultimg/images/App store 1.png') }}" class="w-50" alt=""></a></li> </ul>
         </div></div>
     </div>
     <hr class=" bg-light footer-line mt-5">

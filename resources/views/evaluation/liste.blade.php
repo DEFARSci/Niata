@@ -54,6 +54,8 @@
                                 <th class="cell">kilometrage</th>
                                 <th class="cell">prix</th>
                                 <th class="cell">estimationKm</th>
+                                <th class="cell">estimationTransmission</th>
+                                <th class="cell">estimationCarburant</th>
                                 <th class="cell">option</th>
                             </tr>
                         </thead>
@@ -69,6 +71,8 @@
                                 <td class="cell">{{$v->kilometrage}}</td>
                                 <td class="cell">{{$v->prix}}</td>
                                 <td class="cell">{{$v->estimationKm}}</td>
+                                <td class="cell">{{$v->estimationTransmission}}</td>
+                                <td class="cell">{{$v->estimationCarburant}}</td>
 
 
                                 <td class="cell">

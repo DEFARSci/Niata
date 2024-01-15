@@ -14,8 +14,18 @@ class VoitureEvaluationService{
             $kilometrerecup = $evaluation->kilometrage;
             // $anneerecup=$evaluation->annee;
         $prixcalcul=0;
+        $prixFinal=0;
 
             $differenceKilometrage = $kilometrerecup - $distanceParcourue;
+if ($evaluation->estimationCarburant == null && $carburantrecup != $carburant) {
+    $prixFinal=null;
+    return  $prixFinal;
+}
+
+if ($evaluation->estimationTransmission == null && $boiterecup != $transmission) {
+    $prixFinal=null;
+    return  $prixFinal;
+}
 
 if ($differenceKilometrage == 0) {
     // Si la différence est comprise entre -1000 et 1000, aucune modification

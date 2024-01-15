@@ -9,24 +9,12 @@ use Illuminate\Support\Facades\DB;
 class AcceuilController extends Controller
 {
     public function index(){
-        $voiture =DB::table( 'voitures' )
-        ->orderBy('created_at', 'desc')
-        ->limit(3)
-        ->get();
 
-
-
-        $blog =DB::table( 'blogs' )
-        ->orderBy('created_at', 'desc')
-        ->limit(3)
-        ->get();
-
-        $voiture=Voiture::all();
+        $voiturevaluation=DB::table('evaluations')->get('marque')->unique();
+        // dd($voiturevaluation[0]->marque);
         $data=[
-            "blog" =>$blog,
-            "voiture" =>$voiture,
-            'voiture'=>$voiture,
-            'rechercher'=>$voiture
+            "marques"=>$voiturevaluation
+
         ];
         return view('welcome', $data);
     }

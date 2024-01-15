@@ -112,9 +112,6 @@ class EvaluationController extends Controller
             'prix'=>'required',
             'type_carburant'=>'required',
             'boite'=>'required',
-            'estimationCarburant'=>'required',
-            'estimationKm'=>'required',
-            'estimationTransmission'=>'required',
             'prix_conteur_0km'=>'required',
         ]);
         $voitureEvaluation=new Evaluation();

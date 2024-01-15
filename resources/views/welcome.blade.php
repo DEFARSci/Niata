@@ -31,7 +31,18 @@
                   </div>
                   <div class="form-group">
                       <label for="exampleSelect2">Marque :</label>
-                      <input type="text" class="form-control" id="inputMarque" name="marque" placeholder="Marque">
+                      {{-- <input type="text" class="form-control" id="inputMarque" name="marque" placeholder="Marque"> --}}
+                      <select id="inputMarque" class="form-control" name="marque">
+                       <option value="">Tout les marques</option>
+
+                       @foreach ( $marques as $marque )
+
+                       <option value="{{ $marque->marque}}">{{ $marque->marque}}</option>
+
+                       @endforeach
+
+                      </select>
+
                       @error('marque')
                       <div class="text-danger" role="alert">
                         {{ $message }}
@@ -71,10 +82,10 @@
                    <div class="form-group">
                       <label for="exampleSelect5">Type de Carburant :</label>
                       <select name="carburant" class="form-control" id="inputCarburant" >
-                          <option value="essence">Essence</option>
+                          <option value="Essence">Essence</option>
                           <option value="diesel">Diesel</option>
-                          <option value="hybride">Hybride</option>
-                          <option value="electrique">Electrique</option>
+                          {{-- <option value="hybride">Hybride</option>
+                          <option value="electrique">Electrique</option> --}}
 
                           <!-- Ajoutez autant d'options que nécessaire -->
                       </select>
@@ -181,86 +192,52 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="d-flex " style="background-color: rgb(33, 32, 32)">
-            <div style="padding-right: 20px;
-                         padding-left: 20px;
-                        padding-top: 50px;
-                        padding-bottom: 50px;
-                       ;background-color: rgb(33, 32, 32)">
+            <div  class="imgCarousel">
                 <img src="{{ asset('defaultimg/images/logo/Logo BMW.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right: 20px;
-            padding-top: 50px;
-            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
                 <img src="{{ asset('defaultimg/images/logo/Logo Ford.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right: 20px;
-            padding-top: 50px;
-            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
 
                 <img src="{{ asset('defaultimg/images/logo/Logo Hyundai.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right: 20px;
-                        padding-top: 50px;
-                        padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
                 <img src="{{ asset('defaultimg/images/logo/Logo Jeep.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right:20px;
-            padding-top: 50px;
-            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
                 <img src="{{ asset('defaultimg/images/logo/Logo Mercedes Benz.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right: 20px;
-            padding-top: 50px;
-            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
                 <img src="{{ asset('defaultimg/images/logo/Logo Toyota.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right: 20px;
-                         padding-left: 20px;
-                        padding-top: 50px;
-                        padding-bottom: 50px;
-                       ;background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
                 <img src="{{ asset('defaultimg/images/logo/Logo BMW.png') }}" class="img-fluid logo-car " alt="...">
             </div>
       </div>
       </div>
       <div class="carousel-item ">
         <div class="d-flex " style="background-color: rgb(33, 32, 32)">
-            <div style="padding-right: 20px;
-                        padding-left: 20px;
-                        padding-top: 50px;
-                        padding-bottom: 50px;
-                       ;background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
                 <img src="{{ asset('defaultimg/images/logo/Logo BMW.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right: 20px;
-            padding-top: 50px;
-            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
                 <img src="{{ asset('defaultimg/images/logo/Logo Ford.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right: 20px;
-            padding-top: 50px;
-            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
 
                 <img src="{{ asset('defaultimg/images/logo/Logo Hyundai.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right: 20px;
-                        padding-top: 50px;
-                        padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
                 <img src="{{ asset('defaultimg/images/logo/Logo Jeep.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right:20px;
-            padding-top: 50px;
-            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
                 <img src="{{ asset('defaultimg/images/logo/Logo Toyota.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right: 20px;
-            padding-top: 50px;
-            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
                  <img src="{{ asset('defaultimg/images/logo/Logo Nissan.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right: 20px;
-            padding-top: 50px;
-            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
 
                 <img src="{{ asset('defaultimg/images/logo/Logo Range rover .png') }}" class="img-fluid logo-car " alt="...">
             </div>
@@ -268,42 +245,26 @@
       </div>
       <div class="carousel-item ">
         <div class="d-flex " style="background-color: rgb(33, 32, 32)">
-            <div style="padding-right: 20px;
-                         padding-left: 20px;
-                        padding-top: 50px;
-                        padding-bottom: 50px;
-                       ;background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
                 <img src="{{ asset('defaultimg/images/logo/Logo Nissan.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right: 20px;
-            padding-top: 50px;
-            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div  class="imgCarousel" >
                <img src="{{ asset('defaultimg/images/logo/Logo Peugeot.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right: 20px;
-            padding-top: 50px;
-            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
 
          <img src="{{ asset('defaultimg/images/logo/Logo Range rover .png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right: 20px;
-                        padding-top: 50px;
-                        padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
                 <img src="{{ asset('defaultimg/images/logo/Logo Toyota.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right: 20px;
-                        padding-top: 50px;
-                        padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
                 <img src="{{ asset('defaultimg/images/logo/Logo Jeep.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right:20px;
-            padding-top: 50px;
-            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div  class="imgCarousel">
                 <img src="{{ asset('defaultimg/images/logo/Logo Volkswagen.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div style="padding-right: 20px;
-            padding-top: 50px;
-            padding-bottom: 50px; background-color: rgb(33, 32, 32)">
+            <div class="imgCarousel">
                 <img src="{{ asset('defaultimg/images/logo/Logo Mercedes Benz.png') }}" class="img-fluid logo-car " alt="...">
             </div>
       </div>
@@ -491,7 +452,7 @@ e.preventDefault();
          console.log(response);
         let rs=response.data;
           console.log(rs.success);
-          if(rs.success==false) {
+          if(rs.success==false ||rs.data.prix==null) {
             modalContent.innerHTML = `<div class="alert alert-danger" role="alert">le type de voiture n'est pas encore disponible dans la base de donnée</div>`;
           }else{
 
