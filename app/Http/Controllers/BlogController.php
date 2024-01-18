@@ -95,6 +95,7 @@ $request->validate( [
             'categorie'=>$categorie,
             'blog'=>$blog[0],
         ];
+       
         return view( 'blog.edit', $data );
     }
 

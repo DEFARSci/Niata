@@ -42,37 +42,37 @@
         <div class="app-card app-card-orders-table shadow-sm mb-5">
             <div class="app-card-body">
                 <div class="table-responsive">
-                    <table class="table app-table-hover mb-0 text-left">
+                    <table class="table app-table-hover mb-0 text-left ">
                         <thead>
                             <tr>
-                                <th class="cell">marque</th>
-                                <th class="cell">modele</th>
-                                <th class="cell">annee</th>
-                                <th class="cell">kilometrage</th>
-                                <th class="cell">etat</th>
-                                <th class="cell">moteur</th>
-                                <th class="cell">boite</th>
-                                <th class="cell">prix</th>
-                                <th class="cell">option</th>
+                                <th class="cell text-black">marque</th>
+                                <th class="cell text-black">modele</th>
+                                <th class="cell text-black">annee</th>
+                                <th class="cell text-black">kilometrage</th>
+                                <th class="cell text-black">etat</th>
+                                <th class="cell text-black">moteur</th>
+                                <th class="cell text-black">boite</th>
+                                <th class="cell text-black">prix</th>
+                                <th class="cell text-black">option</th>
                             </tr>
                         </thead>
                         <tbody>
                              @foreach ( $voiture as $v)
 
                             <tr>
-                                 <td class="cell">{{$v->marque}}</td>
-                                <td class="cell">{{$v->modele}}</td>
-                                <td class="cell">{{$v->annee}}</td>
-                                <td class="cell">{{$v->kilometrage}}</td>
-                                <td class="cell"> {{$v->etat}}</td>
-                                <td class="cell">{{$v->moteur}}</td>
-                                <td class="cell">{{$v->boite}}</td>
+                                 <td class="cell text-black">{{$v->marque}}</td>
+                                <td class="cell text-black">{{$v->modele}}</td>
+                                <td class="cell text-black">{{$v->annee}}</td>
+                                <td class="cell text-black">{{$v->kilometrage}}</td>
+                                <td class="cell text-black"> {{$v->etat}}</td>
+                                <td class="cell text-black">{{$v->moteur}}</td>
+                                <td class="cell text-black">{{$v->boite}}</td>
 
-                                <td class="cell">{{$v->prix}}</td>
+                                <td class="cell text-black">{{$v->prix}}</td>
 
 
 
-                                <td class="cell"><a class="btn app-btn-secondary" href="{{route('voiture.edit', $v->id)}}">modifier</a>
+                                <td class="cell"><a class="btn app-btn-secondary " href="{{route('voiture.edit', $v->id)}}">modifier</a>
                                      <form  class="d-inline" action="{{route('voiture.destroy', $v->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')

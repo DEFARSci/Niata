@@ -60,38 +60,38 @@
         <div class="col-md-8">
             <form action="{{route('evaluation.update')}}" method="POST" >
                 @csrf
-               <div class="row p-3 m-3">
-                <input type="text" class="form-control" id="id" name="id" value="{{$voiture->id}}" hidden>
+               <div class="row p-3 m-3 text-black">
+                <input type="text" class="form-control text-black" id="id" name="id" value="{{$voiture->id}}" hidden>
 
                 <div class="form-group col-md-4">
                     <label for="titre">Marque</label>
-                    <input type="text" class="form-control" id="titre" name="marque" value="{{$voiture->marque}}">
+                    <input type="text" class="form-control text-black" id="titre" name="marque" value="{{$voiture->marque}}">
                     @error('marque')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                   </div>
                   <div class="form-group col-md-4">
                     <label for="titre">modele</label>
-                    <input type="text" class="form-control" id="titre" name="modele" value="{{$voiture->modele}}">
+                    <input type="text" class="form-control text-black" id="titre" name="modele" value="{{$voiture->modele}}">
                     @error('modele')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                   </div>
                   <div class="form-group col-md-4">
                     <label for="titre">annee</label>
-                    <input type="number" class="form-control" id="titre" name="annee" value="{{$voiture->annee}}">
+                    <input type="number" class="form-control text-black" id="titre" name="annee" value="{{$voiture->annee}}">
                     @error('annee')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                   </div>
                 </div>
-                <div class="row p-3 m-3">
+                <div class="row p-3 m-3 text-black">
 
                   <div class="form-group col-md-4">
                     <label for="titre">type carburant</label>
 
 
-                    <select class="form-control" id="tcategorie" name="type_carburant" placeholder='type boite' >
+                    <select class="form-control text-black" id="tcategorie" name="type_carburant" placeholder='type boite' >
                       <option value="{{ $voiture->type_carburant }}">{{ $voiture->type_carburant }}</option>
 
                         <option value="Essence">Essence</option>
@@ -108,7 +108,7 @@
 
                   <div class="form-group col-md-4">
                     <label for="titre">kilometrage</label>
-                    <input type="number" class="form-control" id="titre" name="kilometrage" value="{{$voiture->kilometrage}}">
+                    <input type="number" class="form-control text-black" id="titre" name="kilometrage" value="{{$voiture->kilometrage}}">
                     @error('kilometrage')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
@@ -117,7 +117,7 @@
                     <label for="titre">boite vitesse</label>
 
 
-                    <select class="form-control" id="tcategorie" name="boite" placeholder='type boite' >
+                    <select class="form-control text-black" id="tcategorie" name="boite" placeholder='type boite' >
                       <option value="{{ $voiture->boite }}">{{ $voiture->boite }}</option>
 
 
@@ -130,26 +130,26 @@
                   </div>
 
                 </div>
-                <div class="row p-3 m-3">
+                <div class="row p-3 m-3 text-black">
 
 
                   <div class="form-group col-md-4">
                     <label for="titre">prix</label>
-                    <input type="number" class="form-control" id="titre" name="prix" value="{{$voiture->prix}}">
+                    <input type="number" class="form-control text-black" id="titre" name="prix" value="{{$voiture->prix}}">
                     @error('prix')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                   </div>
                   <div class="form-group col-md-4">
                     <label for="titre">Estimation tranmission</label>
-                    <input type="number" class="form-control" id="titre" name="estimationTransmission" value="{{$voiture->estimationTransmission}}">
+                    <input type="number" class="form-control text-black" id="titre" name="estimationTransmission" value="{{$voiture->estimationTransmission}}">
                     @error('estimationTransmission')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                   </div>
                   <div class="form-group col-md-4">
                     <label for="titre">Estimation carburant</label>
-                    <input type="number" class="form-control" id="titre" name="estimationCarburant" value="{{$voiture->estimationCarburant}}">
+                    <input type="number" class="form-control text-black" id="titre" name="estimationCarburant" value="{{$voiture->estimationCarburant}}">
                     @error('estimationCarburant')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
@@ -158,17 +158,17 @@
 
 
 
-                <div class="row p-3 m-3">
+                <div class="row p-3 m-3 text-black">
                     <div class="form-group col-md-4">
                       <label for="titre">Estimation kilometrage</label>
-                      <input type="number" step="0.0001" class="form-control" id="titre" name="estimationKm" value="{{$voiture->estimationKm}}">
+                      <input type="number" step="0.0001" class="form-control text-black" id="titre" name="estimationKm" value="{{$voiture->estimationKm}}">
                       @error('estimationKm')
                       <div class="text-danger">{{ $message }}</div>
                       @enderror
                     </div>
                     <div class="form-group col-md-4">
                         <label for="prix_conteur_0km">Prix à Zéro kilometrage</label>
-                        <input type="number"  class="form-control" id="prix_conteur_0km" name="prix_conteur_0km" value="{{$voiture->prix_conteur_0km}}">
+                        <input type="number"  class="form-control text-black" id="prix_conteur_0km" name="prix_conteur_0km" value="{{$voiture->prix_conteur_0km}}">
                         @error('prix_conteur_0km')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -176,7 +176,7 @@
                   </div>
 
                 </div>
-                <button type="submit " class="btn btn-primary mt-4">Ajouter</button>
+                <button type="submit " class="btn bg-black text-white mt-4">Ajouter</button>
               </form>
 
         </div>

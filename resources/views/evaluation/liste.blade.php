@@ -46,33 +46,33 @@
                     <table class="table app-table-hover mb-0 text-left">
                         <thead>
                             <tr>
-                                <th class="cell">marque</th>
-                                <th class="cell">modele</th>
-                                <th class="cell">boite</th>
-                                <th class="cell">moteur</th>
-                                <th class="cell">annee</th>
-                                <th class="cell">kilometrage</th>
-                                <th class="cell">prix</th>
-                                <th class="cell">estimationKm</th>
-                                <th class="cell">estimationTransmission</th>
-                                <th class="cell">estimationCarburant</th>
-                                <th class="cell">option</th>
+                                <th class="cell text-black">modele</th>
+                                <th class="cell text-black">marque</th>
+                                <th class="cell text-black">boite</th>
+                                <th class="cell text-black">moteur</th>
+                                <th class="cell text-black">annee</th>
+                                <th class="cell text-black">kilometrage</th>
+                                <th class="cell text-black">prix</th>
+                                <th class="cell text-black">estimationKm</th>
+                                <th class="cell text-black">estimationTransmission</th>
+                                <th class="cell text-black">estimationCarburant</th>
+                                <th class="cell text-black">option</th>
                             </tr>
                         </thead>
                         <tbody>
                              @foreach ( $voiture as $v)
 
                             <tr>
-                                 <td class="cell">{{$v->marque}}</td>
-                                <td class="cell">{{$v->modele}}</td>
-                                <td class="cell">{{$v->boite}}</td>
-                                <td class="cell">{{$v->type_carburant}}</td>
-                                <td class="cell">{{$v->annee}}</td>
-                                <td class="cell">{{$v->kilometrage}}</td>
-                                <td class="cell">{{$v->prix}}</td>
-                                <td class="cell">{{$v->estimationKm}}</td>
-                                <td class="cell">{{$v->estimationTransmission}}</td>
-                                <td class="cell">{{$v->estimationCarburant}}</td>
+                                 <td class="cell text-black">{{$v->marque}}</td>
+                                <td class="cell text-black">{{$v->modele}}</td>
+                                <td class="cell text-black">{{$v->boite}}</td>
+                                <td class="cell text-black">{{$v->type_carburant}}</td>
+                                <td class="cell text-black">{{$v->annee}}</td>
+                                <td class="cell text-black">{{$v->kilometrage}}</td>
+                                <td class="cell text-black">{{$v->prix}}</td>
+                                <td class="cell text-black">{{$v->estimationKm}}</td>
+                                <td class="cell text-black">{{$v->estimationTransmission}}</td>
+                                <td class="cell text-black">{{$v->estimationCarburant}}</td>
 
 
                                 <td class="cell">
