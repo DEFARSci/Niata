@@ -12,7 +12,10 @@
 
                 <div class="app-utilities col-auto">
                     <div class="app-utility-item app-user-dropdown dropdown p-2">
+                        @auth
                         <a class="dropdown-toggle text-white" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{{ Auth::user()->name }}</a>
+
+                        @endauth
                         <ul class="dropdown-menu bg-black" aria-labelledby="user-dropdown-toggle">
                             {{-- <li><a class="dropdown-item" href="account.html">Account</a></li>
                             <li><a class="dropdown-item" href="settings.html">Settings</a></li>

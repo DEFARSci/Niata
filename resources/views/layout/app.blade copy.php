@@ -37,44 +37,114 @@
 <title>NIATA </title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg container fixed-top">
-        <div class="container-fluid ">
-            <a class="navbar-brand text-lg-center" href="{{ '/' }}">NIATA             <span class="d-none d-lg-inline">  |</span></a>
+    <nav class="navbar-expand-lg navbar fixed-top navbar-light bg-light  w-75 mx-auto col-12">
+        <div class="container">
+          <div class="row">
+            <div class="col-6 bg-info">
+              <a class="navbar-brand text-lg-center" href="{{ '/' }}">NIATA             <span class="d-none d-lg-inline">  |</span></a>
 
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
+            </div>
+            <div class="col-6 bg-danger">
+              <button class="navbar-toggler m" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon "></span>
+              </button>
 
-
-
-          <div class="collapse navbar-collapse   " id="navbarExample">
-            <ul class="navbar-nav me-auto mb-0">
-                <li class="nav-item :hover(bg-black)">
-                    <a class="nav-link text-black "   href="/">Accueil</a>
-                  </li>
+            </div>
+          </div>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
               <li class="nav-item">
-                <a class="nav-link text-black " href="{{ route('voiture.index') }}" >
-                    Cataloge
-                </a>
+                <a class="nav-link text-black "   href="/">Accueil</a>
               </li>
+              {{-- <li class="nav-item">
+                <a class="nav-link color-link" href="{{ route('voiture.index') }}" >
+                    Produits
+                </a> --}}
+                {{-- <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                  <li><a class="dropdown-item" href="#">BMW</a></li>
+                  <li><hr class="dropdown-divider m-2"></li>
+                  <li><a class="dropdown-item " href="#">Chevrolet</a></li>
+                  <li><hr class="dropdown-divider m-2"></li>
+                  <li><a class="dropdown-item" href="#">Fiat</a></li>
+                  <li><hr class="dropdown-divider m-2"></li>
+                  <li><a class="dropdown-item" href="#">Ford</a></li>
+                  <li><hr class="dropdown-divider m-2"></li>
+                  <li><a class="dropdown-item" href="#">Hyundai</a></li>
+                  <li><hr class="dropdown-divider m-2"></li>
+                  <li><a class="dropdown-item" href="#">Jeep</a></li>
+                  <li><hr class="dropdown-divider m-2"></li>
+                  <li><a class="dropdown-item" href="#">Jeep</a></li>
+                  <li><hr class="dropdown-divider m-2"></li>
+                  <li><a class="dropdown-item" href="#">Toutes les marques et modèles</a></li>
+
+                </ul> --}}
+              {{-- </li> --}}
               <li class="nav-item dropdown">
-                <a class="nav-link text-black "  href="{{route('blog')}}" >
+                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Services
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                    <li><a class="dropdown-item" href="{{ route('voiture.index') }}">Catalogue</a></li>
+                    <li><a class="dropdown-item" href="#">Fiches Techniques</a></li>
+                    {{-- <li><hr class="dropdown-divider m-2"></li>
+                    <li><a class="dropdown-item " href="#">Cote auto</a></li>
+                    <li><hr class="dropdown-divider m-2"></li>
+                    <li><a class="dropdown-item" href="#">Crédit</a></li>
+                    <li><hr class="dropdown-divider m-2"></li> --}}
+                    {{-- <li><a class="dropdown-item" href="#">Occasion</a></li>
+                    <li><hr class="dropdown-divider m-2"></li>
+                    <li><a class="dropdown-item" href="#">Remise</a></li>
+                    <li><hr class="dropdown-divider m-2"></li>
+                    <li><hr class="dropdown-divider m-2"></li>
+                    <li><a class="dropdown-item" href="#">Essai</a></li> --}}
+
+                </ul>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link "  href="{{route('blog')}}" >
                     Actualités
                 </a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link text-black "  href="{{ route('contact') }} "  >
+                {{-- <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                    <li><a class="dropdown-item" href="#">Nouveaux modèles</a></li>
+                    <li><hr class="dropdown-divider m-2"></li>
+                    <li><a class="dropdown-item " href="#">Buzz</a></li>
+                    <li><hr class="dropdown-divider m-2"></li>
+                    <li><a class="dropdown-item" href="#">Articles populaires</a></li>
+                    <li><hr class="dropdown-divider m-2"></li>
+                    <li><a class="dropdown-item" href="#">Technologies</a></li>
+                    <li><hr class="dropdown-divider m-2"></li>
+                    <li><a class="dropdown-item" href="#">Véhicules autonomes</a></li>
+                    <li><hr class="dropdown-divider m-2"></li>
+                    <li><a class="dropdown-item" href="#">Concessionnaires</a></li>
+                    <li><hr class="dropdown-divider m-2"></li>
+                    <li><a class="dropdown-item" href="#">Hybride</a></li>
+                </ul> --}}
+              </li>   <li class="nav-item ">
+                <a class="nav-link " href="{{ route('contact') }} " >
                     Contact
                 </a>
+                {{-- <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                    <li><a class="dropdown-item" href="#">Lancer le comparateur</a></li>
+                    <li><hr class="dropdown-divider m-2"></li>
+                    <li><a class="dropdown-item " href="#">Conseils</a></li>
+                    <li><hr class="dropdown-divider m-2"></li>
+                    <li><a class="dropdown-item" href="#">Critiques</a></li>
+                    <li><hr class="dropdown-divider m-2"></li>
+                    <li><a class="dropdown-item" href="#">Classement</a></li>
+                    <li><hr class="dropdown-divider m-2"></li>
+                    <li><a class="dropdown-item" href="#">Offres</a></li>
+                    <li><hr class="dropdown-divider m-2"></li>
+                    <li><a class="dropdown-item" href="#">Assurance auto</a></li>
+                    <li><hr class="dropdown-divider m-2"></li>
+                    <li><a class="dropdown-item" href="#">Location</a></li>
+                </ul> --}}
               </li>
+
             </ul>
-            {{-- <div class="d-flex align-items-center flex-column flex-lg-row">
-              <form class="me-2 mb-2 mb-lg-0">
-                <input type="text" class="form-control form-control-sm" placeholder="Search" />
-              </form>
-              <a class="btn btn-primary" href="">Sign up</a>
-            </div> --}}
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <span class="fa fa-search form-control-feedback p-3"></span>
+            </form>
           </div>
         </div>
       </nav>

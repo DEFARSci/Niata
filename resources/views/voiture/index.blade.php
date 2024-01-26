@@ -6,7 +6,7 @@
 
 
 
-<div id="default-carousel" class="relative w-full" data-carousel="slide">
+<div id="default-carousel" class="catalogue" data-carousel="slide">
   <!-- Carousel wrapper -->
   <div id="carouselExampleSlidesOnly" class="carousel slide h-5  mt-5 pt-4 mb-6 rounded-5 w-75 mx-auto" data-bs-ride="carousel">
     <div class="carousel-inner rounded-5 mt-5" style="height: 20rem ">
@@ -24,136 +24,142 @@
   </div>
 
 </div>
-<div class="container-fluid ">
+<section class="section-3 py-5 bg-2 ">
+    <div class="container">
+        <div class="row  ">
+            <div class="col-lg-4 col-md-12 col-12  ">
 
-<div class="row">
-<div class="col-md-2 mt-5 d-none d-md-block fixed-md" style="top: 10; position: fixed;">
-  <div class="  bg-black rounded-5 border shadow-lg p-3">
-
-
-  <h1 class="p-2 display-6 font-bold text-white">Recherche</h1>
-  <div>
-    <form class=" " action="{{route('voiture.search')}}" method="get">
-      <div class="form-group mt-3 mb-3">
-        {{-- recherche          --}}
-          <input class="form-control mb-2" placeholder="recherche" type="text"value="{{Request::get('search')}}" name="search">
-         {{-- Marque --}}
-          <select name="marque" class="form-control mb-2">
-            <option value="">Tout les marques</option>
-              @foreach ( $rechercher as $voitured)
-            <option value="{{ $voitured->marque}}"  {{Request::get('marque')==$voitured->marque ? 'selected' : ''}}>{{$voitured->marque}}</option>
-            @endforeach
-
-          </select>
-          {{-- Model --}}
-        <select name="modele" class="form-control mb-2">
-          <option value="">Tout les model</option>
-          @foreach ( $rechercher as $voitured)
-        <option value="{{ $voitured->modele}}" {{Request::get('modele')==$voitured->modele ? 'selected' : ''}}>{{$voitured->modele}}</option>
-        @endforeach
-      </select>
-        {{-- Moteur --}}
-      <select name="moteur" class="form-control mb-2">
-        <option value="">Type de moteur</option>
-          @foreach ( $rechercher as $voitured)
-        <option value="{{ $voitured->moteur}}"  {{Request::get('moteur')==$voitured->moteur ? 'selected' : ''}}>{{$voitured->moteur}}</option>
-        @endforeach
-
-      </select>
-        {{-- Boite --}}
-      <select name="boite" class="form-control mb-2">
-        <option value="">Type de boite</option>
-          @foreach ( $rechercher as $boi)
-        <option value="{{ $boi->boite}}"  {{Request::get('boite')==$boi->boite ? 'selected' : ''}}>{{$boi->boite}}</option>
-        @endforeach
-
-      </select>
-      {{-- annee --}}
-      <input class="form-control" placeholder="année" type="number"value="{{Request::get('annee')}}"name="annee">
-      <label for="" class="form-label text-white">prix entre</label>
-      <div class="row">
-
-        <div class="col-md-5">
-          <input class="form-control" placeholder="prix" type="number"value="{{Request::get('prixinf')}}"name="prixinf">
-        </div>
-        <div class="col-md-1 text-white">et</div>
-        <div class="col-md-5">
-          <input class="form-control" placeholder="prix" type="number"value="{{Request::get('prixmax')}}"name="prixmax">
-        </div>
-      </div>
-      </div>
-
-      <button type="submit" class="btn border rounded-5 text-white"
-      > <i class="fas fa-search">recherche</i></button>
-      </form>
-  </div>
-</div>
-</div>
-<div class=" col-md-9 mt-5 mr-1 border w-75 mx-auto  col-md-12 rounded-5 d-flex justify-content-center">
-
-    <div class="row col-md-12 col-sm-12 d-flex justify-content-center pb-3">
-      @if (count($voiture) == 0)
-      <div class="flex display-flex justify-center p-4">
-        <h1 class="p-2 display-6 font-bold">Malheureusement, nous n'avons pas trouvé de véhicules correspondant à vos critères de recherche.</h1>
-     </div>
-
-      @else
-
-
-      @foreach ($voiture as $v)
-      <div class="col-md-3 col-sm-12 col-lg-3 mt-5  m-2  rounded-5 border" style="background-color: rgb(255, 255, 255)">
-        <!-- Image -->
-        <div class=" col-sm-12 p-3 border-none " >
-        <img   src="{{ asset('voiture/'.$v->image) }}" alt=""  class="img-fluid col-sm-12 rounded-5 " style="height: 20rem;background-color: rgb(231, 217, 217);">
-        </div>
-        <div class="border rounded-5 p-2 mb-2">
-           <div class="row ">
-            <div class="col-md-8 mt-2 ">
-                 <!-- Heading -->
-                 <span class=" text-sm rounded-5 p-1 bg-black text-white ">Marque </span>
-            <h6 class=" text-black mb-4">{{ $v->marque }}</h6>
-            <span class=" text-sm rounded-5 p-1 bg-black text-white ">Model </span>
-            <h6 class=" text-black mb-4">{{ $v->modele }}</h6>
-            <!-- Description -->
             </div>
-            <div class="col-md-4  mt-2 ">
-                <!-- Heading -->
-           <span class=" text-sm rounded-5 p-1 bg-black text-white ">Moteur </span>
-           <h6 class="  text-black mb-4">{{ $v->moteur }}</h6>
-           <span class=" text-sm rounded-5 p-1 bg-black text-white ">Boite </span>
-           <h6 class="  text-black mb-4">{{ $v->boite }}</h6>
-           <!-- Description -->
-           </div>
-           </div>
-           <div class="d-flex justify-content-between p-3">
-            <div>
-                <a role="button" href="{{route('voiture.show', $v->id)}}" class="text-sm p-1 rounded-5 bg-black  text-decoration-none text-white">Detail</a>
+            <div class=" catalogueMessage col-lg-4 col-md-12 col-12 rounded-4 p-2 text-white ">
+                <h2 class="text-white text-center">Trouvez votre vehicule</h2>
             </div>
-            <div>
-                <span class=" text-sm p-1 rounded-5 bg-black text-white ">{{ $v->prix }} FCFA</span>
+            <div class="col-lg-4 col-md-12 col-12 ">
+
             </div>
-
-
         </div>
 
-        </div>
-        <!-- CTA -->
+        <div class="row pt-5">
+            <div class="col-md-4 col-lg-3 col-sm-12 sidebar mb-4">
+                <div class="card border-0 shadow p-4 rounded-5">
 
+                    <h1 class="p-2 display-6 font-bold" style="text-decoration: underline;">Recherche</h1>
+
+                 <form class=" " action="{{route('voiture.search')}}" method="get">
+                   {{-- !!recherche--}}
+                    <div class="mb-4">
+
+                    <input class="form-control mb-2 rounded-5" placeholder="recherche" type="text"value="{{Request::get('search')}}" name="search">
+                    </div>
+                    {{--!! Marque --}}
+                    <div class="mb-4">
+                        <select name="marque" class="form-control mb-2 rounded-5">
+                            <option value="" class="rounded-5">Toutes les marques</option>
+                              @foreach ( $rechercher as $voitured)
+                            <option class="rounded-5" value="{{ $voitured->marque}}"  {{Request::get('marque')==$voitured->marque ? 'selected' : ''}}>{{$voitured->marque}}</option>
+                            @endforeach
+
+                          </select>
+                    </div>
+                    {{-- !! Model --}}
+                    <div class="mb-4">
+                        <select name="modele" class="form-control mb-2 rounded-5">
+                            <option value="" class="rounded-5">Tout les model</option>
+                            @foreach ( $rechercher as $voitured)
+                          <option class="rounded-5" value="{{ $voitured->modele}}" {{Request::get('modele')==$voitured->modele ? 'selected' : ''}}>{{$voitured->modele}}</option>
+                          @endforeach
+                        </select>
+                    </div>
+                   {{--!! Moteur --}}
+                    <div class="mb-4">
+
+                    <select name="moteur" class="form-control mb-2 rounded-5">
+                        <option class="rounded-5" value="">Type de moteur</option>
+                        <option class="rounded-5" value="essence">Essence</option>
+                        <option class="rounded-5" value="diesel">Diesel</option>
+                        <option class="rounded-5" value="hybride">Hybride</option>
+                        {{-- @foreach ( $rechercher as $voitured)
+                        <option class="rounded-5" value="{{ $voitured->moteur}}"  {{Request::get('moteur')==$voitured->moteur ? 'selected' : ''}}>{{$voitured->moteur}}</option>
+                        @endforeach --}}
+
+                    </select>
+                    </div>
+                    {{-- !!Boite --}}
+
+                    <div class="mb-4">
+                    <select name="boite" class="form-control mb-2 rounded-5">
+                        <option class="rounded-5" value="">Type de boite</option>
+                        <option class="rounded-5" value="manuelle">Manuelle</option>
+                        <option class="rounded-5" value="automatique">Automatique</option>
+                        {{-- @foreach ( $rechercher as $boi)
+                        <option class="rounded-5" value="{{ $boi->boite}}"  {{Request::get('boite')==$boi->boite ? 'selected' : ''}}>{{$boi->boite}}</option>
+                        @endforeach --}}
+
+                    </select>
+                    </div>
+                    {{-- !!annee --}}
+                    <div class="mb-4">
+
+                     <input class="form-control rounded-5" placeholder="année" type="number"value="{{Request::get('annee')}}"name="annee">
+                    </div>
+                    {{-- !! prix --}}
+                    <div class="mb-2">
+                        <div class="row">
+                          <label >Prix conpris entre</label>
+                            <div class="col-md-12 col-lg-6 col-6 mb-2">
+                              <input class="form-control rounded-5 " placeholder="prix" type="number"value="{{Request::get('prixinf')}}"name="prixinf">
+                            </div>
+                            <div class="col-md-12 col-lg-6 col-6 mb-2">
+                              <input class="form-control rounded-5 " placeholder="prix" type="number"value="{{Request::get('prixmax')}}"name="prixmax">
+                            </div>
+                          </div>
+                    </div>
+                    <div class="mb-4">
+                    <button type="submit" class="form-control btn border rounded-5 text-white bg-black"> <i class="fas fa-search"></i> Recherche</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-9 ">
+                <div class="job_listing_area">
+                    <div class="job_lists">
+                    <div class="row">
+                        @foreach ($voiture as $v)
+                        <div class="col-md-6 col-lg-6 ">
+                            <div class="card border-0 p-3 shadow mb-4 rounded-5">
+                                <div class="card-body">
+                                    <h3 class="border-0 fs-5 pb-2 mb-0 "><strong>{{$v->marque}} {{$v->modele}}</strong> </h3>
+                                  {{-- <span class="card-title text-black bg-white p-2 mb-3 rounded-5">{{$v->marque}} {{$v->modele}}</span> --}}
+
+                                    <h6 class="">
+                                   {{ $v->annee }}  |  {{ $v->kilometrage }} km  |  {{ $v->boite }}  |  {{ $v->moteur }}
+
+                                    </h6>
+                                    <div class="bg-light border rounded-5 mt-3">
+                                        <img src="{{ asset('voiture/'.$v->image) }}" alt="" class="img-fluid col-sm-12 rounded-5" style="width: 100%; height: 10rem; object-fit: cover;">
+                                    </div>
+
+
+                                    <div class="d-grid mt-3">
+                                        <a href="{{route('voiture.show', $v->id)}}"  class="btn bg-black text-white btn-lg rounded-5">Details</a>
+                                          {{-- <a role="button" href="{{route('voiture.show', $v->id)}}" class="text-sm p-1 rounded-5 bg-black  text-decoration-none text-white">Details</a> --}}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+@endforeach
+
+
+
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-
-
-
-
-          @endforeach
-          @endif
-</div>
-    </div>
-
-
-</div>
-
-</div>
-
+</section>
 
 <style>
   .carousel-image {

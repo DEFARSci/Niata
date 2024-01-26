@@ -32,8 +32,8 @@
                   <div class="form-group">
                       <label for="exampleSelect2">Marque :</label>
                       {{-- <input type="text" class="form-control" id="inputMarque" name="marque" placeholder="Marque"> --}}
-                      <select id="inputMarque" class="form-control" name="marque">
-                       <option value="">Tout les marques</option>
+                      <select id="inputMarque" class="form-control rounded-5" name="marque">
+                       <option value="">Toutes les marques</option>
 
                        @foreach ( $marques as $marque )
 
@@ -52,7 +52,7 @@
                   <div class="form-group">
                       <label for="exampleSelect3">Model :</label>
                      {{--  <input type="text" class="form-control" id="inputModele" name="model" placeholder="Model"> --}}
-                      <select id="inputModele" class="form-control" name="model" >
+                      <select id="inputModele" class="form-control rounded-5" name="model" >
                         {{-- Options seront ajoutées dynamiquement ici --}}
 
                     </select>
@@ -64,7 +64,7 @@
                   </div>
                   <div class="form-group">
                       <label for="exampleSelect4">Année :</label>
-                      <input type="number" class="form-control" name="annee" id="inputAnnee" placeholder="Année">
+                      <input type="number" class="form-control rounded-5" name="annee" id="inputAnnee" placeholder="Année">
                       @error('annee')
                       <div class="text-danger" role="alert">
                 {{ $message }}
@@ -73,7 +73,7 @@
                   </div>
                   <div class="form-group">
                       <label for="exampleSelect5">Boite Vitesse :</label>
-                      <select name="boite" class="form-control" id="inputBoite">
+                      <select name="boite" class="form-control rounded-5" id="inputBoite">
                         <option value="manuelle">Manuelle</option>
                         <option value="automatique">Automatique</option>
                           <!-- Ajoutez autant d'options que nécessaire -->
@@ -81,7 +81,7 @@
                   </div>
                    <div class="form-group">
                       <label for="exampleSelect5">Type de Carburant :</label>
-                      <select name="carburant" class="form-control" id="inputCarburant" >
+                      <select name="carburant" class="form-control rounded-5" id="inputCarburant" >
                           <option value="Essence">Essence</option>
                           <option value="diesel">Diesel</option>
                           {{-- <option value="hybride">Hybride</option>
@@ -91,8 +91,8 @@
                       </select>
                   </div>
                   <div class="form-group">
-                    <label for="exampleSelect5">Kilométrage :</label>
-                    <input name="kilometre" type="text" class="form-control" id="inputKilometre"  placeholder="Kilométrage">
+                    <label for="exampleSelect"">Kilométrage :</label>
+                    <input name="kilometre" type="text" class="form-control rounded-5" id="inputKilometre"  placeholder="Kilométrage">
                     @error('kilometre')
                     <div class="text-danger" role="alert">
                       {{ $message }}
@@ -101,7 +101,7 @@
                 </div>
 
                 {{-- <button type="submit" class="btn text-white valider-search-card mx-auto w-50">Valider</button> --}}
-                <button type="button" class="btn text-white valider-search-card mx-auto w-50" id="btn" >Valider</button>
+                <button type="button" class="btn text-white valider-search-card mx-auto w-50 rounded-5" id="btn" >Valider</button>
 <div>
   <h1 id="test"></h1>
 </div>
@@ -138,7 +138,7 @@
 
         </div> --}}
 
-        <div id="myModal" class="modal">
+        <div id="myModal" class="modal rounded-5 border-black">
             <div class="modal-content">
               <span class="close">&times;</span>
               <div id="modalContent"></div>
@@ -187,18 +187,18 @@
     </div>
   </section>
 
-  <div id="carouselExampleIndicatorsmodel1" class="carousel slide" data-bs-ride="carousel">
+  <div id="carouselExampleIndicatorsmodel1 " class="carousel slide" data-bs-ride="carousel">
 
-    <div class="carousel-inner">
+    <div class="carousel-inner ">
       <div class="carousel-item active">
         <div class="d-flex " style="background-color: rgb(33, 32, 32)">
-            <div  class="imgCarousel">
+            <div  class="imgCarousel" id="logo">
                 <img src="{{ asset('defaultimg/images/logo/Logo BMW.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div class="imgCarousel">
+            <div class="imgCarousel" id="logo">
                 <img src="{{ asset('defaultimg/images/logo/Logo Ford.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div class="imgCarousel">
+            <div class="imgCarousel" id="logo">
 
                 <img src="{{ asset('defaultimg/images/logo/Logo Hyundai.png') }}" class="img-fluid logo-car " alt="...">
             </div>
@@ -218,13 +218,13 @@
       </div>
       <div class="carousel-item ">
         <div class="d-flex " style="background-color: rgb(33, 32, 32)">
-            <div class="imgCarousel">
+            <div class="imgCarousel" id="logo">
                 <img src="{{ asset('defaultimg/images/logo/Logo BMW.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div class="imgCarousel">
+            <div class="imgCarousel" id="logo">
                 <img src="{{ asset('defaultimg/images/logo/Logo Ford.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div class="imgCarousel">
+            <div class="imgCarousel" id="logo">
 
                 <img src="{{ asset('defaultimg/images/logo/Logo Hyundai.png') }}" class="img-fluid logo-car " alt="...">
             </div>
@@ -245,13 +245,13 @@
       </div>
       <div class="carousel-item ">
         <div class="d-flex " style="background-color: rgb(33, 32, 32)">
-            <div class="imgCarousel">
-                <img src="{{ asset('defaultimg/images/logo/Logo Nissan.png') }}" class="img-fluid logo-car " alt="...">
+            <div class="imgCarousel" id="logo">
+                <img src="{{ asset('defaultimg/images/logo/Logo Nissan.png') }}" class="img-fluid logo-car  " alt="...">
             </div>
-            <div  class="imgCarousel" >
+            <div  class="imgCarousel" id="logo">
                <img src="{{ asset('defaultimg/images/logo/Logo Peugeot.png') }}" class="img-fluid logo-car " alt="...">
             </div>
-            <div class="imgCarousel">
+            <div class="imgCarousel" id="logo">
 
          <img src="{{ asset('defaultimg/images/logo/Logo Range rover .png') }}" class="img-fluid logo-car " alt="...">
             </div>
@@ -274,7 +274,7 @@
     </div>
 
   </div>
-  <div class="d-grid gap-2  mx-auto  w-sm-100 m-4 justify-content-center">
+  <div class="d-grid gap-2  mx-auto  w-sm-100 m-4 justify-content-center ">
     <a class="btn btn-primary  rounded-pill bg-light text-black m-t-5 " href="#" role="button">VOIR TOUTES LES MARQUES</a>
 
   </div>
@@ -485,9 +485,7 @@ e.preventDefault();
             <div>
                 <span  id="modalKilometre">Kilometrage: <strong>${inputkilometrage}</strong></span>
             </div>
-            <div>
-                <span  id="modalKilometre" class="text-center bg-success"><strong>un email vous sera envoyé avec plus de détails</strong></span>
-            </div>
+
         `
     }
 

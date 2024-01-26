@@ -3,10 +3,10 @@
     src: url("../Inter/static/Inter-Regular.ttf");
 }
 .logo-car{
-    width: 250px!important;
-   height:250px !important;
+    width: 230px!important;
+   height:220px !important;
    background-color: #D9D9D91A;
-   padding: 15px;
+   padding: 25px;
 
 }
 .carousel-indicators [data-bs-target]{
@@ -312,4 +312,58 @@ body{
     padding-top: 50px;
     padding-bottom: 50px;
     background-color: rgb(33, 32, 32)
+}
+@media screen and (max-width:901px) {
+    .imgCarousel{
+        padding-right: 6px;
+        padding-left: 6px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: rgb(33, 32, 32)
+    }
+    .logo-car {
+
+             width: 150px!important;
+              height:100px !important;
+    }
+    .carousel{
+        display: none;
+    }
+    .catalogue{
+        display: none;
+    }
+    .catalogueMessage{
+
+        display: none;
+    }
+}
+    @media screen and (max-width:425px) {
+        .imgCarousel{
+
+            padding-right: 6px;
+            padding-left: 6px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: rgb(33, 32, 32)
+        }
+        .logo-car {
+              width: 140px!important;
+              height:90px !important;
+        }
+        #logo{
+            display: none;
+        }
+        .carousel{
+            display: none;
+        }
+        .catalogue{
+            display: none;
+        }
+        .catalogueMessage{
+
+            display: none;
+        }
+        /* #carouselExampleIndicators{
+            display: none;
+        } */
 }
