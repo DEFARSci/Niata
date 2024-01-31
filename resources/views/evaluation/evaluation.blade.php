@@ -1,64 +1,109 @@
 @extends('layout.app')
+
 @section('content')
 
-<div class="text-lg font-semibold text-center whitespace-nowrap dark:text-white m-8">
-  @if (session('success'))
-            <div class="alert alert-success alert-dismissable m-3">
-                {{session('success')}}
-            </div>
-    @elseif (session('error'))
-            <div class="alert alert-danger alert-dismissable m-3">
-                {{session('error')}}
-            </div>
-    @endif
-    Evaluation
-</div>
-<div class="flex justify-center items-center p-4 " style="background-color: rgba(47, 48, 47, 0.082) ">
-    <div class="d-flex bg-red border border-solid">
-        <h2 class="p-2  display-6">Prix estimatif de votre vehicule est:</h2>
-        <h1 class="p-2 display-6 font-bold">{{ $prix}} Fr </h1>
+<div class="container mt-5 pt-2">
+    <div class="row">
+        <div class=" col-lg-3 col-12 pt-3 ">
+        </div>
+        {{-- <div class="col-md-9 col-lg-9 col-12 mt-5 pt-2  ">
+            <span class=" col-md-12 col-lg-12 col-12 d-inline-block p-3 text-white mx-auto h1 rounded-3">{{ $marque }} {{ $modele }} {{ $annee }} </span>
+        </div> --}}
+        <div class="col-md-12 col-lg-7 col-12 text-center mt-3 pt-3 ">
+            <span class="d-inline-block  text-black bg-white mx-auto h3  rounded-5  p-3"><strong>Prix estimatif de votre véhicule:</strong>  {{number_format( $prix, 0, ',', '.')  }} fr</span>
+        </div>
+
     </div>
 </div>
-<div class=" flex justify-center items-center p-4 " style="background-color: rgba(47, 48, 47, 0.082)">
+<div class="container  ">
+    <div class="row ">
+        <div class=" col-lg-2 col-12 pt-3">
 
-      <div class=" w-1/2 ">
-                <div class="d-flex bg-red border border-solid">
-                    <h2 class="p-2 font-bold mr-5">Marque</h2>
-                    <h2 class="p-2 ml-5">{{ $marque}}</h2>
-                </div>
-                <div class="d-flex bg-red border border-solid">
-                    <h2 class="p-2 font-bold mr-5">Modèle</h2>
-                    <h2 class="p-2 ml-5">{{ $modele }}</h2>
-                </div>
-                <div class="d-flex bg-red border border-solid">
-                    <h2 class="p-2 font-bold mr-5">Transmission</h2>
-                    <h2 class="p-2 ml-5">{{ $boite }}</h2>
-                </div>
-                <div class="d-flex bg-red border border-solid">
-                    <h2 class="p-2 font-bold mr-5">Carburant</h2>
-                    <h2 class="p-2 ml-5">{{ $carburant }}</h2>
-                </div>
-                <div class="d-flex bg-red border border-solid">
-                    <h2 class="p-2 font-bold mr-5">Année</h2>
-                    <h2 class="p-2 ml-5">{{ $annee }}</h2>
-                </div>
-                <div class="d-flex bg-red border border-solid">
-                    <h2 class="p-2 font-bold mr-5">Kilométrage</h2>
-                    <h2 class="p-2 ml-5">{{ $kilometrage}}</h2>
-                </div>
+        </div>
+        <div class="col-md-12 col-lg-9 col-12  rounded-5 ">
+            <img class="imgevaluation rounded-5"  src="{{ asset('evaluation/'.$image) }}" alt="" style="width: 100%; height: 30rem; object-fit: cover;">
+        </div>
 
-             </div>
+    <div class="col-md-1 col-lg-1 col-12 pt-3">
+
+    </div>
 </div>
-<div class="text-lg font-semibold text-center whitespace-nowrap dark:text-white m-8">
-    <h2>Vous allez recevoire une description plus detailler de votre evaluation par e-mail</h2>
+<div class="container">
+    <div class="row rounded-5 pt-3">
+        <div class=" col-lg-2 col-12 pt-3">
+        </div>
+<div class="col-md-12 col-lg-9 col-12 pt-3 bg-white rounded-5 ">
+
+    <div class="col-md-9 col-lg-9 col-12   ">
+        <span class=" col-md-12 col-lg-12 col-12 d-inline-block p-3  mx-auto h3 rounded-3">{{ $marque }} {{ $modele }} {{ $annee }} </span>
+    </div>
+    <div class="row">
+
+        <div class="col-lg-3 col-md-6 col-6 border text-center pt-3 ">
+            <div class="col-12 ">
+
+                <img src="{{asset('icone/engine.png')}}" class="img-responsive" alt="" style="width: 30%; height: 30%; object-fit: cover;">
+            </div>
+            <span>
+                <strong>Boîte:</strong>
+                <h3>
+                    {{ $boite }}
+
+                </h3>
+
+
+            </span>
+        </div>
+        <div class="col-lg-3 col-md-6 col-6 border text-center pt-3">
+            <div class="col-12 ">
+                <img src="{{asset('icone/fuel.png')}}" class="img-responsive" alt="" style="width: 30%; height: 30%; object-fit: cover;">
+            </div>
+            <span>
+                <strong>Carburant:</strong><h3> {{ $carburant }} </h3>
+
+
+            </span>
+        </div>
+        <div class="col-lg-3 col-md-6 col-6 border  text-center pt-3">
+            <div class="col-12">
+                <img src="{{asset('icone/year.png')}}" class="img-responsive" alt="" style="width: 30%; height:30%; object-fit: cover;">
+            </div>
+            <span>
+
+                <strong>Annee:</strong> <h3>
+                    {{ $annee }}
+
+                </h3>
+            </span>
+        </div>
+        <div class="col-lg-3 col-md-6 col-6 border text-center pt-3">
+            <div class="col-12">
+                <img src="{{asset('icone/km.png')}}" class="img-responsive" alt="" style="width: 30%; height: 30%; object-fit: cover;">
+
+            </div>
+            <span>
+                <strong>Kilometrage:</strong> <h3>{{ $kilometrage }} km</h3>
+
+            </span>
+        </div>
+        <div class="col-md-12 col-lg-12 col-12 pt-3 d-flex justify-content-center ">
+            <span class="d-inline-block  text-white bg-black mx-auto h3  rounded-5  p-3 text-center">
+                <a type="button" class=" text-white p-3 rounded-3xl text-decoration-none" href="{{route('accueil')}}">Faire une autre evaluation</a>
+
+            </span>
+
+        </div>
+    </div>
+
+    </div>
+    <div class="col-md-1 col-lg-1 col-12 mt-5 pt-2  ">
+    </div>
+</div>
 </div>
 
-<div class="flex justify-center items-center  ">
-    <span class="text-lg font-semibold text-center whitespace-nowrap dark:text-white m-8">
 
-       <a type="button" class="bg-primary text-white p-3 rounded-3xl hover:bg-black" href="{{route('evaluation.index')}}">Faire une autre evaluation</a>
-    </span>
-</div>
+
+
 
 
 @endsection

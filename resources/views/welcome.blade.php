@@ -17,8 +17,8 @@
                 </div>
             @endif
               <legend class="mb-4">SIMPLE,RAPIDE ET GRATUIT</legend>
-              {{-- <form action="{{ route('evaluation.voiture') }}" method="POST" id="myForm"> --}}
-                <form action="" method="" id="myForm">
+              <form action="{{ route('evaluation.voiture') }}" method="POST" id="myForm">
+                {{-- <form action="" method="" id="myForm"> --}}
                 @csrf
                   {{-- <div class="form-group">
                       <label for="exampleSelect1">Email :</label>
@@ -33,7 +33,7 @@
                       <label for="exampleSelect2">Marque :</label>
                       {{-- <input type="text" class="form-control" id="inputMarque" name="marque" placeholder="Marque"> --}}
                       <select id="inputMarque" class="form-control rounded-5" name="marque">
-                       <option value="">Toutes les marques</option>
+                       <option value="" >Toutes les marques</option>
 
                        @foreach ( $marques as $marque )
 
@@ -100,8 +100,8 @@
                     @enderror
                 </div>
 
-                {{-- <button type="submit" class="btn text-white valider-search-card mx-auto w-50">Valider</button> --}}
-                <button type="button" class="btn text-white valider-search-card mx-auto w-50 rounded-5" id="btn" >Valider</button>
+                <button type="submit" class="btn text-white valider-search-card mx-auto w-50">Valider</button>
+                {{-- <button type="button" class="btn text-white valider-search-card mx-auto w-50 rounded-5" id="btn" >Valider</button> --}}
 <div>
   <h1 id="test"></h1>
 </div>

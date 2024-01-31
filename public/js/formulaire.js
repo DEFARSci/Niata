@@ -28,4 +28,36 @@ $(document).ready(function () {
                 $('#model').empty().prop('disabled', true);
             }
         });
+
+
+        // Annee
+        $('#inputModele').on('change', function () {
+            let brand = $(this).val();
+            // console.log(brand);
+            if (brand !== '') {
+                $.ajax({
+                    url: '/getAnnee/' + brand,
+                    type: 'GET',
+                    success: function (data) {
+                        console.log(data);
+                        $('#inputannee').empty().prop('disabled', false);
+                        if (data!=null) {
+                            $('#inputannee').append('<option value=""style="color:#E0C1C3;">Annes</option>');
+                        }else{
+                            $('#inputannee').append('<option value="">Aucune Annees disponible</option>');
+                        }
+
+                        $.each(data, function (index, annee) {
+                            $('#inputannee').append('<option value="' + annee + '">' + annee + '</option>');
+                        });
+                    },
+                    error: function () {
+                        console.log('Erreur lors de la récupération des modèles');
+                    }
+                });
+                            $('#inputannee').append('<option value=""style="color:#E0C1C3;">Les Annee disponibles</option>');
+            } else {
+                $('#model').empty().prop('disabled', true);
+            }
+        });
     });

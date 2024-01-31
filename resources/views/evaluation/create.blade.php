@@ -58,7 +58,7 @@
       <div class=" my-4">
 
         <div class="col-md-8">
-            <form action="{{route('evaluation.store')}}" method="POST" >
+            <form action="{{route('evaluation.store')}}" method="POST" enctype="multipart/form-data" >
                 @csrf
                <div class="row p-3 m-3 text-black">
 
@@ -167,6 +167,13 @@
                         <label for="prix_conteur_0km">Prix à Zéro kilometrage</label>
                         <input type="number"  class="form-control text-black" id="prix_conteur_0km" name="prix_conteur_0km" value="{{old('prix_conteur_0km')}}">
                         @error('prix_conteur_0km')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="image">Image</label>
+                        <input type="file"  class="form-control text-black" id="image" name="image" value="{{old('image')}}">
+                        @error('image')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>

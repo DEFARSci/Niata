@@ -38,15 +38,20 @@ class EvaluationController extends Controller
                            ->Where('modele','like','%'.$data['model'].'%')
                            ->Where('annee','=',$data['annee'])
                            ->first();
-                // dd($voitureEvaluation);
+                //  dd($voitureEvaluation);
             if ($voitureEvaluation==null) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Voiture non disponible',
-                ]);
-
+                return back()->with( 'error', 'Cette Voiture n\'existe pas dans notre base de donnée' );
 
             }
+            if ($voitureEvaluation->estimationCarburant==null && $voitureEvaluation->type_carburant !=$request->carburant) {
+                return back()->with( 'error', 'Cette Voiture n\'existe pas dans notre base de donnée' );
+
+            }
+            if ($voitureEvaluation->estimationTransmission==null && $voitureEvaluation->boite !=$request->boite) {
+                return back()->with( 'error', 'Cette Voiture n\'existe pas dans notre base de donnée' );
+
+            }
+            //  dd($voitureEvaluation);
         $voiturerecup=new Evaluation();
         // foreach($voitureEvaluation as $voiture){
             $voiturerecup->marque=$voitureEvaluation->marque;
@@ -60,6 +65,7 @@ class EvaluationController extends Controller
             $voiturerecup->estimationKm=$voitureEvaluation->estimationKm;
             $voiturerecup->estimationTransmission=$voitureEvaluation->estimationTransmission;
             $voiturerecup->prix_conteur_0km=$voitureEvaluation->prix_conteur_0km;
+            $voiturerecup->image=$voitureEvaluation->image;
         // }
         //   dd($voiturerecup);
 
@@ -76,7 +82,7 @@ class EvaluationController extends Controller
             'carburant'=>$data['carburant'],
             'boite'=>$data['boite'],
             'subject'=>'Evaluation prix voiture',
-            'recipient'=>'admin@niata.com',
+            'image'=>$voiturerecup->image
         ];
         //  dd($mail_data);
 
@@ -90,12 +96,14 @@ class EvaluationController extends Controller
         //     $data=[
         //         'data'=>$mail_data
         //     ];
-          return response()->json([
-              'success' => true,
-              'data'=>$mail_data
+        //   return response()->json([
+        //       'success' => true,
+        //       'data'=>$mail_data
 
-          ]);
+        //   ]);
         // return response()->json($mail_data);
+        // dd($mail_data);
+        return view('evaluation.evaluation',$mail_data);
 
     }
 
@@ -126,6 +134,15 @@ class EvaluationController extends Controller
         $voitureEvaluation->estimationKm=$request->estimationKm;
         $voitureEvaluation->estimationTransmission=$request->estimationTransmission;
         $voitureEvaluation->prix_conteur_0km=$request->prix_conteur_0km;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move( public_path( 'evaluation' ), $imageName );
+            $voitureEvaluation->image = $imageName;
+        }
+
+        // $image = $request->image;
 
         $voitureEvaluation->save();
         return back()->with('success','Evaluation enregistrée avec succès');
@@ -162,6 +179,12 @@ class EvaluationController extends Controller
         $voiture->estimationKm=$request->estimationKm;
         $voiture->estimationTransmission=$request->estimationTransmission;
         $voiture->prix_conteur_0km=$request->prix_conteur_0km;
+        if(isset($request->image)){
+            $image = $request->image;
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move( public_path( 'evaluation' ), $imageName );
+            $voiture->image = $imageName;
+        }
         $voiture->save();
 
         return redirect('/evaluation/liste')->with( 'success', 'voiture Modifier' );

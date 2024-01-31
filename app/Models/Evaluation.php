@@ -20,5 +20,6 @@ class Evaluation extends Model
         'estimationTransmission',
         'estimationCarburant',
         'prix_conteur_0km',
+        'image',
     ];
 }
