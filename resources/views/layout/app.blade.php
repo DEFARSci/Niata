@@ -96,7 +96,8 @@
         {{-- </div> --}}
         <div class="container footer mt-5 mb-5">
             <div class="row">
-          <div class="col-md-2 mx-3 "> <div >
+          <div class="col-lg-2 col-12 col-md-4 mx-3 ">
+            <div >
            <h5 class="text-white">À propos de NIATA</h5>
            <ul class="list-group list-group-flush text-white a-propos">
             <li class="  text-white  bg-transparent fs-6 p-0 m-0"><a href="" class="text-white
@@ -109,16 +110,20 @@
                 ">Devenir annonceur pub</a></li>
             <li class=" text-white  bg-transparent"><a href="" class="text-white
                 ">Devenir partenaire pro</a></li>  </ul>
-        </div></div>
-          <div class="col-md-2 mx-3"> <div >
+        </div>
+        </div>
+          <div class="col-lg-2 col-12 col-md-4 mx-3">
+            <div >
             <h5 class="text-white">Contacts</h5>
            <ul class="list-group list-group-flush text-white ">
             <li class="  text-white  bg-transparent fs-6 p-0 m-0"><a href="mailto:contact@niatagmail.com" class="text-white
                 ">contact@niatagmail.com </a> </li>
             <li class="  text-white  bg-transparent">+221 77 277 00 00</li>
          </ul>
-        </div></div>
-          <div class="col-md-2 mx-3"> <div >
+        </div>
+      </div>
+          <div class="col-lg-2 col-12 col-md-4 mx-3">
+            <div >
             <h5 class="text-white">Suivez-nous</h5>
             <ul class="  text-white d-flex  flex-row justify-content-start p-0">
              <li class="  text-white  bg-transparent m-0 "><a href=""><img src="{{ asset('defaultimg/images/Facebook C 1.png') }}" class="w-100" alt=""></a> </li>
@@ -126,8 +131,10 @@
              <li class="  text-white  bg-transparent"><a href=""><img src="{{ asset('defaultimg/images/Twitter C 1.png') }}" class="w-100" alt=""></a></li><br>
              <li class="  text-white  bg-transparent"><a href=""><img src="{{ asset('defaultimg/images/Linkedin C 1.png') }}" class="w-100" alt=""></a></li>
             </ul>
-        </div></div>
-          <div class="col-md-2 mx-3"> <div >
+        </div>
+      </div>
+          <div class="col-lg-2 col-12 col-md-4 mx-3">
+            <div >
             <h5 class="text-white">Informations légales</h5>
            <ul class="list-group list-group-flush text-white ">
             <li class="    bg-transparent fs-6 p-0 m-0"><a href=" "class="text-white
@@ -140,13 +147,16 @@
                 ">Politique et confidentialité</a></li>
             <li class="   bg-transparent"><a href="" class="text-white
                 ">Charte cookies</a></li>  </ul>
-        </div></div>
-          <div class="col-md-2 mx-3"> <div >
+        </div>
+      </div>
+          <div class="col-lg-2 col-12 col-md-4 mx-3">
+            <div >
             <h5 class="text-white">Télécharger l’application</h5>
             <ul class="list-group list-group-flush text-white ">
                 <li class="  text-white  bg-transparent "><a href=""><img src="{{ asset('defaultimg/images/Disponible sur Google Play 1.png') }}" class="w-50 " alt=""></a> </li>
                 <li class="  text-white  bg-transparent"><a href=""><img src="{{ asset('defaultimg/images/App store 1.png') }}" class="w-50" alt=""></a></li> </ul>
-        </div></div>
+           </div>
+    </div>
     </div>
     <hr class=" bg-light footer-line mt-5">
     <p class="text-center text-white">Copyright © 2023 DEFAR Sci. Tous droits réservés</p>

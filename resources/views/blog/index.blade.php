@@ -47,12 +47,12 @@
   </div>
 @endif
 
-<div class="border container  mx-auto mt-5 col-md-12 rounded-5 d-flex justify-content-center">
+<div class=" container  mx-auto mt-5 col-md-12 rounded-5 d-flex justify-content-center">
 
 
-    <div class="row col-md-12 col-sm-12 d-flex justify-content-center pb-3">
+    <div class="row  bg-white rounded-5 mt-5">
       @foreach ($blog as $blog)
-      <div class="col-md-4 col-sm-12 col-lg-3 mt-5 p-1 m-4  rounded-5 border " style="background-color: rgb(255, 255, 255)">
+      <div class="col-md-6 col-sm-12 col-lg-4 mt-5  rounded-5  " style="background-color: rgb(255, 255, 255)">
 
           <div class=" col-sm-12 p-3 border-none " >
             <img src="{{ asset('blog/'.$blog->image) }}" alt="" class="img-fluid col-sm-12 rounded-5 " style="height: 20rem;background-color: rgb(231, 217, 217);">

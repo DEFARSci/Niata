@@ -7,8 +7,10 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\VoitureController;
 use App\Http\Controllers\CarressolController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\CategieArticleController;
 use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\TemoignageController;
+use App\Http\Controllers\CategieArticleController;
+use App\Models\Temoignage;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +22,12 @@ use App\Http\Controllers\EvaluationController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/avis', function () {
-    return view('carrousel.caroussel-avis');
-});
+// Route::get('/avis', function () {
 
+//     return view('carrousel.caroussel-avis');
+// });
+
+Route::get('/avis', [TemoignageController::class, 'avis'])->name('avis');
 // Route::get('/', function () {
 //     return view('carrousel.caroussel-avis');
 // });
@@ -38,7 +42,7 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 //blog
 Route::get('/index', [BlogController::class, 'index'])->name('blog');
-Route::get('/create', [BlogController::class, 'create'])->name('create');
+Route::get('/create', [BlogController::class, 'create'])->middleware(['auth'])->name('create');
 Route::post('/store', [BlogController::class, 'store'])->name('store');
 Route::get('voirBlog/{id}' , [BlogController::class, 'show'])->name('blog.show');
 Route::get('editBlog/{id}' , [BlogController::class, 'edit'])->name('blog.edit');
@@ -81,6 +85,18 @@ Route::post('/evaluation/update', [EvaluationController::class, 'update'])->name
 
 //input dynamique
 Route::get('/getModels/{marque}', [EvaluationController::class, 'models'])->name('input.model');
-// Route::get('/getannee/{model}', [EvaluationController::class, 'annee'])->name('input.annee');
+Route::get('/getAnnee/{model}', [EvaluationController::class, 'annee'])->name('input.annee');
+
+
+// temoignage
+// Route::resources(['temoignage' => TemoignageController::class]);
+Route::get('/temoignage/index', [TemoignageController::class, 'index'])->name('temoignage.index');
+Route::get('/temoignage/create', [TemoignageController::class, 'create'])->name('temoignage.create');
+Route::post('/temoignage/store', [TemoignageController::class, 'store'])->name('temoignage.store');
+Route::get('/temoignage/etat/{id}',[TemoignageController::class, 'etat'])->name('temoignage.etat');
+Route::get('temoignage/show/{id}', [TemoignageController::class, 'show'])->name('temoignage.show');
+Route::get('temoignage/delete/{id}', [TemoignageController::class, 'destroy'])->name('temoignage.delete');
+Route::get('temoignage/edit/{id}', [TemoignageController::class, 'edit'])->name('temoignage.edit');
+Route::post('temoignage/update/{id}', [TemoignageController::class, 'update'])->name('temoignage.update');
 
 require __DIR__.'/auth.php';

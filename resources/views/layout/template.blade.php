@@ -98,7 +98,8 @@
 	    </footer><!--//app-footer-->
 
     </div><!--//app-wrapper-->    					 --}}
-
+    </div>
+</div>
 
     <!-- Javascript -->
     <script src="{{asset('assets/plugins/popper.min.js')}}"></script>

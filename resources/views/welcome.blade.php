@@ -6,15 +6,19 @@
     <div class="container card-search-container mt-5">
       <div class="row justify-content-center">
 
-          <div class="col-md-6 card-search">
+          <div class="col-md-12 col-12 col-lg-6 card-search">
             @if (session('success'))
                 <div class="alert alert-success alert-dismissable m-3">
                     {{session('success')}}
                 </div>
                 @elseif (session('error'))
-                <div class="alert alert-danger alert-dismissable m-3">
+                {{-- <div class="alert alert-danger alert-dismissable m-3">
                     {{session('error')}}
-                </div>
+                </div> --}}
+                <div class="alert alert-dismissible alert-danger m-3">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Oh snap!</strong> <a href="#" class="alert-link">{{session('error')}}</a> and try submitting again.
+                  </div>
             @endif
               <legend class="mb-4">SIMPLE,RAPIDE ET GRATUIT</legend>
               <form action="{{ route('evaluation.voiture') }}" method="POST" id="myForm">
@@ -52,7 +56,7 @@
                   <div class="form-group">
                       <label for="exampleSelect3">Model :</label>
                      {{--  <input type="text" class="form-control" id="inputModele" name="model" placeholder="Model"> --}}
-                      <select id="inputModele" class="form-control rounded-5" name="model" >
+                      <select id="inputModele" class="form-control rounded-5" name="model"  >
                         {{-- Options seront ajoutées dynamiquement ici --}}
 
                     </select>
@@ -64,7 +68,11 @@
                   </div>
                   <div class="form-group">
                       <label for="exampleSelect4">Année :</label>
-                      <input type="number" class="form-control rounded-5" name="annee" id="inputAnnee" placeholder="Année">
+                      {{-- <input type="number" class="form-control rounded-5" name="annee" id="inputAnnee" placeholder="Année"> --}}
+                      <select id="inputAnnee" class="form-control rounded-5" name="annee" >
+                        {{-- Options seront ajoutées dynamiquement ici --}}
+
+                    </select>
                       @error('annee')
                       <div class="text-danger" role="alert">
                 {{ $message }}
@@ -92,7 +100,7 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleSelect"">Kilométrage :</label>
-                    <input name="kilometre" type="text" class="form-control rounded-5" id="inputKilometre"  placeholder="Kilométrage">
+                    <input name="kilometre" type="number" class="form-control rounded-5" id="inputKilometre"  placeholder="Kilométrage">
                     @error('kilometre')
                     <div class="text-danger" role="alert">
                       {{ $message }}
@@ -274,8 +282,80 @@
     </div>
 
   </div>
+  {{-- modal --}}
+  <!-- Button trigger modal -->
+
+
+  <!-- Modal -->
+  <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg ">
+      <div class="modal-content col-12 bg-black border-0 text-white">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Donnez vos avis</h1>
+          <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid ">
+                <div class="row">
+
+                    <div class="col-md-12 text-black">
+                        <form action="{{route('temoignage.store')}}" method="POST" enctype="multipart/form-data" >
+                            @csrf
+                            <div class="form-group col-12">
+                                <label for="titre" class="text-white">prenom</label>
+                                <input type="text" class="form-control text-black" id="titre" name="prenom" value="{{old('prenom')}}">
+                                @error('prenom')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                              </div>
+                              <div class="form-group col-12">
+                                <label for="titre" class="text-white">nom</label>
+                                <input type="text" class="form-control text-black" id="titre" name="nom" value="{{old('nom')}}">
+                                @error('nom')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                              </div>
+                              <div class="form-group col-12">
+                                <label for="titre" class="text-white">Domaine</label>
+                                <input type="text" class="form-control text-black" id="titre" name="domaine" value="{{old('domaine')}}">
+                                @error('domaine')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                              </div>
+                              <div class="form-group col-12">
+                                <label for="titre" class="text-white">message</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" name="message" rows="3" cols="10">{{ old('message') }}</textarea>
+                                @error('message')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                              </div>
+                              <div class="form-group col-12">
+                                <label for="titre">photo</label>
+                                <input type="file" class="form-control text-black" id="titre" name="image" value="{{old('photo')}}" >
+                                @error('image')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                              </div>
+
+
+
+                            <button type="submit " class="btn text-white bg-black mt-3">Ajouter</button>
+                          </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {{-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div> --}}
+      </div>
+    </div>
+  </div>
+  {{-- modal --}}
   <div class="d-grid gap-2  mx-auto  w-sm-100 m-4 justify-content-center ">
-    <a class="btn btn-primary  rounded-pill bg-light text-black m-t-5 " href="#" role="button">VOIR TOUTES LES MARQUES</a>
+    <a class="btn btn-primary  rounded-pill bg-light text-black m-t-5 " role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Donnez vos avis</a>
 
   </div>
 
@@ -380,8 +460,6 @@
                 <h5 class="card-title car-hero-title text-black ">Abonnez-vous maintenant à notre newsletter</h5>
               <p class=" text-black">Obtenez des conseils exclusifs d'experts sur les voitures</p>
               <form class="d-flex flex-row">
-
-
                     <div class="col-auto w-50 email-newsletter ">
                       <label for="inputPassword2" class="visually-hidden">Password</label>
                       <input type="email" class="form-control rounded-pill  " id="inputPassword2" placeholder="Votre adresse mail">
@@ -389,7 +467,7 @@
                     <div class="col-auto inscrir-newsletter">
                       <button type="submit" class="btn btn-primary mb-3 rounded-pill">S’inscrire</button>
                     </div>
-                  </form>
+                </form>
                   <p class="">Lors de l'inscription, vous acceptez les <a href="">conditions générales</a> ainsi que la <a href="">déclardéclaration de confidentialité</a>.</p>
 
             </div>

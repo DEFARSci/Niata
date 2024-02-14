@@ -8,68 +8,35 @@
     <title>How to 3D Testimonial Carousel using Materialize CSS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+
 </head>
 <body>
 
 
     <div class="carousel t">
+        @foreach ($avis as $avis )
         <div class="carousel-item r" href="#">
             <div class="testi">
                 <div class="img-area">
-                    <img src="{{ asset('defaultimg/images/logo/Logo Toyota.png') }}" alt="ranger rover">
+                    <img src="{{ asset('temoignage/'.$avis->image.'') }}" alt="ranger rover"  style="width: 50px; height: 50px;border-radius: 50%; ">
                 </div>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus veritatis repellendus delectus, est, alias recusandae."</p>
-                <h4>issa Jones</h4>
-                <h5>Web Designer</h5>
-            </div>
-        </div>
-        <div class="carousel-item r" href="#">
-            <div class="testi">
-                <div class="img-area">
-                    <img src="{{ asset('defaultimg/images/logo/Logo Toyota.png') }}" alt="ranger rover">
-                </div>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus veritatis repellendus delectus, est, alias recusandae."</p>
-                <h4>Jessica Jones</h4>
-                <h5>Web Designer</h5>
-            </div>
-        </div>
-        <div class="carousel-item r" href="#">
-            <div class="testi">
-                <div class="img-area">
-                    <img src="{{ asset('defaultimg/images/logo/Logo Toyota.png') }}" alt="ranger rover">
+                <p>
+                    {{ Str::limit(htmlspecialchars_decode(strip_tags($avis->message)), 95) }}
 
-                </div>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus veritatis repellendus delectus, est, alias recusandae."</p>
-                <h4>moussa Jones</h4>
-                <h5>Web Designer</h5>
+                </p>
+                <h4>{{ $avis->prenom.' '.$avis->nom }}</h4>
+                <h5>{{ $avis->domaine }}</h5>
             </div>
         </div>
-        <div class="carousel-item r" href="#">
-            <div class="testi">
-                <div class="img-area">
-                    <img src="{{ asset('defaultimg/images/logo/Logo Range rover .png') }}" alt="ranger rover">
+        @endforeach
 
-                </div>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus veritatis repellendus delectus, est, alias recusandae."</p>
-                <h4>ibou Jones</h4>
-                <h5>Web Designer</h5>
-            </div>
-        </div>
-        <div class="carousel-item r" href="#">
-            <div class="testi">
-                <div class="img-area">
-            <img src="{{ asset('defaultimg/images/logo/Logo Range rover .png') }}" alt="ranger rover">
 
-                </div>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus veritatis repellendus delectus, est, alias recusandae."</p>
-                <h4>ibou Jones</h4>
-                <h5>Web Designer</h5>
-            </div>
-        </div>
 
    </div>
 
 
+   {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> --}}
 
 
     <script
@@ -89,4 +56,5 @@
   });
 </script>
 </body>
+
 </html>

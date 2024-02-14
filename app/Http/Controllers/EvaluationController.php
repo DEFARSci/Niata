@@ -194,8 +194,10 @@ class EvaluationController extends Controller
         $models = Evaluation::where('marque','like','%'. $marque.'%')->pluck('modele')->unique();
         return response()->json($models);
     }
-    // public function annee($model){
-    //     $annee = Evaluation::where('annee','like','%'. 'Elentra'.'%')->pluck('annee');
-    //     return response()->json($annee);
-    // }
+    public function annee($model){
+
+        $annee = Evaluation::where('modele',$model)->pluck('annee')->unique();
+      
+        return response()->json($annee);
+    }
 }
