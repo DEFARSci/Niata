@@ -19,7 +19,11 @@
         <div class="carousel-item r" href="#">
             <div class="testi">
                 <div class="img-area">
+                    @if ($avis->image == null)
+                    <img src="{{ asset('icone/user.png') }}" alt="ranger rover"  style="width: 50px; height: 50px;border-radius: 50%; ">
+                    @else
                     <img src="{{ asset('temoignage/'.$avis->image.'') }}" alt="ranger rover"  style="width: 50px; height: 50px;border-radius: 50%; ">
+                    @endif
                 </div>
                 <p>
                     {{ Str::limit(htmlspecialchars_decode(strip_tags($avis->message)), 95) }}

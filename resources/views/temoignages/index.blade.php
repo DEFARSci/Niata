@@ -77,7 +77,14 @@
                                 <td class="cell text-black">{{$temoignage->nom}}</td>
                                 {{-- <td class="cell text-black">{{$temoignage->domaine}}</td> --}}
                                 <td class="cell text-black"><span class="truncate">{{Str::limit(htmlspecialchars_decode(strip_tags($temoignage->message)), 150)}}</span></td>
-                                <td class="cell text-black"> <img src="{{asset('temoignage/'.$temoignage->image)}}"  style="height: 90px; width: 90px;" ></td>
+                                <td class="cell text-black">
+                                    @if ($temoignage->image==null)
+                                    <img src="{{asset('icone/user.png')}}"  style="height: 90px; width: 90px;" ></td>
+
+                                    @else
+                                    <img src="{{asset('temoignage/'.$temoignage->image)}}"  style="height: 90px; width: 90px;" ></td>
+
+                                    @endif
                                 <td class="cell text-black">
                                     <a class="btn app-btn{{ $temoignage->ispublished ? ' btn-success' : ' btn-danger' }} btn-sm" href="{{ route('temoignage.etat',$temoignage->id) }}">{{ $temoignage->ispublished ? 'Desactiver' : 'Activer' }}</a>
                                 </td>

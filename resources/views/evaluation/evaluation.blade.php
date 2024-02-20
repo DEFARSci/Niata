@@ -10,7 +10,7 @@
             <span class=" col-md-12 col-lg-12 col-12 d-inline-block p-3 text-white mx-auto h1 rounded-3">{{ $marque }} {{ $modele }} {{ $annee }} </span>
         </div> --}}
         <div class="col-md-12 col-lg-7 col-12 text-center mt-3 pt-3 ">
-            <span class="d-inline-block  text-black bg-white mx-auto h3  rounded-5  p-3"><strong>Prix estimatif de votre véhicule:</strong>  {{number_format( $prix, 0, ',', '.')  }} fr</span>
+            <span class="d-inline-block  text-black bg-white mx-auto h3  rounded-5  p-3"><strong>Prix estimatif de votre véhicule:</strong>  {{number_format( $prix, 0, ',', '.')  }} FCFA</span>
         </div>
 
     </div>

@@ -33,7 +33,7 @@
 <div class="col-md-12 col-lg-9 col-12 pt-3 bg-white rounded-5 ">
     <div class="col-md-12 col-lg-12 col-12  d-flex justify-content-center ">
         {{-- <span class="d-inline-block p-3 text-black bg-white mx-auto h3 rounded-3">Details</span> --}}
-        <span class="d-inline-block  text-white bg-black mx-auto h3  rounded-5  p-3"><strong>Prix:</strong>  {{number_format($voiture->prix, 0, ',', '.')  }} fr</span>
+        <span class="d-inline-block  text-white bg-black mx-auto h3  rounded-5  p-3"><strong>Prix:</strong>  {{number_format($voiture->prix, 0, ',', '.')  }} FCFA</span>
     </div>
     <div class="row">
 
