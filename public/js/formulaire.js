@@ -45,14 +45,15 @@ $(document).ready(function () {
                     console.log(data);
                     $('#inputannee').empty().prop('disabled', false);
                     if (data!=null) {
-                        $('#inputAnnee').append(`<option value=""style="color:#E0C1C3;">Annes disponible pour ` +brand+`</option>`);
+                        $('#inputAnnee').append(`<option value=""style="color:#E0C1C3;">Années disponible pour ` +brand+`</option>`);
                     }else{
-                        $('#inputAnnee').append('<option value="">Aucune Annees disponible</option>');
+                        $('#inputAnnee').append('<option value="">Aucune Années disponible</option>');
                     }
 
                     $.each(data, function (index, annee) {
                         $('#inputAnnee').append('<option value="' + annee + '">' + annee + '</option>');
                     });
+
                 },
                 error: function () {
                     console.log('Erreur lors de la récupération des modèles');

@@ -179,11 +179,18 @@
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
-                  </div>
+                    @if ($voiture->message != null)
+
+                    <div class="form-group">
+                    <label for="exampleTextarea" class="form-label mt-4">Message</label>
+                    <textarea class="form-control text-black" id="exampleTextarea" rows="2" name="message" spellcheck="false" style="height: 100%;">{{ $voiture->message }}</textarea>
+                    </div>
+                    @endif
 
                 </div>
-                <button type="submit " class="btn bg-black text-white mt-4">Ajouter</button>
+                <button type="submit " class="btn bg-black text-white mt-5">Modifier</button>
               </form>
+            </div>
 
         </div>
 

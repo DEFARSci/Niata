@@ -11,6 +11,7 @@ class Evaluation extends Model
     protected $fillable=[
         'marque',
         'modele',
+        'message',
         'annee',
         'kilometrage',
         'type_carburant',

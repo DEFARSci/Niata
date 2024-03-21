@@ -40,9 +40,10 @@
 
     <div class="col-lg-9">
         @if (session('success'))
-            <div class="alert alert-success alert-dismissable m-3">
-                {{session('success')}}
-            </div>
+        <div class="alert alert-dismissible alert-success mt-5 col-9">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Success</strong> <a href="#" class="alert-link">{{session('success')}}</a>
+        </div>
 
         @endif
       <!-- /.card -->
@@ -181,7 +182,37 @@
 
                 <button type="submit " class="btn text-white bg-black">Ajouter</button>
               </form>
+              <div class="mt-3 col-12">
+              @if (session('errorexcel'))
+                    <div class="alert alert-dismissible alert-danger">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <strong>Oh snap!</strong> <a href="#" class="alert-link">{{session('errorexcel')}}</a> and try submitting again.
+                    </div>
+              @endif
+              @if (session('successexcel'))
+                    <div class="alert alert-dismissible alert-success">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <strong>Success</strong> <a href="#" class="alert-link">{{session('successexcel')}}</a>
+                    </div>
+              @endif
+              <form method="POST" action="{{ route('excel.import') }}" enctype="multipart/form-data" >
 
+                <!-- CSRF Token -->
+                @csrf
+                <div class="row">
+                    <label for="formFile" class="form-label mt-4">Importer à partire d'un fichier Excel</label>
+
+                  <div class="form-group col-5">
+                    <input class="form-control" type="file" id="formFile" name="file">
+                  </div>
+                @error('file')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+                <div class="form-group col-3" >
+                    <button type="submit " class="btn text-white bg-black">Importer</button>
+                </div>
+            </div>
+            </form>
         </div>
 
       </div>

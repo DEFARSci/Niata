@@ -44,33 +44,33 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/index', [BlogController::class, 'index'])->name('blog');
 Route::get('/create', [BlogController::class, 'create'])->middleware(['auth'])->name('create');
 Route::post('/store', [BlogController::class, 'store'])->name('store');
-Route::get('voirBlog/{id}' , [BlogController::class, 'show'])->name('blog.show');
-Route::get('editBlog/{id}' , [BlogController::class, 'edit'])->name('blog.edit');
-Route::post('updateBlog' , [BlogController::class, 'update'])->name('blog.update');
-Route::delete('deleteblog/{id}' , [BlogController::class, 'destroy'])->name('blog.destroy');
+Route::get('voirBlog/{id}' , [BlogController::class, 'show'])->middleware(['auth'])->name('blog.show');
+Route::get('editBlog/{id}' , [BlogController::class, 'edit'])->middleware(['auth'])->name('blog.edit');
+Route::post('updateBlog' , [BlogController::class, 'update'])->middleware(['auth'])->name('blog.update');
+Route::delete('deleteblog/{id}' , [BlogController::class, 'destroy'])->middleware(['auth'])->name('blog.destroy');
 
 //categorie
-Route::get('/categorie', [CategieArticleController::class, 'index'])->name('categorie.create');
-Route::post('/createcategorie', [CategieArticleController::class, 'store'])->name('categorie.store');
-Route::get('/editcategorie/{id}', [CategieArticleController::class, 'edit'])->name('categorie.edit');
-Route::post('/updatecategorie', [CategieArticleController::class, 'update'])->name('categorie.update');
-Route::delete('/deletecategorie/{id}', [CategieArticleController::class, 'destroy'])->name('categorie.destroy');
+Route::get('/categorie', [CategieArticleController::class, 'index'])->middleware(['auth'])->name('categorie.create');
+Route::post('/createcategorie', [CategieArticleController::class, 'store'])->middleware(['auth'])->name('categorie.store');
+Route::get('/editcategorie/{id}', [CategieArticleController::class, 'edit'])->middleware(['auth'])->name('categorie.edit');
+Route::post('/updatecategorie', [CategieArticleController::class, 'update'])->middleware(['auth'])->name('categorie.update');
+Route::delete('/deletecategorie/{id}', [CategieArticleController::class, 'destroy'])->middleware(['auth'])->name('categorie.destroy');
 
 //carousel
-Route::get('/images/create', [CarressolController::class, 'create'])->name('carressol.create');
-Route::post('/images', [CarressolController::class, 'store'])->name('carressol.store');
-Route::delete('/deleteimage/{id}', [CarressolController::class, 'destroy'])->name('carressol.destroy');
+Route::get('/images/create', [CarressolController::class, 'create'])->middleware(['auth'])->name('carressol.create');
+Route::post('/images', [CarressolController::class, 'store'])->middleware(['auth'])->name('carressol.store');
+Route::delete('/deleteimage/{id}', [CarressolController::class, 'destroy'])->middleware(['auth'])->name('carressol.destroy');
 
 //voiture
-Route::get('/voiture/create', [VoitureController::class, 'create'])->name('voiture.create');
-Route::get('/voiture/index', [VoitureController::class, 'index'])->name('voiture.index');
+Route::get('/voiture/create', [VoitureController::class, 'create'])->middleware(['auth'])->name('voiture.create');
+Route::get('/voiture/index', [VoitureController::class, 'index'])->middleware(['auth'])->name('voiture.index');
 Route::get('/voiture/show/{id}', [VoitureController::class, 'show'])->name('voiture.show');
 Route::post('/voiture/store', [VoitureController::class, 'store'])->name('voiture.store');
 Route::get('/voiture/search', [VoitureController::class, 'chercheByMarque'])->name('voiture.search');
 Route::delete('/deletevoiture/{id}', [VoitureController::class, 'destroy'])->name('voiture.destroy');
 Route::get('/voiture/liste', [VoitureController::class, 'list_voiture'])->name('voiture.liste');
-Route::get('/voiture/edit/{id}', [VoitureController::class, 'edit'])->name('voiture.edit');
-Route::post('/voiture/update', [VoitureController::class, 'update'])->name('voiture.update');
+Route::get('/voiture/edit/{id}', [VoitureController::class, 'edit'])->middleware(['auth'])->name('voiture.edit');
+Route::post('/voiture/update', [VoitureController::class, 'update'])->middleware(['auth'])->name('voiture.update');
 
 
 //Evaluation
@@ -79,9 +79,9 @@ Route::post('/evaluation/voiture', [EvaluationController::class, 'voiture'])->na
 Route::get('/evaluation/create', [EvaluationController::class, 'create'])->name('evaluation.create');
 Route::post('/evaluation/store', [EvaluationController::class, 'store'])->name('evaluation.store');
 Route::get('/evaluation/liste', [EvaluationController::class, 'liste'])->name('evaluation.liste');
-Route::delete('/evaluation/delete/{id}', [EvaluationController::class, 'destroy'])->name('evaluation.destroy');
-Route::get('/evaluation/edit/{id}', [EvaluationController::class, 'edit'])->name('evaluation.edit');
-Route::post('/evaluation/update', [EvaluationController::class, 'update'])->name('evaluation.update');
+Route::delete('/evaluation/delete/{id}', [EvaluationController::class, 'destroy'])->middleware(['auth'])->name('evaluation.destroy');
+Route::get('/evaluation/edit/{id}', [EvaluationController::class, 'edit'])->middleware(['auth'])->name('evaluation.edit');
+Route::post('/evaluation/update', [EvaluationController::class, 'update'])->middleware(['auth'])->name('evaluation.update');
 
 //input dynamique
 Route::get('/getModels/{marque}', [EvaluationController::class, 'models'])->name('input.model');
@@ -96,7 +96,9 @@ Route::post('/temoignage/store', [TemoignageController::class, 'store'])->name('
 Route::get('/temoignage/etat/{id}',[TemoignageController::class, 'etat'])->name('temoignage.etat');
 Route::get('temoignage/show/{id}', [TemoignageController::class, 'show'])->name('temoignage.show');
 Route::get('temoignage/delete/{id}', [TemoignageController::class, 'destroy'])->name('temoignage.delete');
-Route::get('temoignage/edit/{id}', [TemoignageController::class, 'edit'])->name('temoignage.edit');
-Route::post('temoignage/update/{id}', [TemoignageController::class, 'update'])->name('temoignage.update');
+Route::get('temoignage/edit/{id}', [TemoignageController::class, 'edit'])->middleware(['auth'])->name('temoignage.edit');
+Route::post('temoignage/update/{id}', [TemoignageController::class, 'update'])->middleware(['auth'])->name('temoignage.update');
+
+Route::post("simple-excel", [EvaluationController::class, 'import'])->name('excel.import');
 
 require __DIR__.'/auth.php';

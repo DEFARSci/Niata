@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Log;
 use Carbon\Carbon;
+use Dotenv\Validator;
 use App\Models\Evaluation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Rap2hpoutre\FastExcel\FastExcel;
 use App\Services\VoitureEvaluationService;
 
 class EvaluationController extends Controller
@@ -39,16 +42,24 @@ class EvaluationController extends Controller
                            ->Where('annee','=',$data['annee'])
                            ->first();
                 //  dd($voitureEvaluation);
+                if ($voitureEvaluation->message!=null) {
+                    return back()->with( 'error', $voitureEvaluation->message );
+
+                }
             if ($voitureEvaluation==null) {
                 return back()->with( 'error', 'Cette Voiture n\'existe pas dans notre base de donnée' );
 
             }
-            if ($voitureEvaluation->estimationCarburant==null && $voitureEvaluation->type_carburant !=$request->carburant) {
-                return back()->with( 'error', 'Cette Voiture n\'existe pas dans notre base de donnée' );
+            if ($voitureEvaluation->estimationKm!=null&&$voitureEvaluation->estimationCarburant==null && $voitureEvaluation->type_carburant !=$request->carburant) {
+                return back()->with( 'error', 'Cette Voiture n\'a pas de version Diesel' );
 
             }
-            if ($voitureEvaluation->estimationTransmission==null && $voitureEvaluation->boite !=$request->boite) {
-                return back()->with( 'error', 'Cette Voiture n\'existe pas dans notre base de donnée' );
+            if ($voitureEvaluation->estimationKm!=null&&$voitureEvaluation->estimationTransmission==null && $voitureEvaluation->boite !=$request->boite) {
+                return back()->with( 'error', 'Cette Voiture n\'a pas de version Manuelle' );
+
+            }
+            if ($voitureEvaluation->estimationKm==null&&$voitureEvaluation->estimationCarburant==null&&$voitureEvaluation->estimationTransmission==null) {
+                return back()->with( 'warning', 'RESULTAT NON DISPONIBLE : Nous travaillons actuellement sur l\'estimation de ce modèle. Si vous souhaitez avoir plus d\'informations ou une estimation personnalisée, merci de nous contacter' );
 
             }
             //  dd($voitureEvaluation);
@@ -84,25 +95,7 @@ class EvaluationController extends Controller
             'subject'=>'Evaluation prix voiture',
             'image'=>$voiturerecup->image
         ];
-        //  dd($mail_data);
 
-
-        // Mail::send('mail.evaluation',$mail_data,function($message)use($mail_data){
-        //     $message->to($mail_data['email'])
-        //             ->from($mail_data['recipient'])
-        //             ->subject($mail_data['subject']);
-        // });
-    //   return view('evaluation.evaluation',$mail_data)->with('success','Evaluation enregistrée avec succès un email vous sera envoyer');
-        //     $data=[
-        //         'data'=>$mail_data
-        //     ];
-        //   return response()->json([
-        //       'success' => true,
-        //       'data'=>$mail_data
-
-        //   ]);
-        // return response()->json($mail_data);
-        // dd($mail_data);
         return view('evaluation.evaluation',$mail_data);
 
     }
@@ -179,6 +172,8 @@ class EvaluationController extends Controller
         $voiture->estimationKm=$request->estimationKm;
         $voiture->estimationTransmission=$request->estimationTransmission;
         $voiture->prix_conteur_0km=$request->prix_conteur_0km;
+        $voiture->message=$request->message;
+        // dd($voiture);
         if(isset($request->image)){
             $image = $request->image;
             $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -197,7 +192,131 @@ class EvaluationController extends Controller
     public function annee($model){
 
         $annee = Evaluation::where('modele',$model)->pluck('annee')->unique();
-      
+
         return response()->json($annee);
     }
+
+    // public function import(Request $request){
+
+    //     // dd($request->file('file'));
+    //     $validate=$request->validate([
+    //         'file' => 'required|mimes:xlsx,xls',
+    //     ]);
+    //     if($validate){
+
+
+
+    //         $users = (new FastExcel)->import($request->file('file'), function ($line) {
+    //             if (!empty($line['message'])) {
+    //             try {
+    //                 Evaluation::create([
+    //                     'marque' => $line['marque'],
+    //                     'modele' => $line['modele'],
+    //                     'annee' => $line['annee'],
+    //                     'message' => $line['message'],
+
+    //                 ]);
+    //                 return back()->with( 'successexcel', 'Evaluation enregistrée avec succès' );
+    //             } catch (\Exception $e) {
+    //                 // Log the error
+    //                 preg_match('/"([^"]+)"/', $e->getMessage(), $matches);
+    //                 //throw $th;
+    //                 return back()->with( 'errorexcel', $matches[1] );
+    //             }
+
+
+    //             }else{
+    //                 try {
+    //                     //code...
+
+    //                 Evaluation::create([
+    //                     'marque' => $line['marque'],
+    //                     'modele' => $line['modele'],
+    //                     'annee' => $line['annee'],
+    //                     'prix' => $line['prix'],
+    //                     'boite' => $line['boite'],
+    //                     'type_carburant' => $line['type_carburant'],
+    //                     'kilometrage' => $line['kilometrage'],
+    //                     'estimationKm' => $line['estimationKm']==''?null:$line['estimationKm'],
+    //                     'estimationTransmission' => $line['estimationTransmission']==''?null:$line['estimationTransmission'],
+    //                     'estimationCarburant' => $line['estimationCarburant']==''?null:$line['estimationCarburant'],
+    //                     'prix_conteur_0km' => $line['prix_conteur_0km'],
+
+    //                 ]);
+    //                 return back()->with( 'successexcel', 'Evaluation enregistrée avec succès' );
+    //             } catch (\Exception $e) {
+    //                 // Log the error
+    //                 preg_match('/"([^"]+)"/', $e->getMessage(), $matches);
+    //                 //throw $th;
+    //                  return redirect('/evaluation/create')->with( 'errorexcel','il n y a pas de colonne '. $matches[1].' dans le fichier excel' );
+
+    //             }
+    //             }
+    //         });
+
+    // }else{
+    //     return back()->with( 'error', 'Veuillez importer un fichier valide. Veuillez reessayer.' );
+    // }
+//}
+
+public function import(Request $request)
+{
+    // Validation du fichier
+    $validatedData = $request->validate([
+        'file' => 'required|mimes:xlsx,xls',
+    ]);
+
+    if ($validatedData) {
+        // Importation des données depuis le fichier Excel
+        // $users = (new FastExcel)->import($request->file('file'), function ($line) {
+          $voiture=(new FastExcel)->import($request->file('file'));
+        //   dd(empty($voiture[0]['marqu']));
+            try {
+                // Vérifier si la ligne contient un message
+                if (!empty($voiture[0]['message'])) {
+                    foreach($voiture as $line) {
+                    Evaluation::create([
+                        'marque' => $line['marque'],
+                        'modele' => $line['modele'],
+                        'annee' => $line['annee'],
+                        'message' => $line['message'],
+                    ]);
+                    }
+
+                } else {
+                    foreach ($voiture as $line) {
+
+
+                    Evaluation::create([
+                        'marque' => $line['marque'],
+                        'modele' => $line['modele'],
+                        'annee' => $line['annee'],
+                        'prix' => $line['prix'],
+                        'boite' => $line['boite'],
+                        'type_carburant' => $line['type_carburant'],
+                        'kilometrage' => $line['kilometrage'],
+                        'estimationKm' => $line['estimationKm'] == '' ? null : $line['estimationKm'],
+                        'estimationTransmission' => $line['estimationTransmission'] == '' ? null : $line['estimationTransmission'],
+                        'estimationCarburant' => $line['estimationCarburant'] == '' ? null : $line['estimationCarburant'],
+                        'prix_conteur_0km' => $line['prix_conteur_0km'],
+                    ]);
+                      }
+                }
+
+                // Redirection avec message de succès
+                return back()->with('successexcel', 'Evaluation enregistrée avec succès');
+            } catch (\Exception $e) {
+                // Log de l'erreur
+                preg_match('/"([^"]+)"/', $e->getMessage(), $matches);
+                // Redirection avec message d'erreur spécifique
+                return back()->with('errorexcel', 'il n y a pas de colonne ' . $matches[1] . ' dans le fichier excel');
+            }
+
+    } else {
+        // Redirection avec message d'erreur de validation du fichier
+        return back()->with('error', 'Veuillez importer un fichier valide. Veuillez reessayer.');
+    }
+ }
+
 }
+

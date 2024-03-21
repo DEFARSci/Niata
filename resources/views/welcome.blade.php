@@ -17,8 +17,14 @@
                 </div> --}}
                 <div class="alert alert-dismissible alert-danger m-3">
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    <strong>Oh snap!</strong> <a href="#" class="alert-link">{{session('error')}}</a> and try submitting again.
+                    <strong>Oh snap!</strong> <a href="#" class="alert-link">{{session('error')}}</a> et essayez de soumettre à nouveau.
                   </div>
+                  @elseif (session('warning'))
+
+                  <div class="alert alert-dismissible alert-warning m-3">
+                      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                      <strong>Oh snap!</strong> <a href="#" class="alert-link">{{session('warning')}}</a>
+                    </div>
             @endif
               <legend class="mb-4">SIMPLE,RAPIDE ET GRATUIT</legend>
               <form action="{{ route('evaluation.voiture') }}" method="POST" id="myForm">
@@ -54,7 +60,7 @@
                       @enderror
                   </div>
                   <div class="form-group">
-                      <label for="exampleSelect3">Model :</label>
+                      <label for="exampleSelect3">modèle :</label>
                      {{--  <input type="text" class="form-control" id="inputModele" name="model" placeholder="Model"> --}}
                       <select id="inputModele" class="form-control rounded-5" name="model"  >
                         {{-- Options seront ajoutées dynamiquement ici --}}
@@ -163,7 +169,7 @@
                     <div class="d-flex ">
                         <legend class="mt-5 ">
                           <strong>
-                          Découvrez gratuitement la valeur de votre véhicule
+                          Découvrez gratuitement la valeur de votre véhicule 
                           </strong>
                         </legend>
                       </div>
@@ -188,7 +194,7 @@
                   <li class=" border-0   text-white  bg-transparent">20 millions d’estimations par an</li>
                   <li class=" border-0  text-white  bg-transparent">Mise à jour en temps réel selon les évolutions du marché</li>
                   <li class=" border-0  text-white  bg-transparent">Calculée grâce au modèle statistique de nos ingénieurs</li>
-                  <li class=" border-0  text-white  bg-transparent">And a fifth one</li>  </ul>
+                  <li class=" border-0  text-white  bg-transparent">And a first one</li>  </ul>
           </div>
 
         </div>
@@ -442,7 +448,7 @@
                 </p>
                   <div class="collapse" id="questions">
                     <div class="card card-body bg-black text-white">
-                      Consultez notre  pour connaître plus d'informations sur nos services.
+                      Contactez nous pour plus d'informations sur nos services.
                     </div>
                   </div>
       </p>

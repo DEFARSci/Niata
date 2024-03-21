@@ -18,15 +18,16 @@ class CreateEvaluationsTable extends Migration
             $table->string('marque');
             $table->string('modele');
             $table->bigInteger('annee');
-            $table->string('type_carburant');
-            $table->string('boite');
-            $table->bigInteger('kilometrage');
-            $table->bigInteger('prix');
+            $table->longText('message')->nullable();
+            $table->string('type_carburant')->nullable();
+            $table->string('boite')->nullable();
+            $table->bigInteger('kilometrage')->nullable();
+            $table->bigInteger('prix')->nullable();
             $table->string('image')->nullable();
             $table->float('estimationKm',8,5)->nullable();
             $table->bigInteger('estimationTransmission')->nullable();
             $table->bigInteger('estimationCarburant')->nullable();
-            $table->bigInteger('prix_conteur_0km');
+            $table->bigInteger('prix_conteur_0km')->nullable();
             $table->timestamps();
         });
     }

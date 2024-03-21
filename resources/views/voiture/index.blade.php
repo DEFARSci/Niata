@@ -63,7 +63,7 @@
                     {{-- !! Model --}}
                     <div class="mb-4">
                         <select name="modele" class="form-control mb-2 rounded-5">
-                            <option value="" class="rounded-5">Tout les model</option>
+                            <option value="" class="rounded-5">Tout les modeles</option>
                             @foreach ( $rechercher as $voitured)
                           <option class="rounded-5" value="{{ $voitured->modele}}" {{Request::get('modele')==$voitured->modele ? 'selected' : ''}}>{{$voitured->modele}}</option>
                           @endforeach
