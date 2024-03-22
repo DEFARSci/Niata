@@ -117,7 +117,7 @@
             <h5 class="text-white">Contacts</h5>
            <ul class="list-group list-group-flush text-white ">
             <li class="  text-white  bg-transparent fs-6 p-0 m-0"><a href="mailto:contact@niatagmail.com" class="text-white
-                ">contact@niatagmail.com </a> </li>
+                ">niata@niata.sn </a> </li>
             <li class="  text-white  bg-transparent">+221 77 277 00 00</li>
          </ul>
         </div>

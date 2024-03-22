@@ -169,7 +169,7 @@
                     <div class="d-flex ">
                         <legend class="mt-5 ">
                           <strong>
-                          Découvrez gratuitement la valeur de votre véhicule 
+                          Découvrez gratuitement la valeur de votre véhicule
                           </strong>
                         </legend>
                       </div>
@@ -398,7 +398,8 @@
       </p>
         <div class="collapse" id="niata">
           <div class="card card-body bg-black text-white">
-            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+            NIATA est une plateforme en ligne dédiée à l'estimation de la cote des voitures sur le marché sénégalais. Notre service permet aux utilisateurs d'obtenir des estimations précises de la valeur de leur véhicule basées sur des données de marché actuelles. Cela aide les vendeurs et les acheteurs à
+            établir des prix justes et à prendre des décisions éclairées lors de la vente ou de l'achat d'un véhicule.
           </div>
         </div>
         <p >
@@ -408,7 +409,8 @@
         </p>
           <div class="collapse" id="nouvelle-voiture">
             <div class="card card-body bg-black text-white">
-              Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+              Utiliser NIATA pour acheter votre nouvelle voiture vous assure de payer un prix équitable basé sur le marché actuel sénégalais. Notre système d'évaluation fournit des informations transparentes et à jour sur les cotes des voitures, vous aidant ainsi à négocier de manière informée et à éviter les prix excessifs. De plus,
+              nous pouvons vous fournir notre réseau de partenaires qui vous garantit un choix varié de véhicules de qualité.
             </div>
           </div>
           <p >
@@ -418,8 +420,8 @@
           </p>
             <div class="collapse" id="type-voiture">
               <div class="card card-body bg-black text-white">
-                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-              </div>
+                Sur NIATA, vous pouvez trouver une large gamme de véhicules d'occasion, allant des berlines au SUVs,.
+                </div>
             </div>
             <p >
               <p class="form-select form-select-lg mb-3" data-bs-toggle="collapse" href="#concessionnaires" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -428,7 +430,10 @@
             </p>
               <div class="collapse" id="concessionnaires">
                 <div class="card card-body bg-black text-white">
-                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                  Nous travaillons avec un réseau de concessionnaires réputés à travers le Sénégal. Ces partenariats sont
+                  établis après une évaluation rigoureuse de leur fiabilité, de la qualité de leurs véhicules et de leur
+                  service client. Cette collaboration nous permet d'assurer que
+                  les estimations de cote fournies sur notre site sont basées sur une large sélection de véhicules de qualité
                 </div>
               </div>
               <p >
@@ -438,7 +443,10 @@
               </p>
                 <div class="collapse" id="modèlepersonnalisé">
                   <div class="card card-body bg-black text-white">
-                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                    Bien que NIATA soit principalement une plateforme d'estimation de cote, nous pouvons assister
+                    les clients dans la recherche de modèles personnalisés grâce à notre réseau de concessionnaires
+                    partenaires. Si vous avez des besoins spécifiques ou cherchez une configuration particulière, nous pouvons
+                    vous aider à trouver le véhicule qui répond à vos attentes. N'hésitez pas à nous contacter pour discuter de vos besoins spécifiques.
                   </div>
                 </div>
                 <p >
@@ -448,7 +456,7 @@
                 </p>
                   <div class="collapse" id="questions">
                     <div class="card card-body bg-black text-white">
-                      Contactez nous pour plus d'informations sur nos services.
+                      Nous serons ravis de vous répondre à niata@niata.sn.
                     </div>
                   </div>
       </p>
