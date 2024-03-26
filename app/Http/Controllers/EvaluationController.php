@@ -141,7 +141,7 @@ class EvaluationController extends Controller
         return back()->with('success','Evaluation enregistrée avec succès');
     }
     public function liste(){
-        $voiture=Evaluation::all();
+        $voiture=Evaluation::paginate(30);
         $nbr=Evaluation::count();
         $data=[
             'voiture'=>$voiture,

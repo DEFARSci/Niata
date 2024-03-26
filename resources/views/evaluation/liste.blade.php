@@ -95,6 +95,10 @@
 
             </div><!--//app-card-body-->
         </div><!--//app-card-->
+        <div class="pagination-container">
+            {{ $voiture->links() }}
+
+        </div>
     </div>
     {{-- <div class="app-wrapper">
 	    <!--//app-content-->
@@ -109,7 +113,33 @@
 
     </div><!--//app-wrapper-->    					 --}}
 
+<style>
+    .pagination-container {
+    margin-top: 20px;
+}
 
+.pagination-container .pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination-container .pagination li {
+    margin-right: 10px;
+}
+
+.pagination-container .pagination li a {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #333;
+    text-decoration: none;
+}
+
+.pagination-container .pagination li a:hover {
+    background-color: #f0f0f0;
+}
+</style>
     <!-- Javascript -->
     <script src="{{asset('assets/plugins/popper.min.js')}}"></script>
     <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>

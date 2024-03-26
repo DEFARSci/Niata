@@ -60,7 +60,7 @@
                       @enderror
                   </div>
                   <div class="form-group">
-                      <label for="exampleSelect3">modèle :</label>
+                      <label for="exampleSelect3">Modèle :</label>
                      {{--  <input type="text" class="form-control" id="inputModele" name="model" placeholder="Model"> --}}
                       <select id="inputModele" class="form-control rounded-5" name="model"  >
                         {{-- Options seront ajoutées dynamiquement ici --}}
