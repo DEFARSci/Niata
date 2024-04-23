@@ -2,11 +2,11 @@
 
 @section('content')
 
-  <section class="decouvrir-nos-voiture mt-5 pt-4 ">
+  <section class="decouvrir-nos-voiture mt-5 pt-4  ">
     <div class="container card-search-container mt-5">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center m-0 p-0 ">
 
-          <div class="col-md-12 col-12 col-lg-6 card-search">
+          <div class="col-md-12 col-12 col-lg-6 col-sm-12 card-search ">
             @if (session('success'))
                 <div class="alert alert-success alert-dismissable m-3">
                     {{session('success')}}
@@ -26,7 +26,7 @@
                       <strong>Oh snap!</strong> <a href="#" class="alert-link">{{session('warning')}}</a>
                     </div>
             @endif
-              <legend class="mb-4">SIMPLE,RAPIDE ET GRATUIT</legend>
+              <legend class="mb-4">&#139;SIMPLE,RAPIDE ET GRATUIT&#155;</legend>
               <form action="{{ route('evaluation.voiture') }}" method="POST" id="myForm">
                 {{-- <form action="" method="" id="myForm"> --}}
                 @csrf
@@ -163,20 +163,21 @@
     <div id="loadingSpinner"></div>
 </div>
           {{-- Modal --}}
-          <div class="col-md-6 my-4 d-none d-lg-block ">
-              <div class="card border-0 ">
-                <div class="card-body">
+          <div class="col-md-6 col-lg-6 my-4 d-none d-lg-block  ">
+
+
                     <div class="d-flex ">
-                        <legend class="mt-5 ">
-                          <strong>
+                        <legend class="mt-5 fs-2 ">
+                          <strong style="font-family: Lugrasimo, cursive;">
                           Découvrez gratuitement la valeur de votre véhicule
                           </strong>
                         </legend>
                       </div>
-                    <img src="{{ asset('defaultimg/images/Voitures 1.png') }}" class=" car-hero-img" alt="...">
+                    <img src="{{ asset('defaultimg/images/Voitures 1.png') }}" class="  col-12 " alt="...">
+
+                      {{-- <img src="{{ asset('defaultimg/images/Voitures 1.png') }}" class=" car-hero-img col-12" alt="..."> --}}
                   </div>
-              </div>
-            </div>
+
       </div>
   </div>
 </section>
@@ -188,20 +189,21 @@
               <img src="{{ asset('defaultimg/images/Plan de travail 2 1.png') }}" class="img-fluid car-hero" alt="...">
           </div>
           <div class="col-lg-6  bg-transparent col-sm-12">
-              <h5 class="card-title car-hero-title text-white fs-5">Notre cote auto, la référence</h5>
+              <h5 class="card-title car-hero-title text-white fs-5">Niata: la premiére Cote Sénégalaise pour véhicules d'Occasion</h5>
               <ul class="list-group list-group-flush text-white ">
-                  <li class=" border-0   text-white  bg-transparent">Un argus gratuit et instantané   </li>
-                  <li class=" border-0   text-white  bg-transparent">20 millions d’estimations par an</li>
-                  <li class=" border-0  text-white  bg-transparent">Mise à jour en temps réel selon les évolutions du marché</li>
+                  <li class=" border-0   text-white  bg-transparent">Une estimation gratuite et instantané   </li>
+                  <li class=" border-0   text-white  bg-transparent">Plusieurs milliers de données exploités</li>
+                  <li class=" border-0  text-white  bg-transparent">Mise à jour réguliére selon les évolutions du marché</li>
                   <li class=" border-0  text-white  bg-transparent">Calculée grâce au modèle statistique de nos ingénieurs</li>
-                  <li class=" border-0  text-white  bg-transparent">And a first one</li>  </ul>
+                  <li class=" border-0  text-white  bg-transparent">Utilisation de l'intelligence artificielle</li>
+                </ul>
           </div>
 
         </div>
     </div>
   </section>
 
-  <div id="carouselExampleIndicatorsmodel1 " class="carousel slide" data-bs-ride="carousel">
+  <div id="carouselExampleIndicatorsmodel1 " class="carousel slide  modele1" data-bs-ride="carousel">
 
     <div class="carousel-inner ">
       <div class="carousel-item active">

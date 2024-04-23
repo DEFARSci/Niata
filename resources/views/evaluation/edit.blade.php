@@ -173,8 +173,9 @@
                         @enderror
                       </div>
                       <div class="form-group col-md-4">
-                        <label for="image">Image</label>
-                        <input type="file"  class="form-control text-black" id="image" name="image" value="{{old('image')}}">
+                          <label for="image">Image</label>
+                          <input type="file"  class="form-control text-black" id="image" name="image" value="{{old('image')}}">
+                          <img class="mt-3" width="80" height="80" src="{{ asset('evaluation/'.$voiture->image) }}" alt="">
                         @error('prix_conteur_0km')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -188,7 +189,7 @@
                     @endif
 
                 </div>
-                <button type="submit " class="btn bg-black text-white mt-5">Modifier</button>
+                <button type="submit " class="btn bg-black text-white ">Modifier</button>
               </form>
             </div>
 

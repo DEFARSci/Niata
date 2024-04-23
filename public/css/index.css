@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap');
+
 @font-face {
     font-family: inter;
     src: url("../Inter/static/Inter-Regular.ttf");
@@ -315,8 +318,8 @@ body{
 }
 @media screen and (max-width:901px) {
     .imgCarousel{
-        padding-right: 6px;
-        padding-left: 6px;
+        padding-right: 1px;
+        padding-left: 1px;
         padding-top: 10px;
         padding-bottom: 10px;
         background-color: rgb(33, 32, 32)
@@ -336,38 +339,109 @@ body{
 
         display: none;
     }
+    .text-evaluation{
+
+        font-size: 30px;
+    }
+    .text-auto{
+
+        font-size: 30px;
+    }
 }
-    @media screen and (max-width:425px) {
+  @media screen and (max-width:1500px) {
+
         .imgCarousel{
 
             padding-right: 6px;
             padding-left: 6px;
             padding-top: 10px;
             padding-bottom: 10px;
-            background-color: rgb(33, 32, 32)
+            background-color: rgb(11, 11, 11)
         }
         .logo-car {
-              width: 140px!important;
-              height:90px !important;
+              width: 190px!important;
+              height:140px !important;
         }
         #logo{
-            display: none;
+            /* display: none; */
         }
         .carousel{
-            display: none;
+            /* display: none; */
         }
         .catalogue{
-            display: none;
+            /* display: none; */
         }
         .catalogueMessage{
 
-            display: none;
+            /* display: none; */
         }
-        /* #carouselExampleIndicators{
-            display: none;
-        } */
+        .modele1{
+
+            height: 160px !important;
+        }
         .imgevaluation{
             width: 100% !important;
             height: 100% !important;
+         }
+         .text-evaluation{
+
+             font-size: 20px;
+         }
+         .text-auto{
+
+            font-size: 20px;
         }
-}
+        }
+
+        /* @media screen and (min-width:1700px) {
+
+            .imgCarousel{
+
+                padding-right: 6px;
+                padding-left: 6px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                background-color: rgb(239, 19, 19)
+            }
+        } */
+
+/*
+        @media screen and (min-width: 601px) and (max-width: 1024px)  {
+            body{
+                background-color: rgb(200, 24, 24)
+            }
+            .imgCarousel{
+
+                padding-right: 6px;
+                padding-left: 6px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                background-color: rgb(200, 24, 24)
+            }
+            .logo-car {
+                  width: 140px!important;
+                  height:90px !important;
+            }
+            #logo{
+                display: none;
+            }
+            .carousel{
+                display: none;
+            }
+            .catalogue{
+                display: none;
+            }
+            .catalogueMessage{
+
+                display: none;
+            } */
+            /* #carouselExampleIndicators{
+                display: none;
+            } */
+            /* .imgevaluation{
+                width: 100% !important;
+                height: 100% !important;
+            }
+} */
+
+

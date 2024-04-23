@@ -16,6 +16,7 @@
          <!-- Font Awesome CSS -->
        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <link rel="stylesheet" href="{{ asset('css/index.css') }}">
       </head>
@@ -53,11 +54,11 @@
                 <li class="nav-item :hover(bg-black)">
                     <a class="nav-link text-black "   href="/">Accueil</a>
                   </li>
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a class="nav-link text-black " href="{{ route('voiture.index') }}" >
                     Cataloge
                 </a>
-              </li>
+              </li> --}}
               <li class="nav-item dropdown">
                 <a class="nav-link text-black "  href="{{route('blog')}}" >
                     Actualités
@@ -68,6 +69,7 @@
                     Contact
                 </a>
               </li>
+
             </ul>
             {{-- <div class="d-flex align-items-center flex-column flex-lg-row">
               <form class="me-2 mb-2 mb-lg-0">
@@ -95,8 +97,8 @@
 
         {{-- </div> --}}
         <div class="container footer mt-5 mb-5">
-            <div class="row">
-          <div class="col-lg-2 col-12 col-md-4 mx-3 ">
+            <div class="row ">
+          <div class=" col-md-3 col-lg-2 col-12  mx-3 mb-3 ">
             <div >
            <h5 class="text-white">À propos de NIATA</h5>
            <ul class="list-group list-group-flush text-white a-propos">
@@ -112,7 +114,7 @@
                 ">Devenir partenaire pro</a></li>  </ul>
         </div>
         </div>
-          <div class="col-lg-2 col-12 col-md-4 mx-3">
+          <div class="col-md-3 col-lg-2 col-12  mb-3 mx-3">
             <div >
             <h5 class="text-white">Contacts</h5>
            <ul class="list-group list-group-flush text-white ">
@@ -122,18 +124,30 @@
          </ul>
         </div>
       </div>
-          <div class="col-lg-2 col-12 col-md-4 mx-3">
-            <div >
-            <h5 class="text-white">Suivez-nous</h5>
-            <ul class="  text-white d-flex  flex-row justify-content-start p-0">
-             <li class="  text-white  bg-transparent m-0 "><a href=""><img src="{{ asset('defaultimg/images/Facebook C 1.png') }}" class="w-100" alt=""></a> </li>
-             <li class="  text-white  bg-transparent m-0"><a href=""><img src="{{ asset('defaultimg/images/Instagram C 1.png') }}" class="w-100" alt=""></a></li>
-             <li class="  text-white  bg-transparent"><a href=""><img src="{{ asset('defaultimg/images/Twitter C 1.png') }}" class="w-100" alt=""></a></li><br>
-             <li class="  text-white  bg-transparent"><a href=""><img src="{{ asset('defaultimg/images/Linkedin C 1.png') }}" class="w-100" alt=""></a></li>
-            </ul>
-        </div>
+          <div class=" col-md-3 col-lg-2 col-12  mb-3 mx-3">
+
+                <h5 class="text-white ">Suivez-nous</h5>
+              <ul class="d-flex   p-0 m-0">
+                <li>
+                  <a href="" class=" text-white   bg-transparent p-1 m-2 "><i class="fab fa-facebook-square fa-2x"></i></a>
+                </li>
+                <li>
+                  <a href=""class="text-white bg-transparent p-1 m-2"><i class="fab fa-instagram-square fa-2x"></i></a>
+                </li>
+                <li>
+                  <a href=""class="text-white bg-transparent p-1  m-2"><i class="fab fa-twitter-square fa-2x"></i></a>
+                </li>
+                <li>
+                  <a href=""class="text-white bg-transparent p-1  m-2"><i class="fab fa-linkedin-square fa-2x"></i></a>
+                </li>
+                <li>
+                  <a href=""class="text-black bg-transparent p-1  m-2 "></a>
+
+                </li>
+              </ul>
+
       </div>
-          <div class="col-lg-2 col-12 col-md-4 mx-3">
+          <div class=" col-md-3 col-lg-2 col-12  mb-3 mx-3">
             <div >
             <h5 class="text-white">Informations légales</h5>
            <ul class="list-group list-group-flush text-white ">
@@ -149,7 +163,7 @@
                 ">Charte cookies</a></li>  </ul>
         </div>
       </div>
-          <div class="col-lg-2 col-12 col-md-4 mx-3">
+          <div class=" col-md-3 col-lg-2 col-12  mb-3 mx-3">
             <div >
             <h5 class="text-white">Télécharger l’application</h5>
             <ul class="list-group list-group-flush text-white ">
