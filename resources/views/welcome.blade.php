@@ -24,6 +24,7 @@
                   <div class="alert alert-dismissible alert-warning m-3">
                       <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                       <strong>Oh snap!</strong> <a href="#" class="alert-link">{{session('warning')}}</a>
+                     
                     </div>
             @endif
               <legend class="mb-4">&#139;SIMPLE,RAPIDE ET GRATUIT&#155;</legend>
@@ -50,7 +51,8 @@
                        <option value="{{ $marque->marque}}">{{ $marque->marque}}</option>
 
                        @endforeach
-
+                       
+                    
                       </select>
 
                       @error('marque')
@@ -116,41 +118,13 @@
 
                 <button type="submit" class="btn text-white valider-search-card mx-auto w-50">Valider</button>
                 {{-- <button type="button" class="btn text-white valider-search-card mx-auto w-50 rounded-5" id="btn" >Valider</button> --}}
-<div>
-  <h1 id="test"></h1>
-</div>
+<!-- <div>
+  <h1 id="tet"></h1>
+</div> -->
               </form>
           </div>
+          
           {{-- Modal --}}
-
-          {{-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> --}}
-            {{-- <div class="modal" id="responseModal" tabindex="-1" aria-labelledby="responseModalLabel" aria-hidden="true">
-
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title text-center id="staticBackdropLabel">Prix estimatif de votre voiture</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h1 class="text-center" id="modalPrix"></h1>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item" id="modalMarque"></li>
-                    <li class="list-group-item" id="modalModele"></li>
-                    <li class="list-group-item" id="modalAnnee"></li>
-                    <li class="list-group-item" id="modalBoite"></li>
-                    <li class="list-group-item" id="modalCarburant"></li>
-                    <li class="list-group-item" id="modalKilometre"></li>
-                  </ul>
-                </div>
-                <div class="modal-footer">
-
-
-                </div>
-              </div>
-            </div>
-
-        </div> --}}
 
         <div id="myModal" class="modal rounded-5 border-black">
             <div class="modal-content">
@@ -180,6 +154,110 @@
 
       </div>
   </div>
+
+@if (session('demande'))
+<div class="container d-flex justify-content-center mt-3">
+<div class="alert alert-dismissible alert-success text-center col-6">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <strong> {{session('demande')}} </strong>
+</div>
+</div>
+
+@endif  
+
+
+  <div class="text-center text-white text-uppercase  p-3">
+    
+  Vous ne trouvez pas votre modèle, faites une demande personnalisée</div>
+
+  <div class="d-grid gap-2  mx-auto  w-sm-100 justify-content-center ">
+    <!-- <a class="btn btn-primary  rounded-pill bg-light text-black m-t-5 " role="button" data-bs-toggle="modal" data-bs-target="#demandeClient">Vous ne trouvez pas votre modèle, faites une demande personnalisée ici</a> -->
+    <a class="btn btn-primary rounded-pill bg-light text-black  d-flex align-items-center justify-content-center"
+   role="button" 
+   data-bs-toggle="modal" 
+   data-bs-target="#demandeClient"
+   aria-label="Faire une demande personnalisée">
+   Demande personnalisée
+</a>
+  </div>
+  <!-- Loading Modal demande client -->
+  {{-- modal --}}
+
+  <div class="modal fade " id="demandeClient" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg ">
+      <div class="modal-content col-12 bg-black border-0 text-white">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Faites vos demandes</h1>
+          <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid ">
+                <div class="row">
+
+                    <div class="col-md-12 text-black">
+                        <form action="{{route('demandeClient.store')}}" method="POST" enctype="multipart/form-data" >
+                            @csrf
+                            <div class="form-group col-12">
+                                <label for="nom" class="text-white">prenom et nom</label>
+                                <input type="text" class="form-control text-black" id="nom" name="nom" value="{{old('prenom')}}" required>
+                                @error('nom')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                              </div>
+                              <div class="form-group col-12">
+                                <label for="email" class="text-white">email</label>
+                                <input type="email" class="form-control text-black" id="email" name="email" value="{{old('email')}}">
+                                @error('email')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                              </div>
+                              <div class="form-group col-12">
+                                <label for="titre" class="text-white">Télephone</label>
+                                <input type="phone" class="form-control text-black" id="titre" name="telephone" value="{{old('telephone')}}">
+                                @error('telephone')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                              </div>
+                              <div class="form-group col-12">
+                                <label for="message" class="text-white">Marque</label>
+                                <input type="text" class="form-control text-black" id="message" name="marque" value="{{old('marque')}}">
+                                @error('marque')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                              </div>
+                              <div class="form-group col-12">
+                                <label for="titre" class="text-white">Modele</label>
+                                <input type="text" class="form-control" id="exampleFormControlTextarea1" name="modele" rows="3" cols="10"value="{{old('marque')}}">
+                                
+                                @error('modele')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                              </div>
+                              <div class="form-group col-12">
+                                <label for="titre" class="text-white">information supplémentaire</label>
+                                <textarea type="texte" class="form-control text-black" id="titre" name="infoSupp"  >{{old('message')}}</textarea>
+                                @error('message')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                              </div>
+
+
+
+                            <button type="submit " class="btn text-white bg-black mt-3">ENVOYEZ</button>
+                          </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {{-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div> --}}
+      </div>
+    </div>
+  </div>
+  {{-- modal --}}
 </section>
 
 <section class="notre-cote-auto">
@@ -189,13 +267,13 @@
               <img src="{{ asset('defaultimg/images/Plan de travail 2 1.png') }}" class="img-fluid car-hero" alt="...">
           </div>
           <div class="col-lg-6  bg-transparent col-sm-12">
-              <h5 class="card-title car-hero-title text-white fs-5">Niata: la premiére Cote Sénégalaise pour véhicules d'Occasion</h5>
+              <h5 class="card-title car-hero-title text-white fs-5 ">Niata: la  première  Cote Sénégalaise pour véhicules d'Occasion</h5>
               <ul class="list-group list-group-flush text-white ">
-                  <li class=" border-0   text-white  bg-transparent">Une estimation gratuite et instantané   </li>
-                  <li class=" border-0   text-white  bg-transparent">Plusieurs milliers de données exploités</li>
-                  <li class=" border-0  text-white  bg-transparent">Mise à jour réguliére selon les évolutions du marché</li>
-                  <li class=" border-0  text-white  bg-transparent">Calculée grâce au modèle statistique de nos ingénieurs</li>
-                  <li class=" border-0  text-white  bg-transparent">Utilisation de l'intelligence artificielle</li>
+                  <li class=" border-0   text-white  bg-transparent">Une estimation gratuite et  instantanée   </li>
+                  <li class=" border-0   text-white  bg-transparent">Plusieurs milliers de données exploitées</li>
+                  <li class=" border-0  text-white  bg-transparent">Mise à jour régulière selon les évolutions du marché</li>
+                  <li class=" border-0  text-white  bg-transparent">Une Cote calculée grâce au modèle statistique de nos ingénieurs et à l’utilisation de l’intelligence artificielle</li>
+                  {{-- <li class=" border-0  text-white  bg-transparent">Utilisation de l'intelligence artificielle</li> --}}
                 </ul>
           </div>
 
@@ -507,102 +585,102 @@
 
 
 
-   let btn = document.getElementById("btn");
-    var openModalBtn = document.getElementById('openModalBtn');
-  var modal = document.getElementById('myModal');
-  var modalContent = document.getElementById('modalContent');
-  var closeModal = document.getElementsByClassName('close')[0];
-  var loadingModal = document.getElementById('loadingModal');
+//    let btn = document.getElementById("btn");
+//     var openModalBtn = document.getElementById('openModalBtn');
+//   var modal = document.getElementById('myModal');
+//   var modalContent = document.getElementById('modalContent');
+//   var closeModal = document.getElementsByClassName('close')[0];
+//   var loadingModal = document.getElementById('loadingModal');
 
-btn.addEventListener("click", function (e) {
-e.preventDefault();
-   // console.log(btn);
-    loadingModal.style.display = 'block';
-    // modal.style.display = 'block';
+// btn.addEventListener("click", function (e) {
+// e.preventDefault();
+//    // console.log(btn);
+//     loadingModal.style.display = 'block';
+//     // modal.style.display = 'block';
 
-    // let inputmail = document.getElementById("inputMail").value;
-    let inputmarque = document.getElementById("inputMarque").value;
-    let inputmodele = document.getElementById("inputModele").value;
-    let inputboite = document.getElementById("inputBoite").value;
-    let inputcarburant = document.getElementById("inputCarburant").value;
-    let inputannee = document.getElementById("inputAnnee").value;
-    let inputkilometrage = document.getElementById("inputKilometre").value;
-    let marque=document.getElementById("modalmarque");
-    let model=document.getElementById("modalmodele");
-    let boite=document.getElementById("modalboite");
-    let carburant=document.getElementById("modalcarburant");
-    let annee=document.getElementById("modalannee");
+//     // let inputmail = document.getElementById("inputMail").value;
+//     let inputmarque = document.getElementById("inputMarque").value;
+//     let inputmodele = document.getElementById("inputModele").value;
+//     let inputboite = document.getElementById("inputBoite").value;
+//     let inputcarburant = document.getElementById("inputCarburant").value;
+//     let inputannee = document.getElementById("inputAnnee").value;
+//     let inputkilometrage = document.getElementById("inputKilometre").value;
+//     let marque=document.getElementById("modalmarque");
+//     let model=document.getElementById("modalmodele");
+//     let boite=document.getElementById("modalboite");
+//     let carburant=document.getElementById("modalcarburant");
+//     let annee=document.getElementById("modalannee");
 
-    axios.post('/evaluation/voiture', {
-        marque: inputmarque,
-        model: inputmodele,
-        annee: inputannee,
-        kilometre: inputkilometrage,
-        carburant: inputcarburant,
-        boite: inputboite,
-        // email: inputmail,
-    })
-    .then(response => {
-         console.log(response);
-        let rs=response.data;
-          console.log(rs.success);
-          if(rs.success==false ||rs.data.prix==null) {
-            modalContent.innerHTML = `<div class="alert alert-danger" role="alert">le type de voiture n'est pas encore disponible dans la base de donnée</div>`;
-          }else{
+//     axios.post('/evaluation/voiture', {
+//         marque: inputmarque,
+//         model: inputmodele,
+//         annee: inputannee,
+//         kilometre: inputkilometrage,
+//         carburant: inputcarburant,
+//         boite: inputboite,
+//         // email: inputmail,
+//     })
+//     .then(response => {
+//          console.log(response);
+//         let rs=response.data;
+//           console.log(rs.success);
+//           if(rs.success==false ||rs.data.prix==null) {
+//             modalContent.innerHTML = `<div class="alert alert-danger" role="alert">le type de voiture n'est pas encore disponible dans la base de donnée</div>`;
+//           }else{
 
 
-          let prix=rs.data.prix;
-          let marque=rs.data.marque;
-          let modele=rs.data.modele;
-          let boite=rs.data.boite;
-          let carburant=rs.data.carburant;
-          let annee=rs.data.annee;
+//           let prix=rs.data.prix;
+//           let marque=rs.data.marque;
+//           let modele=rs.data.modele;
+//           let boite=rs.data.boite;
+//           let carburant=rs.data.carburant;
+//           let annee=rs.data.annee;
 
-          modalContent.innerHTML = `
+//           modalContent.innerHTML = `
 
-        <span class="text-center" id="responseModalLabel">Prix estimatif de votre voiture est: <strong>${prix} Fr</strong> </span>
-            <div >
-                <span class="text-bold" id="modalMarque">Marque: <strong>${marque}</strong></span>
-            </div>
-            <div>
-                <span  id="modalModele">Modele: <strong>${modele}</strong></span>
-            </div>
-            <div>
-                <span id="modalAnnee">Année: <strong>${annee}</strong></span>
-            </div>
-            <div>
-                <span  id="modalBoite">Boite: <strong>${boite}</strong></span>
-            </div>
-            <div>
-                <span  id="modalCarburant">Carburant: <strong>${carburant}</strong></span>
-            </div>
-            <div>
-                <span  id="modalKilometre">Kilometrage: <strong>${inputkilometrage}</strong></span>
-            </div>
+//         <span class="text-center" id="responseModalLabel">Prix estimatif de votre voiture est: <strong>${prix} Fr</strong> </span>
+//             <div >
+//                 <span class="text-bold" id="modalMarque">Marque: <strong>${marque}</strong></span>
+//             </div>
+//             <div>
+//                 <span  id="modalModele">Modele: <strong>${modele}</strong></span>
+//             </div>
+//             <div>
+//                 <span id="modalAnnee">Année: <strong>${annee}</strong></span>
+//             </div>
+//             <div>
+//                 <span  id="modalBoite">Boite: <strong>${boite}</strong></span>
+//             </div>
+//             <div>
+//                 <span  id="modalCarburant">Carburant: <strong>${carburant}</strong></span>
+//             </div>
+//             <div>
+//                 <span  id="modalKilometre">Kilometrage: <strong>${inputkilometrage}</strong></span>
+//             </div>
 
-        `
-    }
+//         `
+//     }
 
-        // Afficher le modal
-        modal.style.display = 'block';
-        loadingModal.style.display = 'none';
-        // console.log(prix);
-    })
-    .catch(error => {
-        modalContent.innerHTML = `<div class="alert alert-danger" role="alert">
-            'Une erreur est survenue : <strong>Les données ne sont pas valides </strong>;</div>`
-        // Afficher le modal
-        modal.style.display = 'block';
-        loadingModal.style.display = 'none';
+//         // Afficher le modal
+//         modal.style.display = 'block';
+//         loadingModal.style.display = 'none';
+//         // console.log(prix);
+//     })
+//     .catch(error => {
+//         modalContent.innerHTML = `<div class="alert alert-danger" role="alert">
+//             'Une erreur est survenue : <strong>Les données ne sont pas valides </strong>;</div>`
+//         // Afficher le modal
+//         modal.style.display = 'block';
+//         loadingModal.style.display = 'none';
 
-        console.error('Erreur lors de l\'envoi des données :', error);
-    });
+//         console.error('Erreur lors de l\'envoi des données :', error);
+//     });
 
-});
- closeModal.addEventListener('click', function () {
-    // Fermer le modal
-    modal.style.display = 'none';
-  });
+// });
+//  closeModal.addEventListener('click', function () {
+//     // Fermer le modal
+//     modal.style.display = 'none';
+//   });
 //   $(document).ready(function () {
 //         $('#inputMarque').on('input', function () {
 //             var brand = $(this).val();

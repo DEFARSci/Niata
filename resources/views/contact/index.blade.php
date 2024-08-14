@@ -16,21 +16,21 @@
               @csrf
                 <div class="row">
                     <div class="col">
-                      <input type="text" class="form-control" placeholder="Enter prénom" name="prenom" required>
+                      <input type="text" class="form-control" placeholder="prénom" name="prenom" required>
                     </div>
                     <div class="col">
-                      <input type="text" class="form-control" placeholder="Enter nom" name="nom" required>
+                      <input type="text" class="form-control" placeholder="nom" name="nom" required>
                     </div>
                   </div>
                   <div class="mb-3 mt-3">
-                    <input type="text" class="form-control" id="sujet" placeholder="Enter sujet" name="sujet" required>
+                    <input type="text" class="form-control" id="sujet" placeholder="sujet" name="sujet" required>
                   </div>
                 <div class="mb-3 mt-3">
-                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+                    <input type="email" class="form-control" id="email" placeholder="email" name="email" required>
                   </div>
                 <div class="mb-3">
 
-                  <textarea class="form-control" rows="5" id="comment"  placeholder="Enter message" name="message" required></textarea>
+                  <textarea class="form-control" rows="5" id="comment"  placeholder="message" name="message" required></textarea>
                 </div>
 
                 <button type="submit" class="btn " style="background-color: #060606; color: white ;border: solid 1px">Envoyer</button>

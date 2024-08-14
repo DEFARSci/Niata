@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Temoignage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AcceuilController;
@@ -9,8 +10,8 @@ use App\Http\Controllers\CarressolController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\TemoignageController;
+use App\Http\Controllers\DemandeClientController;
 use App\Http\Controllers\CategieArticleController;
-use App\Models\Temoignage;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,5 +101,8 @@ Route::get('temoignage/edit/{id}', [TemoignageController::class, 'edit'])->middl
 Route::post('temoignage/update/{id}', [TemoignageController::class, 'update'])->middleware(['auth'])->name('temoignage.update');
 
 Route::post("simple-excel", [EvaluationController::class, 'import'])->name('excel.import');
+
+Route::resource('demandeClient', DemandeClientController::class);
+// Route::delete('demandeClient/{demandeClient}', [DemandeClientController::class, 'delete'])->name('meuz.delete');
 
 require __DIR__.'/auth.php';

@@ -4,7 +4,7 @@
     <div class="sidepanel-inner d-flex flex-column" style="background-color: black">
         <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
         <div class="app-branding ">
-            <a class="app-logo  " href="/dashboard"><img class="logo-icon m-2" src="{{asset('assets/images/app-logo.svg')}}" alt="logo"><span class="logo-text text-white">Niata</span></a>
+            <a class=" rounded-circle  " href="/dashboard"><img class="logo-icon m-2" src="{{asset('icone/logo.png')}}" alt="logo"><span class="logo-text text-white">Niata</span></a>
 
         </div><!--//app-branding-->
         <hr class="p-1" style="color: white">
@@ -158,6 +158,22 @@
                           </svg>
                      </span>
                      <span class="nav-link-text">Ajouter User</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                <a class="nav-link  {{request()->is('/demandeClient') ? 'active' : ''}} bg-black text-white" active"  href="{{route('demandeClient.index')}}">
+                    <span class="nav-icon">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                            <path fill-rule="evenodd" d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
+                            <circle cx="3.5" cy="5.5" r=".5"/>
+                            <circle cx="3.5" cy="8" r=".5"/>
+                            <circle cx="3.5" cy="10.5" r=".5"/>
+                          </svg>
+                     </span>
+                     <span class="nav-link-text">Liste des demandes client</span>
                 </a>
             </li>
 

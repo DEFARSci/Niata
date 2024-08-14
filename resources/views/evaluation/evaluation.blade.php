@@ -3,14 +3,14 @@
 @section('content')
 
 <div class="container mt-5 pt-2">
-    <div class="row">
+    <div class="row mt-3">
         <div class=" col-lg-3 col-12 pt-3 ">
         </div>
         {{-- <div class="col-md-9 col-lg-9 col-12 mt-5 pt-2  ">
             <span class=" col-md-12 col-lg-12 col-12 d-inline-block p-3 text-white mx-auto h1 rounded-3">{{ $marque }} {{ $modele }} {{ $annee }} </span>
         </div> --}}
         <div class="col-md-12 col-lg-7 col-12 text-center mt-3 pt-3 ">
-            <span class="d-inline-block  text-black bg-white mx-auto h3  rounded-5  p-3"><strong>Prix estimatif de votre véhicule:</strong>  {{number_format( $prix, 0, ',', '.')  }} FCFA</span>
+            <span class="d-inline-block  text-black bg-white mx-auto h3  rounded-5  p-3"><strong>Prix estimatif de votre véhicule: </strong>  {{number_format( $prix, 0, ',', '.')  }} FCFA</span>
         </div>
 
     </div>
@@ -21,7 +21,8 @@
 
         </div>
         <div class="col-md-12 col-lg-9 col-12  rounded-5 ">
-            <img class="imgevaluation rounded-5 col-12"  src="{{ asset('evaluation/'.$image) }}" alt="" >
+            <img class="imgevaluation rounded-5 col-12"  src="{{ $image ? asset('evaluation/' . $image) : asset('icone/logo.png') }}"
+            alt="" >
         </div>
 
     <div class="col-md-1 col-lg-1 col-12 pt-3">

@@ -19,8 +19,11 @@ class AcceuilController extends Controller
          $user->password=bcrypt('admin');
          $user->save();
         }
-        $voiturevaluation=DB::table('evaluations')->get('marque')->unique();
-        // dd($voiturevaluation[0]->marque);
+        $voiturevaluation = DB::table('evaluations')
+    ->whereNull('message') // Filtrer les lignes où le message est null
+    ->get('marque') // Récupérer uniquement la colonne 'marque'
+    ->unique(); // Rendre les résultats uniques
+        //   dd($voiturevaluation);
         $data=[
             "marques"=>$voiturevaluation
 

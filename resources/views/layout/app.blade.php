@@ -19,8 +19,10 @@
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+        <link rel="shortcut icon" href="{{ asset('icone/logo.png') }}" type="image/x-icon" class="img-fluid rounded-circle">
+       
       </head>
-        <title>Niata</title>
+
 
 
     <meta charset="utf-8">
@@ -38,9 +40,9 @@
 <title>NIATA </title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg container fixed-top">
+    <nav class="navbar navbar-expand-lg container fixed-top border-bottom border-dark ">
         <div class="container-fluid ">
-            <a class="navbar-brand text-lg-center" href="{{ '/' }}">NIATA             <span class="d-none d-lg-inline">  |</span></a>
+            <a class="navbar-brand text-lg-center" href="{{ '/' }}"><img src="{{ asset('icone/logo.png') }}" alt="logo" class="" width="60" height="60"><span class="d-none d-lg-inline"></span></a>
 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +51,7 @@
 
 
 
-          <div class="collapse navbar-collapse   " id="navbarExample">
+          <div class="collapse navbar-collapse  " id="navbarExample">
             <ul class="navbar-nav me-auto mb-0">
                 <li class="nav-item :hover(bg-black)">
                     <a class="nav-link text-black "   href="/">Accueil</a>
@@ -141,7 +143,7 @@
                   <a href=""class="text-white bg-transparent p-1  m-2"><i class="fab fa-linkedin-square fa-2x"></i></a>
                 </li>
                 <li>
-                  <a href=""class="text-black bg-transparent p-1  m-2 "></a>
+                  <a href=""class="text-black bg-transparent p-1  m-2 "><i class="fab fa-tiktok-square fa-2x"></i> </a>
 
                 </li>
               </ul>
