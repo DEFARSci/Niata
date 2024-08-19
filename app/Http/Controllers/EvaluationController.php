@@ -190,12 +190,18 @@ class EvaluationController extends Controller
     }
 
     public function models($marque){
-        $models = Evaluation::where('marque','like','%'. $marque.'%')->pluck('modele')->unique();
+        // $models = Evaluation::where('marque','like','%'. $marque.'%')->pluck('modele')->unique();
+        $models = Evaluation::where('marque', 'like', '%' . $marque . '%')
+                    ->whereNull('message')
+                    ->pluck('modele')
+                    ->unique();
         return response()->json($models);
     }
     public function annee($model){
 
-        $annee = Evaluation::where('modele',$model)->pluck('annee')->unique();
+        $annee = Evaluation::where('modele',$model)
+        ->whereNull('message')
+        ->pluck('annee')->unique();
 
         return response()->json($annee);
     }
