@@ -97,7 +97,7 @@ class EvaluationController extends Controller
         ];
 
         if(is_null($prixestimatif) || $prixestimatif==0 || $prixestimatif<0){
-            return back()->with( 'warning', 'RESULTAT NON DISPONIBLE : La voiture est trop ancienne pour être estimée.  ' );
+            return back()->with( 'warning', 'RESULTAT NON DISPONIBLE :La voiture a trop de kilomètres pour être estimée.' );
         }
 
         return view('evaluation.evaluation',$mail_data);
